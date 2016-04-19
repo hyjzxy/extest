@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>02E1EDE8-B57C-4693-8585-9D4200EE947B</string>
+	<key>IDESourceControlProjectName</key>
+	<string>HuaYue</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983</key>
+		<string>https://115.238.234.6:444/svn/repos01/APP/branches/IOS/SYZS1.0</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Experiment/HuaYue.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983</key>
+		<string>../../..</string>
+	</dict>
+	<key>IDESourceControlProjectRepositoryRootDictionary</key>
+	<dict>
+		<key>fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983</key>
+		<string>https://115.238.234.6:444/svn/repos01</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://115.238.234.6:444/svn/repos01/APP/branches/IOS/SYZS1.0/Experiment/HuaYue.xcodeproj</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.subversion</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SYZS1.0</string>
+		</dict>
+	</array>
+</dict>
+</plist>

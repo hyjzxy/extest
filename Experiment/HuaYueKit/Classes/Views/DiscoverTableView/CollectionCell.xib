@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionCell" id="tv7-gD-41T" customClass="BMCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="107" height="107"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="宝马" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFH-Oa-BAO">
+                        <rect key="frame" x="1" y="84" width="105" height="20"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AskMy@3x.png" translatesAutoresizingMaskIntoConstraints="NO" id="CI7-t6-Hb3">
+                        <rect key="frame" x="16" y="8" width="75" height="75"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <connections>
+                <outlet property="header" destination="CI7-t6-Hb3" id="Dh5-h5-i7u"/>
+                <outlet property="qunZhu" destination="OFH-Oa-BAO" id="OAT-Lr-NCd"/>
+            </connections>
+            <point key="canvasLocation" x="-762.5" y="-51"/>
+        </collectionViewCell>
+        <view contentMode="scaleToFill" id="7Sw-Lc-UBx" customClass="XHJiFenView">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="185"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" tag="4399" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eVn-dw-U3L">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="130"/>
+                </imageView>
+                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gNj-Gb-54v">
+                    <rect key="frame" x="0.0" y="130" width="320" height="55"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" tag="101" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="我的积分：256" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dwi-FL-GG6">
+                            <rect key="frame" x="37" y="6" width="161" height="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5AI-va-nt7">
+                            <rect key="frame" x="148" y="29" width="165" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <state key="normal" title="认证用户积分翻倍,可换取高级礼品&gt;" backgroundImage="wide_btn_bg.png">
+                                <color key="titleColor" red="0.76078431369999999" green="0.43137254899999999" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="answer_M.png" translatesAutoresizingMaskIntoConstraints="NO" id="n1O-vR-b1t">
+                            <rect key="frame" x="18" y="8" width="15" height="15"/>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="认证情况：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V5z-Ke-deh">
+                            <rect key="frame" x="206" y="6" width="60" height="20"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="11"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <imageView userInteractionEnabled="NO" tag="102" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="btn_unauthenticated.png" translatesAutoresizingMaskIntoConstraints="NO" id="wuL-r1-Lnd">
+                            <rect key="frame" x="267" y="10" width="32" height="14"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BEh-zr-HVl">
+                            <rect key="frame" x="9" y="29" width="127" height="18"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <state key="normal" title="回答问题赚取积分&gt;" backgroundImage="wide_btn_bg.png">
+                                <color key="titleColor" red="0.76078431372549016" green="0.43137254901960786" blue="0.0039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.94901960784313721" green="0.67450980392156867" blue="0.32549019607843138" alpha="1" colorSpace="calibratedRGB"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="jiFenBtn" destination="BEh-zr-HVl" id="8we-OA-Sad"/>
+                <outlet property="liPinBtn" destination="5AI-va-nt7" id="g9I-MX-Lhe"/>
+            </connections>
+            <point key="canvasLocation" x="-692" y="125.5"/>
+        </view>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="C8u-IY-9Rv" customClass="XHCollectionViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="110" height="135"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="110" height="135"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="goods_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="Yzy-v2-0Mu">
+                        <rect key="frame" x="0.0" y="0.0" width="110" height="135"/>
+                        <color key="backgroundColor" red="0.84705882352941175" green="0.86274509803921573" blue="0.62745098039215685" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YiA-CG-tHw">
+                        <rect key="frame" x="7" y="4" width="97" height="92"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="iPhone 4s" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="efR-tg-Ewc">
+                        <rect key="frame" x="11" y="101" width="99" height="12"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.56862745100000001" green="0.36862745099999999" blue="0.0039215686269999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="150万" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mJH-OZ-2LK">
+                        <rect key="frame" x="32" y="115" width="68" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" red="0.74509803921568629" green="0.3529411764705882" blue="0.27450980392156865" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="answer_M.png" translatesAutoresizingMaskIntoConstraints="NO" id="tZp-1h-HjE">
+                        <rect key="frame" x="11" y="117" width="12" height="12"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="dw_1.png" translatesAutoresizingMaskIntoConstraints="NO" id="Uk9-Zx-Lw0">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hot.png" translatesAutoresizingMaskIntoConstraints="NO" id="vmy-y4-JXx">
+                        <rect key="frame" x="0.0" y="0.0" width="30" height="30"/>
+                    </imageView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            </view>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="number" keyPath="cornerGray">
+                    <integer key="value" value="0"/>
+                </userDefinedRuntimeAttribute>
+            </userDefinedRuntimeAttributes>
+            <point key="canvasLocation" x="-752" y="324.5"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="AskMy@3x.png" width="69" height="70"/>
+        <image name="answer_M.png" width="25" height="24"/>
+        <image name="btn_unauthenticated.png" width="24" height="11"/>
+        <image name="dw_1.png" width="47" height="43"/>
+        <image name="goods_bg.png" width="327" height="408"/>
+        <image name="hot.png" width="23" height="21"/>
+        <image name="wide_btn_bg.png" width="133" height="14"/>
+    </resources>
+</document>

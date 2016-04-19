@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[AppDelegate notificationWasTapped:]:AppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "notification.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[UIImageView(WebCache) addCustomView]:UIImageView+WebCache.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.mView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC addQuestPersonAct:]:MZBaseAnswerVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__39-[DailyBoothViewController checkNotice]_block_invoke_2:DailyBoothViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "param">
+            </PersistentString>
+            <PersistentString
+               value = "userId">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AppDelegate application:didFinishLaunchingWithOptions:]:AppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "notification.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mSend:isRes:]:MZBaseAnswerVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.aid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__35-[MZTabView initWithTitles:blocks:]_block_invoke:MZTabView.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyUIView tableView:cellForRowAtIndexPath:]:XHMyUIView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic[@&quot;same&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LNNotificationCenter presentNotification:forApplicationIdentifier:]:LNNotificationCenter.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZShare didSelectSocialPlatform:withSocialData:]:MZShare.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMessageRootViewController tableView:cellForRowAtIndexPath:]:XHMessageRootViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " toChatBtn.info">
+            </PersistentString>
+            <PersistentString
+               value = "toChatBtn.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mToAddQuestAct:]:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[AttentionViewController viewDidLoad]:AttentionViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "rightBtn">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHProfileTableViewController tableView:cellForRowAtIndexPath:]:XHProfileTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "delegate.tabbarView.zNum">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[xiangqingye loadWebView]:xiangqingye.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DropDownListView tableView:didSelectRowAtIndexPath:]:DropDownListView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "title.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DailyBoothViewController setupViewControllers]:DailyBoothViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__59-[AttentionViewController tableView:cellForRowAtIndexPath:]_block_invoke244:AttentionViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[LNNotificationWindow _userTappedNotification]:LNNotificationWindow.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_notificationView.currentNotification">
+            </PersistentString>
+            <PersistentString
+               value = "_notificationView.currentNotification.userinfo">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__35-[XHTiWenViewController resetScore]_block_invoke_2:XHTiWenViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHTaoLunViewController viewDidLoad]:XHTaoLunViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[HYTextView dealloc]:HYTextView.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[DropDownListView initWithFrame:dataSource:delegate:withArray:]:DropDownListView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sectionBtn.titleLabel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZTabView btnAct:]:MZTabView.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[systemViewController tableView:cellForRowAtIndexPath:]:systemViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic[@&quot;title&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__52-[XHKJIFenViewController detailDataSourceWithProid:]_block_invoke:XHKJIFenViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "scrollView.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC tableView:cellForRowAtIndexPath:]:MZAnswerListVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "data[@&quot;supperlist&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__29-[MZAnswerChatVC viewDidLoad]_block_invoke129:MZAnswerChatVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.auid">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZChatTextView textViewDidChange:]:MZChatTextView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "textView.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHProfileTableViewController login]:XHProfileTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "[MZApp share].deivceToken">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHSignViewController sexAct:]:XHSignViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.isMan">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HYTextView textView:shouldChangeTextInRange:replacementText:]:HYTextView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.text.length">
+            </PersistentString>
+            <PersistentString
+               value = "[textView.text substringWithRange:NSMakeRange(0, 200)]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__51-[MZBaseAnswerVC actionSheet:clickedButtonAtIndex:]_block_invoke_2625:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHContactTableViewController viewDidLoad]:XHContactTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView.rowHeight">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__40-[XHBannerViewController loadDetailData]_block_invoke:XHBannerViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHBrandCuViewController viewDidLoad]:XHBrandCuViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+            <PersistentString
+               value = "self.view.superview">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__36-[XHTaoLunViewController praiseAct:]_block_invoke_2:XHTaoLunViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "tmp[@&quot;hits&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[AppDelegate apnsPushViewWithContent:]:AppDelegate.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "content[@&quot;content&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "v.rootViewController.presentingViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__32-[MZAnswerListVC mLoadRmoteData]_block_invoke362:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHTiWenViewController mSave:]:XHTiWenViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "textView.text">
+            </PersistentString>
+            <PersistentString
+               value = "textView.text.length">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__23-[MZAnswerListVC mLoad]_block_invoke_2:MZAnswerListVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_answerTable.legendHeader">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHBannerViewController viewDidLoad]:XHBannerViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__72-[NetManager postRequestWithUrlString:api:postParamDic:success:failure:]_block_invoke104:NetManager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "request.responseString">
+            </PersistentString>
+            <PersistentString
+               value = "responseDic[@&quot;data&quot;]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MJRefreshFooter adjustStateWithContentOffset]:MJRefreshFooter.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_scrollView.mj_offsetY">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHProfileTableViewController setupProfile]:XHProfileTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "name.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__32-[MZAnswerChatVC mLoadRmoteData]_block_invoke:MZAnswerChatVC.m">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

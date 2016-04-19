@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "-[MZAnswerListVC tableView:didSelectRowAtIndexPath:]:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyWuPinViewController viewDidLoad]:XHMyWuPinViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mSendAddQuestAct:]:MZBaseAnswerVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.contentTF.text">
+            </PersistentString>
+            <PersistentString
+               value = "self.contentTF">
+            </PersistentString>
+            <PersistentString
+               value = "contentTF.text">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC addQuestPersonAct:]:MZBaseAnswerVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC mShowBottomView]:MZAnswerListVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HYTextView didMoveToSuperview]:HYTextView.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerChatVC mUpdateG]:MZAnswerChatVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerChatVC tableView:heightForRowAtIndexPath:]:MZAnswerChatVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "size.size.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDemoTableViewController tableView:cellForRowAtIndexPath:]:XHDemoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__32-[xiangqingye webViewHeaderView]_block_invoke:xiangqingye.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZTabBar setup]:MZTabBar.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "tabBarVC.tabBar">
+            </PersistentString>
+            <PersistentString
+               value = "tabBarVC.tabBar.items">
+            </PersistentString>
+            <PersistentString
+               value = "tabBarVC.tabBar.superview">
+            </PersistentString>
+            <PersistentString
+               value = "tabBarVC.view">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__32-[MZAnswerListVC mLoadRmoteData]_block_invoke:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC viewDidLoad]:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mSendAnswerAct:]:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "__26-[MZBaseAnswerVC mUpdateG]_block_invoke135:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[DropDownListView tableView:cellForRowAtIndexPath:]:DropDownListView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "cell.textLabel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DailyBoothViewController setupViewControllers]:DailyBoothViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__42-[XHTiWenViewController rightNavItemClick]_block_invoke_2:XHTiWenViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.navigationController ">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHProfileTableViewController loadDataSource]:XHProfileTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dataSource">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mAddQuestAct:]:MZBaseAnswerVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyselfViewController tableView:viewForHeaderInSection:]:XHMyselfViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZTabBar selectBar:]:MZTabBar.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "sender.tag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DailyBoothViewController selectIndex:]:DailyBoothViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyUIView mRemoved]:XHMyUIView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZTip makeWithTitle:msg:]:MZTip.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "titleLabel">
+            </PersistentString>
+            <PersistentString
+               value = "msgLabel">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerChatVC mConfigCell:data:isMaster:isQuest:]:MZAnswerChatVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " iv.image">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyUIView mLoadData]:XHMyUIView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__43-[XHDemoTableViewController reloadMoreData]_block_invoke:XHDemoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHNewsTableViewController clickListAnswer:]:XHNewsTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dataSource">
+            </PersistentString>
+            <PersistentString
+               value = "self.dic">
+            </PersistentString>
+            <PersistentString
+               value = "[userDefault objectForKey:UID]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__29-[MZAnswerListVC viewDidLoad]_block_invoke:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[TiWenViewCustomer xuanShangBtn:]:TiWenViewCustomer.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.superview">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDemoTableViewController reloadMoreData]:XHDemoTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.dic">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__72-[NetManager postRequestWithUrlString:api:postParamDic:success:failure:]_block_invoke89:NetManager.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "responseDic1.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HYTextView layoutSubviews]:HYTextView.m">
+      </ContextState>
+      <ContextState
+         contextName = "__25-[XHMyUIView supportAct:]_block_invoke:XHMyUIView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__30+[HYHelper mNickLable:userId:]_block_invoke:HYHelper.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "userId.intValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC mSupportSuccWithUserInfo:]:MZAnswerListVC.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "auid.intValue">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[DDSearchViewController initSearchBar]:DDSearchViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.tableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC mUpLoad]:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerChatVC viewDidLoad]:MZAnswerChatVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerChatVC mUpLoad]:MZAnswerChatVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHMyUIView supportAct:]:XHMyUIView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.info">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHContactTableViewController tableView:cellForRowAtIndexPath:]:XHContactTableViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "dic[@&quot;rank&quot;]">
+            </PersistentString>
+            <PersistentString
+               value = "cell.reward.layer">
+            </PersistentString>
+            <PersistentString
+               value = "contentAtt.size">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[MZBaseAnswerVC mShowBottomView]:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHTiWenViewController keyboardDidAppear:]:XHTiWenViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "__24-[MZBaseAnswerVC mSend:]_block_invoke:MZBaseAnswerVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[MZAnswerListVC mSetUI]:MZAnswerListVC.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[XHDiscoverTableViewController tableView:cellForRowAtIndexPath:]:XHDiscoverTableViewController.m">
+      </ContextState>
+      <ContextState
+         contextName = "-[xiangqingye webViewDidFinishLoad:]:xiangqingye.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "webView.scrollView.contentSize.height">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[XHWenGaoShouViewController viewDidLoad]:XHWenGaoShouViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = " self.tableView">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "-[HYTextView textViewDidEndEditing:]:HYTextView.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "_placeholdLabel.hidden">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "__42-[XHTiWenViewController rightNavItemClick]_block_invoke_3:XHTiWenViewController.m">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.presentedViewController">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
