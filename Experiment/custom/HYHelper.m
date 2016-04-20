@@ -434,9 +434,9 @@
                                            NSString *updateURL = dataDic[@"results"][0][@"trackViewUrl"];
                                            if ([lastVersion compare:currVersion]==NSOrderedDescending) {
                                                dispatch_async(dispatch_get_main_queue(), ^{
-                                                   [[UIAlertView mBuildWithTitle:@"版本更新" msg:releaseNote okTitle:@"暂不" noTitle:@"更新" cancleBlock:nil okBlock:^{
-                                                       [[UIApplication sharedApplication]openURL:[NSURL URLWithString:updateURL]];
-                                                   }]show];
+                                                   [[UIAlertView mBuildWithTitle:@"版本更新" msg:releaseNote okTitle:@"暂不" noTitle:@"更新" cancleBlock:^{
+                                           [[UIApplication sharedApplication]openURL:[NSURL URLWithString:updateURL]];
+                                                   } okBlock:nil]show];
                                                });
                                            }
                                        }
