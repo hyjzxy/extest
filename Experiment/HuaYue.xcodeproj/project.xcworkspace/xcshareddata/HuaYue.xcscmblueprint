@@ -1,21 +1,28 @@
 {
-  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983",
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "6CA427746EAB8775124E19FF38DFA8DCE2C0E10C",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
     "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983" : {
 
     }
   },
   "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
-    "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983" : 0
+    "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983" : 0,
+    "6CA427746EAB8775124E19FF38DFA8DCE2C0E10C" : 0
   },
   "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "02E1EDE8-B57C-4693-8585-9D4200EE947B",
   "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
-    "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983" : "SYZS1.0"
+    "fdf6e752-8cef-a644-8d43-b61b2d9cd335++3983" : "SYZS1.0",
+    "6CA427746EAB8775124E19FF38DFA8DCE2C0E10C" : "extest\/"
   },
   "DVTSourceControlWorkspaceBlueprintNameKey" : "HuaYue",
   "DVTSourceControlWorkspaceBlueprintVersion" : 204,
   "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Experiment\/HuaYue.xcodeproj",
   "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/hyjzxy\/extest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6CA427746EAB8775124E19FF38DFA8DCE2C0E10C"
+    },
     {
       "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/115.238.234.6:444\/svn\/repos01",
       "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Subversion",
