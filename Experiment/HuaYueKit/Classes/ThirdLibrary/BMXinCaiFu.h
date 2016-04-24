@@ -16,9 +16,9 @@
 #define IMG_URL(_ImgURL_) ([NSURL URLWithString:[NSString stringWithFormat:@"http://phpapi.ccjjj.net%@",_ImgURL_]])
 #define kINTERFACE_ADDRESS(addStr) [NSString stringWithFormat:@"http://phpapi.ccjjj.net/index.php/Api/%@",addStr]
 #else
-#define IMAGE_ADDRESS @"http://ws.shiyanzhushou.com"
-#define IMG_URL(_ImgURL_) ([NSURL URLWithString:[NSString stringWithFormat:@"http://ws.shiyanzhushou.com%@",_ImgURL_]])
-#define kINTERFACE_ADDRESS(addStr) [NSString stringWithFormat:@"http://ws.shiyanzhushou.com/index.php/Api/%@",addStr]
+#define IMAGE_ADDRESS @"http://ws.shiyanzhushou.com:8888"
+#define IMG_URL(_ImgURL_) ([NSURL URLWithString:[NSString stringWithFormat:@"http://ws.shiyanzhushou.com:8888%@",_ImgURL_]])
+#define kINTERFACE_ADDRESS(addStr) [NSString stringWithFormat:@"http://ws.shiyanzhushou.com:8888/index.php/Api/%@",addStr]
 #endif
 
 #define UPLOAD_PATH ([IMAGE_ADDRESS stringByAppendingString:@"/index.php/api/member/uploadimg"])

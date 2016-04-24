@@ -84,7 +84,9 @@ static NetManager *_manager;
                           success:(void (^)(id responseDic))success
                           failure:(void(^)(id errorString))failure
 {
-    
+    printf("----------------------------------------------------------------------\n");
+
+    NSLog(@"url:%@",urlString);
     AppDelegate *appDele = (AppDelegate *)[UIApplication sharedApplication].delegate;
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -147,6 +149,8 @@ static NetManager *_manager;
         }
         else
         {
+            NSLog(@"response:%@",responseDic);
+            printf("-------------------------------------------------------------------------\n");
             int status=[[responseDic objectForKey:@"code"] intValue];
             if (status == 88)
             {
