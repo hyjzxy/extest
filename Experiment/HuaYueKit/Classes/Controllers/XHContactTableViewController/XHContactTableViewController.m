@@ -24,13 +24,13 @@
 typedef NS_ENUM(NSInteger, DNDType){
     kFsHelp = 1,kNetQuest,kSearchQuest
 };
-@interface XHContactTableViewController ()<loginBtnGotoLoginDelegate>
+@interface XHContactTableViewController ()<loginBtnGotoLoginDelegate,HKSegViewDelegete>
 {
     UIImageView *buttonBg;
-    UIButton *leftBtn;
-    UIButton *rightBtn;
-    UIView *bottnSelectd0;
-    UIView *bottnSelectd1;
+//    UIButton *leftBtn;
+//    UIButton *rightBtn;
+//    UIView *bottnSelectd0;
+//    UIView *bottnSelectd1;
     UIButton *back;
     int page;
 }
@@ -41,6 +41,8 @@ typedef NS_ENUM(NSInteger, DNDType){
 @property (nonatomic,strong) UIButton           *solveButton;
 @property (nonatomic, assign) DNDType dndType;
 @property (nonatomic, assign) BOOL isSearch;
+@property (nonatomic,strong) UIView* topView;
+
 @end
 
 @implementation XHContactTableViewController
@@ -49,8 +51,9 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.tabBarController.title = @"全部问题";
-    self.tabBarController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStyleBordered target:self action:@selector(clickedLeftAction)];
+//    self.tabBarController.title = @"全部问题";
+//    self.tabBarController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStyleBordered target:self action:@selector(clickedLeftAction)];
+    self.tabBarController.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:_topView];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -61,40 +64,20 @@ typedef NS_ENUM(NSInteger, DNDType){
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadData) name:@"ContactNoti" object:nil];
-    self.tabBarController.title = @"全部问题";
+//    self.tabBarController.title = @"全部问题";
     [self requestTypeList:@""];
     page = 1;
-    buttonBg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 35)];
-    [buttonBg setBackgroundColor:UIColorFromRGB(0xF6F8FA)];
-    [buttonBg setUserInteractionEnabled:YES];
-    [self.view addSubview:buttonBg];
+    
+    _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
     self.dndType = kNetQuest;
     
-    leftBtn = [[UIButton alloc]initWithFrame:CGRectMake(0, 0,  160,  35)];
-    [leftBtn setTitle:@"网友提问" forState:UIControlStateNormal];
-    leftBtn.backgroundColor = [UIColor clearColor];
-    [leftBtn.titleLabel setFont:BOLDSYSTEMFONT(14.0)];
-    [leftBtn setTitleColor:UIColorFromRGB(0x20ACF4) forState:UIControlStateSelected];
-    [leftBtn setTitleColor:UIColorFromRGB(0x626363) forState:UIControlStateNormal];
-    [leftBtn addTarget:self action:@selector(leftBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    leftBtn.selected = YES;
-    [buttonBg addSubview:leftBtn];
-    //#67B4D4
-    rightBtn = [[UIButton alloc]initWithFrame:CGRectMake(160, 0,  160,  35)];
-    [rightBtn setTitle:@"粉丝求助" forState:UIControlStateNormal];
-    rightBtn.backgroundColor = [UIColor clearColor];
-    [rightBtn setTitleColor:UIColorFromRGB(0x20ACF4) forState:UIControlStateSelected];
-    [rightBtn setTitleColor:UIColorFromRGB(0x626363) forState:UIControlStateNormal];
-    [rightBtn.titleLabel setFont:BOLDSYSTEMFONT(14)];
-    [rightBtn addTarget:self action:@selector(rightBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-    [buttonBg addSubview:rightBtn];
-    
-    bottnSelectd0 = [[UIView alloc]initWithFrame:CGRectMake(0, 31,  160,  4)];
-    bottnSelectd0.backgroundColor = UIColorFromRGB(0x00A6F4);
-    bottnSelectd1 = [[UIView alloc]initWithFrame:CGRectMake(160, 31,  160,  4)];
-    bottnSelectd1.backgroundColor = UIColorFromRGB(0xDBDADA);
-    [buttonBg addSubview:bottnSelectd0];
-    [buttonBg addSubview:bottnSelectd1];
+    self.tabBarController.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:_topView];
+//    self.tabBarController.title = @"";
+    NSArray* segTitle = [NSArray arrayWithObjects:@"网友提问",@"粉丝求助", nil];
+    HKSegView* segView = [[HKSegView alloc]initWithFrame:CGRectMake(65, 5, 170, 25)];
+    segView.titleArray = segTitle;
+    segView.delegate = self;
+    [_topView addSubview:segView];
     
     CGRect frame = self.tableView.frame;
     frame.origin.y = 35;
@@ -122,7 +105,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         page = 1;
         ws.isSearch = NO;
-        ws.tabBarController.title = @"全部问题";
+//        ws.tabBarController.title = @"全部问题";
         ws.goldButton.selected = NO;
         ws.solveButton.selected = NO;
         [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -183,6 +166,15 @@ typedef NS_ENUM(NSInteger, DNDType){
     
 }
 
+- (void)segViewSelectIndex:(NSInteger)index SegView:(HKSegView *)segView
+{
+    if (index == 0 ){
+        [self leftBtnClick:nil];
+    }else{
+        [self rightBtnClick:nil];
+    }
+}
+
 - (void)topSelectClick:(UIButton*)btn
 {
     btn.selected    = !btn.selected;
@@ -222,10 +214,10 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 -(void)leftBtnClick:(id)sender
 {
-    leftBtn.selected = YES;
-    rightBtn.selected = !leftBtn.selected;
-    bottnSelectd0.backgroundColor = UIColorFromRGB(0x00A6F4);
-    bottnSelectd1.backgroundColor = UIColorFromRGB(0xDBDADA);
+//    leftBtn.selected = YES;
+//    rightBtn.selected = !leftBtn.selected;
+//    bottnSelectd0.backgroundColor = UIColorFromRGB(0x00A6F4);
+//    bottnSelectd1.backgroundColor = UIColorFromRGB(0xDBDADA);
     page = 1;
     self.dndType = kNetQuest;
     [self.dataSource removeAllObjects];
@@ -244,10 +236,10 @@ typedef NS_ENUM(NSInteger, DNDType){
         
         return;
     }
-    rightBtn.selected = YES;
-    leftBtn.selected = !rightBtn.selected;
-    bottnSelectd0.backgroundColor = UIColorFromRGB(0xDBDADA);
-    bottnSelectd1.backgroundColor = UIColorFromRGB(0x00A6F4);
+//    rightBtn.selected = YES;
+//    leftBtn.selected = !rightBtn.selected;
+//    bottnSelectd0.backgroundColor = UIColorFromRGB(0xDBDADA);
+//    bottnSelectd1.backgroundColor = UIColorFromRGB(0x00A6F4);
     page = 1;
     self.dndType = kFsHelp;
     [self.dataSource removeAllObjects];
@@ -348,7 +340,7 @@ typedef NS_ENUM(NSInteger, DNDType){
             catId   = [catId substringToIndex:catId.length - 1];
         }
     }
-    self.tabBarController.title = titleStr.length==0?@"全部问题":titleStr;
+//    self.tabBarController.title = titleStr.length==0?@"全部问题":titleStr;
     int isreward = self.goldButton.selected;
     int issolveed = self.solveButton.selected;
     self.isSearch = !(catId.length<=0 && ! self.goldButton.selected && !self.solveButton.selected);

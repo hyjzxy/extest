@@ -7,6 +7,9 @@
 //
 
 #import "UIView+Common.h"
+#import <objc/runtime.h>
+
+static char *viewClickKey;
 
 @implementation UIView (Common)
 
@@ -48,5 +51,47 @@
 		[child removeFromSuperview];
 	}
 }
+
+-(void)makeRoundCorner
+{
+    [self makeRoundCornerWithRadius:4];
+}
+
+-(void)makeRoundCornerWithRadius:(CGFloat)radius
+{
+    self.layer.cornerRadius = radius;
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+    self.layer.masksToBounds = YES;
+    
+}
+
+-(void)becomeRound
+{
+    self.layer.cornerRadius = MIN(self.width,self.height)/2;
+    self.layer.rasterizationScale = [UIScreen mainScreen].scale;
+    self.layer.shouldRasterize = YES;
+    self.layer.masksToBounds = YES;
+    //    self.layer.borderColor = [UIColor whiteColor].CGColor;
+    //    self.layer.borderWidth = 2;
+}
+
+
+- (void)handleClick:(UIViewClickHandle)handle {
+    self.userInteractionEnabled = YES;
+    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(viewClick)];
+    [self addGestureRecognizer:tap];
+    objc_setAssociatedObject(self, &viewClickKey, handle, OBJC_ASSOCIATION_COPY_NONATOMIC);
+}
+
+
+-(void)viewClick {
+    UIViewClickHandle callBack = objc_getAssociatedObject(self, &viewClickKey);
+    if (callBack!= nil)
+    {
+        callBack(self);
+    }
+}
+
 
 @end

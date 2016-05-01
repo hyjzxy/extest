@@ -13,6 +13,14 @@
  */
 @interface UIView (Common)
 
+typedef void(^UIViewClickHandle)(UIView *view);
+
+-(void)makeRoundCorner;
+-(void)makeRoundCornerWithRadius:(CGFloat)radius;
+-(void)becomeRound;
+
+- (void)handleClick:(UIViewClickHandle)handle;
+
 /**
  *  获取左上角横坐标
  *
