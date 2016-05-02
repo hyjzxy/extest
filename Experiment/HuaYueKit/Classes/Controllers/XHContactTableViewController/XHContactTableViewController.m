@@ -79,9 +79,14 @@ typedef NS_ENUM(NSInteger, DNDType){
     segView.delegate = self;
     [_topView addSubview:segView];
     
+    NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
+    HKSelectView* selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    selectView.titleArray = selectArray;
+    [self.view addSubview:selectView];
+    
     CGRect frame = self.tableView.frame;
-    frame.origin.y = 35;
-    frame.size.height = frame.size.height - 35;
+    frame.origin.y = 50;
+    frame.size.height = frame.size.height - 50;
     
     self.tableView.frame = frame;
     self.tableView.backgroundColor = [UIColor clearColor];

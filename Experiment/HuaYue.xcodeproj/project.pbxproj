@@ -531,6 +531,7 @@
 		EEB751401C8052D9009A3EAA /* MZShareItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB7513F1C8052D9009A3EAA /* MZShareItemTableViewCell.m */; };
 		EEB751471C805BBA009A3EAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB751461C805BBA009A3EAA /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F32DDA3A1CD60BFC0045AB9A /* HKSegView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA391CD60BFC0045AB9A /* HKSegView.m */; };
+		F32DDA3D1CD615AD0045AB9A /* HKSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */; };
 		FC0CE3F61A60DDC00072715F /* MainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F51A60DDC00072715F /* MainTopView.m */; };
 		FC0CE3F91A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F81A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m */; };
 		FC0CE3FD1A60EACC0072715F /* gy_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0CE3FC1A60EACC0072715F /* gy_logo.png */; };
@@ -1425,6 +1426,8 @@
 		EEB751461C805BBA009A3EAA /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		F32DDA381CD60BFC0045AB9A /* HKSegView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSegView.h; sourceTree = "<group>"; };
 		F32DDA391CD60BFC0045AB9A /* HKSegView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSegView.m; sourceTree = "<group>"; };
+		F32DDA3B1CD615AD0045AB9A /* HKSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSelectView.h; sourceTree = "<group>"; };
+		F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSelectView.m; sourceTree = "<group>"; };
 		FC0CE3F41A60DDC00072715F /* MainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTopView.h; sourceTree = "<group>"; };
 		FC0CE3F51A60DDC00072715F /* MainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTopView.m; sourceTree = "<group>"; };
 		FC0CE3F71A60DF2B0072715F /* MAinaaaaaaaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAinaaaaaaaTableViewCell.h; sourceTree = "<group>"; };
@@ -3499,6 +3502,8 @@
 				9B6B3FB41A811DFF00F1FFDC /* selectCollectionCell.m */,
 				F32DDA381CD60BFC0045AB9A /* HKSegView.h */,
 				F32DDA391CD60BFC0045AB9A /* HKSegView.m */,
+				F32DDA3B1CD615AD0045AB9A /* HKSelectView.h */,
+				F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */,
 			);
 			path = XHContactTableViewController;
 			sourceTree = "<group>";
@@ -4393,6 +4398,7 @@
 				2F595B001B3D9A8F0067366F /* _LNDefaultIconBase64.m in Sources */,
 				E2DAC0A51A7711F600C20983 /* XHShiYanViewController.m in Sources */,
 				A54515A41A64ED220092E8F2 /* XHShiMingRZViewController.m in Sources */,
+				F32DDA3D1CD615AD0045AB9A /* HKSelectView.m in Sources */,
 				A516C3541A63FD2F00304685 /* XHMyWuPinViewController.m in Sources */,
 				A00517291AE51C9100BA1216 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				FC0CE3F61A60DDC00072715F /* MainTopView.m in Sources */,
