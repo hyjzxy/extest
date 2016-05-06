@@ -42,7 +42,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 @property (nonatomic, assign) DNDType dndType;
 @property (nonatomic, assign) BOOL isSearch;
 @property (nonatomic,strong) UIView* topView;
-
+@property (nonatomic,strong) HKSelectView* selectView;
 @end
 
 @implementation XHContactTableViewController
@@ -80,9 +80,10 @@ typedef NS_ENUM(NSInteger, DNDType){
     [_topView addSubview:segView];
     
     NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
-    HKSelectView* selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
-    selectView.titleArray = selectArray;
-    [self.view addSubview:selectView];
+    _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    _selectView.titleArray = selectArray;
+    [self.view addSubview:_selectView];
+//    [_selectView.detailArray insertObject:self.typeArray atIndex:0];
     
     CGRect frame = self.tableView.frame;
     frame.origin.y = 50;
@@ -529,9 +530,11 @@ typedef NS_ENUM(NSInteger, DNDType){
                                                
                                                [weakMy.typeArray removeAllObjects];
                                                weakMy.typeArray = array;
+                                               weakMy.selectView.classifyArray = weakMy.typeArray;
                                            }else {
                                                [weakMy.sonArray removeAllObjects];
                                                weakMy.sonArray  = array;
+                                               weakMy.selectView.sonArray = weakMy.sonArray;
                                            }
                                            [self.collectionView reloadData];
                                        }failure:^(id error){
