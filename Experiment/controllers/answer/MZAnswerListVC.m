@@ -52,6 +52,8 @@
     [_answerTable addLegendFooterWithRefreshingTarget:self refreshingAction:@selector(mUpLoad)];
     _answerTable.legendFooter.stateHidden = YES;
     [self mLoad];
+    [self mShowBottomView];
+
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(notiPost) name:@"ReloadAnswerList" object:nil];
 }
 
@@ -93,7 +95,6 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:YES];
-    [self mShowBottomView];
 }
 
 - (void)didReceiveMemoryWarning {

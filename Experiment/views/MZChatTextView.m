@@ -56,13 +56,18 @@
  */
 - (void)mAddLable:(NSString*)leftTxt
 {
+//    [self clearText];
+    NSString* string = self.text;
     [self clearText];
     self.leftText = leftTxt;
     NSMutableAttributedString *ma = [[NSMutableAttributedString alloc]init];
+    [ma appendAttributedString:[[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:leftTxt attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:UIColorFromRGB(0x2EC9FB)}]];
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:@" " attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
+    
+    
     self.attributedText = ma;
-    [self resetSize];
+//    [self resetSize];
     [self becomeFirstResponder];
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [IQKeyboardManager sharedManager].enable = NO;
@@ -156,11 +161,11 @@
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 {
-    if (self.leftText && self.leftText.length>0) {
-        if (range.location<=self.leftText.length) {
-            return NO;
-        }
-    }
+//    if (self.leftText && self.leftText.length>0) {
+//        if (range.location<=self.leftText.length) {
+//            return NO;
+//        }
+//    }
     return YES;
 }
 @end

@@ -27,6 +27,8 @@
         #import "UIAlertView+Block.h"
         #import "HKSegView.h"
         #import "HKSelectView.h"
+        #import "Masonry.h"
+
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f & \
 [[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f)
 #endif

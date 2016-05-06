@@ -171,7 +171,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    if(self.mydelegate && [self.mydelegate respondsToSelector:@selector(didSelectedWithGaoShou:)])
+//    if(self.mydelegate && [self.mydelegate respondsToSelector:@selector(didSelectedWithGaoShou:)])
             [self.mydelegate didSelectedWithGaoShou:dArray];
     [[self.navigationController.navigationBar viewWithTag:999]removeFromSuperview];
 }
