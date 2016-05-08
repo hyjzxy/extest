@@ -62,7 +62,7 @@
     }
     if ([dataDic[@"bSelect"] boolValue]){
 //        self.icon.backgroundColor = [UIColor grayColor];
-        _titleLabel.backgroundColor = [UIColor blueColor];
+        _titleLabel.backgroundColor = UIColorFromRGB(0x2EC9FB);
         _titleLabel.textColor = [UIColor whiteColor];
     }else{
 //       self.icon.backgroundColor = [UIColor yellowColor];
@@ -166,21 +166,23 @@
             }
             [self.titleArray replaceObjectAtIndex:self.selectDetailIndex withObject:dic];
         }
+        NSDictionary* dic = self.titleArray[indexPath.row];
+        if ([dic[@"bSelect"] boolValue]){
+            [dic setValue:@"0" forKey:@"bSelect"];
+        }else{
+            [dic setValue:@"1" forKey:@"bSelect"];
+            self.selectDetailIndex = indexPath.row;
+        }
+        [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
+        if (self.delegate){
+            [self.delegate selectDetailView:self didselectIndex:indexPath.row];
+        }
+        [self.tableView reloadData];
+        [self dismiss];
     }
-    NSDictionary* dic = self.titleArray[indexPath.row];
-    if ([dic[@"bSelect"] boolValue]){
-        [dic setValue:@"0" forKey:@"bSelect"];
-    }else{
-        [dic setValue:@"1" forKey:@"bSelect"];
-        self.selectDetailIndex = indexPath.row;
-    }
-    [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
-    if (self.delegate){
-        [self.delegate selectDetailView:self didselectIndex:indexPath.row];
-    }
-    [self.tableView reloadData];
+    
 //    sleep(1);
-    [self dismiss];
+    
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -215,6 +217,7 @@
 @property(nonatomic,weak)HKSelectDetailView* detailView;
 @property(nonatomic,assign)NSInteger selectIndex;
 @property(nonatomic,assign)id<HKSelectViewDelegate> delegate;
+@property(nonatomic,strong)NSMutableArray* selectArray;
 
 @end
 
@@ -228,6 +231,10 @@
     if (self) {
 //        selectIndex = -1;
         self.backgroundColor = [UIColor whiteColor];
+        self.selectArray = [NSMutableArray new];
+        [self.selectArray addObject:@-1];
+        [self.selectArray addObject:@-1];
+        [self.selectArray addObject:@-1];
 //        self.detailArray = [NSMutableArray new];
     }
     return self;
@@ -289,6 +296,7 @@
     }
     HKSelectDetailView* detailView = [[HKSelectDetailView alloc]initWithFrame:CGRectMake(button.frame.origin.x , button.frame.origin.y+button.frame.size.height+74, SCREENWIDTH/3.0, 200)];
     detailView.delegate = self;
+    detailView.selectDetailIndex = [self.selectArray[1] integerValue];
 //    detailView.titleArray = self.detailArray[0];
     self.detailView = detailView;
     detailView.tag = button.tag-100;
@@ -309,6 +317,7 @@
         if (self.delegate) {
             [self.delegate selectView:self selectIndex:detailView.tag subindex:index];
         }
+        [self.selectArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInteger:index]];
     }
 //    if (index == -1 ){
 //        self.selectIndex = -1;

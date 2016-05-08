@@ -20,7 +20,8 @@
         // Initialization code
         [self setBackgroundColor:[UIColor clearColor]];
         [self.contentView setBackgroundColor:[UIColor clearColor]];
-        
+        self.label.backgroundColor = UIColorFromRGB(0x2EC9FB);
+        self.label.textColor = [UIColor whiteColor];
         
     }
     return self;
