@@ -28,7 +28,12 @@
         #import "HKSegView.h"
         #import "HKSelectView.h"
         #import "Masonry.h"
+        #import "ProgressHUD.h"
 
 #define IS_IOS_7 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0f & \
 [[[UIDevice currentDevice] systemVersion] floatValue] < 8.0f)
+
+#define KEYWINDOW [[UIApplication sharedApplication] keyWindow]
+#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
+#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
 #endif

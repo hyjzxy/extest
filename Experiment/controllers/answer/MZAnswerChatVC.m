@@ -98,6 +98,7 @@
                                        }];
     [_chatTbv.legendHeader beginRefreshing];
     
+    
     //tableview的长按事件
 //    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
 //                                          initWithTarget:self action:@selector(handleLongPress:)];//声明长按对象

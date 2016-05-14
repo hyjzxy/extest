@@ -10,6 +10,8 @@
 #import "XHWenGaoShouViewController.h"
 #import "IQKeyboardReturnKeyHandler.h"
 #import "MZChatTextView.h"
+#import "MZLoadingVIew.h"
+
 @interface MZBaseAnswerVC : UIViewController<UIActionSheetDelegate,wenGaoShouDelegate>
 @property (assign, nonatomic) BOOL isChat;
 @property (strong, nonatomic) MZChatTextView *contentTF;

@@ -531,6 +531,7 @@
 		EEB751471C805BBA009A3EAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB751461C805BBA009A3EAA /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F32DDA3A1CD60BFC0045AB9A /* HKSegView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA391CD60BFC0045AB9A /* HKSegView.m */; };
 		F32DDA3D1CD615AD0045AB9A /* HKSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */; };
+		F38C89BB1CE7032F00B3B250 /* MZLoadingVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = F38C89BA1CE7032F00B3B250 /* MZLoadingVIew.m */; };
 		FC0CE3F61A60DDC00072715F /* MainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F51A60DDC00072715F /* MainTopView.m */; };
 		FC0CE3F91A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F81A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m */; };
 		FC0CE3FD1A60EACC0072715F /* gy_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0CE3FC1A60EACC0072715F /* gy_logo.png */; };
@@ -1427,6 +1428,8 @@
 		F32DDA391CD60BFC0045AB9A /* HKSegView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSegView.m; sourceTree = "<group>"; };
 		F32DDA3B1CD615AD0045AB9A /* HKSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSelectView.h; sourceTree = "<group>"; };
 		F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSelectView.m; sourceTree = "<group>"; };
+		F38C89B91CE7032F00B3B250 /* MZLoadingVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZLoadingVIew.h; sourceTree = "<group>"; };
+		F38C89BA1CE7032F00B3B250 /* MZLoadingVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZLoadingVIew.m; sourceTree = "<group>"; };
 		FC0CE3F41A60DDC00072715F /* MainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTopView.h; sourceTree = "<group>"; };
 		FC0CE3F51A60DDC00072715F /* MainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTopView.m; sourceTree = "<group>"; };
 		FC0CE3F71A60DF2B0072715F /* MAinaaaaaaaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAinaaaaaaaTableViewCell.h; sourceTree = "<group>"; };
@@ -2593,6 +2596,8 @@
 				2F57B7171B1DE86C0073C5E4 /* MZCTabView.m */,
 				2F879D301B345457009834B7 /* MZTextField.h */,
 				2F879D311B345457009834B7 /* MZTextField.m */,
+				F38C89B91CE7032F00B3B250 /* MZLoadingVIew.h */,
+				F38C89BA1CE7032F00B3B250 /* MZLoadingVIew.m */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -4246,6 +4251,7 @@
 				A00517251AE51C9100BA1216 /* AFURLConnectionOperation.m in Sources */,
 				FC37791F1A3D8E530024D3E6 /* XHCommentView.m in Sources */,
 				A05046081ADA71C7000254CE /* IQUIView+Hierarchy.m in Sources */,
+				F38C89BB1CE7032F00B3B250 /* MZLoadingVIew.m in Sources */,
 				FC23F9761A35E17600CF1A03 /* BMCollectionViewCell.m in Sources */,
 				FC13E54B1A490E6500A6CF33 /* SBJsonStreamWriterState.m in Sources */,
 				FCDA03BC1983BEBE00E77779 /* UIImage+RoundedCorner.m in Sources */,

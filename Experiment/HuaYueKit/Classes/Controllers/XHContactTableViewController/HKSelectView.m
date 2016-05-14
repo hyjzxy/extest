@@ -8,9 +8,7 @@
 
 #import "HKSelectView.h"
 
-#define KEYWINDOW [[UIApplication sharedApplication] keyWindow]
-#define SCREENWIDTH [UIScreen mainScreen].bounds.size.width
-#define SCREENHEIGHT [UIScreen mainScreen].bounds.size.height
+
 
 @interface HKSelectCell : UITableViewCell
 

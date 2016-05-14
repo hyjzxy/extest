@@ -48,6 +48,7 @@
     [super viewDidLoad];
     self.view.backgroundColor = UIColorFromRGB(0xF1F2F6);
     [self mSetup];
+    
 }
 
 - (void)mSetup
@@ -380,6 +381,7 @@
         [BMUtils showError:@"回答内容不能为空"];
         return;
     }
+    
     NSMutableArray *invateids = [NSMutableArray array];
     for (NSDictionary *dic in _invates) {
         [invateids addObject:dic[@"id"]];
@@ -712,6 +714,10 @@
  */
 - (void)mSend:(NSMutableDictionary*)params isRes:(BOOL)isRes
 {
+    MZLoadingVIew* loadingView = [MZLoadingVIew new];
+    loadingView.loadingText = @"正在发送中...";
+    [loadingView show];
+//    [SVProgressHUD show];
     NSString *userHead = [[NSUserDefaults standardUserDefaults]objectForKey:USERHEAD];
     NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:USERNAME];
     NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
@@ -730,25 +736,31 @@
                                            withUrl:ANSWER_ADD_API
                                           withType:ANSWER_ADD
                                            success:^(id responseObject){
+//                                               [SVProgressHUD dismiss];
+                                               [loadingView dissMiss];
                                                if (isRes) {
                                                    //添加记录
                                                    [_contentTF clearText];
                                                    [self.mDatas addObject:dic];
                                                    [self mSendSucc:dic[@"auid"]];
                                                }
-                                           }failure:^(id error){}];
+                                           }failure:^(id error){
+                                           [SVProgressHUD dismiss];
+                                           }];
     }else if(sendType == kAddQuestChat) {
         [[NetManager sharedManager] myRequestParam:params
                                            withUrl:ANSWER_ADDQUES_API
                                           withType:ANSWER_ADDQUES
                                            success:^(id responseObject){
+//                                               [SVProgressHUD dismiss];
+                                               [loadingView dissMiss];
                                                if (isRes) {
                                                    //添加记录
                                                    [self.mDatas addObject:dic];
                                                    [self mSendSucc:dic[@"auid"]];
                                                }
                                            }failure:^(id error){
-                                           
+                                           [SVProgressHUD dismiss];
                                            }];
     }
 }

@@ -440,6 +440,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
     NSString* label = WYISBLANK([dic objectForKey:@"lable"]);
     cell.label.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [cell.label makeRoundCorner];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
