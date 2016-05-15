@@ -252,7 +252,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.tableView reloadData];
     [self requestDataComment];
 }
-
+//网友提问
 -(void)requestDataArticle{
     if (![NetManager isNetAlive]) {
         NSString *filePath = NSDocFilePath(kQuestionFileName);
@@ -267,6 +267,7 @@ typedef NS_ENUM(NSInteger, DNDType){
         NSArray *keyValue = [QUESTIONS_LIST_PARAM componentsSeparatedByString:@","];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],nil] forKeys:keyValue];
         [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_LIST_API withType:QUESTIONS_LIST success:^(id responseObject){
+            NSLog(@"ssssssss %@",responseObject);
             if (self.dndType != kNetQuest) return;
             if (page == 1) [self.dataSource removeAllObjects];
             [self.dataSource addObjectsFromArray:responseObject];
@@ -284,6 +285,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
 }
 
+//粉丝求助接口
 -(void)requestDataComment
 {
     __weak XHContactTableViewController *weakMy = self;
@@ -297,8 +299,8 @@ typedef NS_ENUM(NSInteger, DNDType){
     NSArray *keyValue = [MY_FANSSLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],nil] forKeys:keyValue];
-    
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],@1,nil] forKeys:keyValue];
+    NSLog(@"粉丝求助：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_API withType:MY_FANSSLIST success:^(id responseObject){
         if (self.dndType != kFsHelp) return;
         if (page == 1) {
@@ -357,6 +359,7 @@ typedef NS_ENUM(NSInteger, DNDType){
                                            withUrl:QUESTIONS_SELECT_API
                                           withType:QUESTIONS_SELECT
                                            success:^(id responseObject){
+                                               NSLog(@"问题列表   %@",responseObject);
                                                if (page == 1) [self.dataSource removeAllObjects];
                                                [self.dataSource addObjectsFromArray:responseObject];
                                                page++;

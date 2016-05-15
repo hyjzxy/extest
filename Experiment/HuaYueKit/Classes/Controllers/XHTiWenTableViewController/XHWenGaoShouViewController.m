@@ -72,7 +72,6 @@
     NSArray *keyValue = [QUESTIONS_GAOLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],nil] forKeys:keyValue];
-    NSLog(@"高手列表：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_GAOLIST_API withType:QUESTIONS_GAOLIST success:^(id responseObject){
         [weakMy.dataSource removeAllObjects];
         [weakMy.dataSource addObjectsFromArray:[weakMy convrtData:responseObject]];
@@ -227,7 +226,6 @@
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],nil] forKeys:keyValue];
     [dic setObject:searchKey forKey:@"keyword"];
-    NSLog(@"高手列表：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_GAOLIST_API withType:QUESTIONS_GAOLIST success:^(id responseObject){
         [weakMy.dataSource removeAllObjects];
         [weakMy.dataSource addObjectsFromArray:[weakMy convrtData:responseObject]];

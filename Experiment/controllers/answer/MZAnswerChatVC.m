@@ -118,6 +118,7 @@
        
         UIMenuController *menu=[UIMenuController sharedMenuController];
         UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
+//        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
         //UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
         [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
          [menu setTargetRect:cell.frame inView:cell.superview];

@@ -104,7 +104,7 @@
 
 #define MY_FANSSLIST  @"粉丝求助列表"
 #define MY_FANSSLIST_API  kINTERFACE_ADDRESS(@"Member/fansquestionlist.html")
-#define MY_FANSSLIST_PARAM  @"uid,pid,num"
+#define MY_FANSSLIST_PARAM  @"uid,pid,num,status"
 
 #define MY_FANSSLIST_NEW  @"粉丝求助列表"
 #define MY_FANSSLIST_NEW_API  kINTERFACE_ADDRESS(@"Member/myfansquestion.html")

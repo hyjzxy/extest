@@ -28,8 +28,11 @@
         [self becomeFirstResponder];
         UIMenuController *menu=[UIMenuController sharedMenuController];
         UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
+        UIMenuItem *copyItem2 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(copyItemClicked:)];
+//        copyItem2.tag = 1000
+//        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
       //  UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
-        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
+        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,copyItem2,nil]];
          UIView *contentV = (UIView*)VIEWWITHTAG(self, 104);
         
         [menu setTargetRect:contentV.bounds inView:contentV];
@@ -54,9 +57,9 @@
 #pragma mark method
 
 -(void)copyItemClicked:(id)sender{
-    NSLog(@"复制");
     
-    
+    UIMenuController* item = sender;
+    NSLog(@"%@",item.menuItems);
     [UIPasteboard generalPasteboard].string = self.content;
     // 通知代理
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
@@ -77,6 +80,9 @@
     }];
     
 }
+-(void)deleteClick:(id)sender{
+}
+
 
 
 

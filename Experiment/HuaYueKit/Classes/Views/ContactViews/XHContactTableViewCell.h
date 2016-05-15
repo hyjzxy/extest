@@ -26,4 +26,5 @@
 @property (weak, nonatomic) IBOutlet UIImageView *logImg;
 @property (weak, nonatomic) IBOutlet UIImageView *qImgeView;
 @property (weak, nonatomic) IBOutlet UILabel *profileLabel;
+@property (strong,nonatomic) UIImageView* recommendIV;
 @end
