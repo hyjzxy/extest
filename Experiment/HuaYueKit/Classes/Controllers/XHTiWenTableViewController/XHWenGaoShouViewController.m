@@ -53,6 +53,9 @@
     [tsView mTSWithType:kTSGS];
     
     UISearchBar* searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44)];
+//    searchBar.barTintColor = UIColorFromRGB(0xF1F2F6);
+//    searchBar.layer.masksToBounds = YES;
+//    searchBar.layer.borderColor = [UIColor clearColor].CGColor;
     self.tableView.tableHeaderView = searchBar;
     searchBar.delegate = self;
     searchBar.placeholder = @"搜索好友";
