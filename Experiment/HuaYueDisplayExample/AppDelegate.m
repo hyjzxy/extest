@@ -16,6 +16,7 @@
 #import "MobClick.h"
 #import "UMSocial.h"
 #import "UMSocialWechatHandler.h"
+#import "UMSocialQQHandler.h"
 #import "NewfeatureController.h"
 
 #import "xiangqingye.h"
@@ -130,7 +131,7 @@ static int RTIME = 15;
     [UMSocialData openLog:YES];
     [UMSocialConfig setSupportedInterfaceOrientations:UIInterfaceOrientationMaskAll];
     [UMSocialWechatHandler setWXAppId:@"wxaea6f7ec5263cd4e" appSecret:@"54b9aefefd98c5f227000907" url:@"http://www.baidu.com"];
-    
+    [UMSocialQQHandler setQQWithAppId:@"1105023611" appKey:@"54b9aefefd98c5f227000907" url:@"http://www.umeng.com/social"];
     NSString *version = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
     [MobClick setAppVersion:version];
     [MobClick endEvent:@"startApp"];

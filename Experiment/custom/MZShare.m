@@ -45,7 +45,7 @@
                                          appKey:@"54b9aefefd98c5f227000907"
                                       shareText:title
                                      shareImage:image
-                                shareToSnsNames:@[UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline]
+                                shareToSnsNames:@[UMShareToSina,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToQzone,UMShareToQQ]
                                        delegate:self];
 }
 
@@ -58,6 +58,10 @@
     } else if(platformName == UMShareToWechatSession ){//微信好友
         
     } else if(platformName == UMShareToWechatTimeline){//微信圈
+        
+    } else if (platformName == UMShareToQQ){//qq
+        
+    } else if (platformName == UMShareToQzone){//qq空间
         
     }
 }
