@@ -399,9 +399,9 @@
  *  @since v1.0
  */
 - (void)wengaoshou:(UIButton *)sender{
-    if (totleNum<30) {
-        return [BMUtils showError:@"当前积分不足30分，不能@高手！"];
-    }
+//    if (totleNum<30) {
+//        return [BMUtils showError:@"当前积分不足30分，不能@高手！"];
+//    }
     tiwen.keyBoardFrame = CGRectZero;
     tiwen.xuanShangisSelected = NO;
     [tiwen mShowToolBar];
