@@ -14,7 +14,7 @@
 #import "NSObject+Cate.h"
 #import "HYHelper.h"
 
-@interface XHWenGaoShouViewController ()
+@interface XHWenGaoShouViewController ()<UISearchBarDelegate>
 {
     int page;
 }
@@ -26,7 +26,7 @@
     [super viewDidLoad];
     self.tableView.estimatedRowHeight  = 70;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
-    self.title = @"@问高手";
+    self.title = @"邀请回答";
     dArray = [[NSMutableArray alloc] init];
     page = 1;
     //[self.navigationItem.rightBarButtonItem setTitlePositionAdjustment:UIOffsetMake(500, 0) forBarMetrics:UIBarMetricsDefault];
@@ -42,15 +42,20 @@
     }];
     [self.tableView.legendHeader beginRefreshing];
 
-    UIView *tsView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, VWidth(self.tableView), 40)];
+    UIView *tsView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, VWidth(self.tableView), 30)];
     [self.view addSubview:tsView];
     self.tableView.frame = CGRectInset(self.tableView.frame, 0, 20);
-     CGRectSetY(self.tableView, 40);
+     CGRectSetY(self.tableView, 30);//tableview纵坐标更新
     tsView.info = @{@"CALL":^(){
-        self.tableView.frame = CGRectInset(self.tableView.frame, 0, -20);
+        self.tableView.frame = CGRectInset(self.tableView.frame, 0, -10);
         CGRectSetY(self.tableView, 0);
     }};
     [tsView mTSWithType:kTSGS];
+    
+    UISearchBar* searchBar = [[UISearchBar alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44)];
+    self.tableView.tableHeaderView = searchBar;
+    searchBar.delegate = self;
+    searchBar.placeholder = @"搜索好友";
 }
 
 - (void)clickedBarButtonItemAction
@@ -64,6 +69,7 @@
     NSArray *keyValue = [QUESTIONS_GAOLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],nil] forKeys:keyValue];
+    NSLog(@"高手列表：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_GAOLIST_API withType:QUESTIONS_GAOLIST success:^(id responseObject){
         [weakMy.dataSource removeAllObjects];
         [weakMy.dataSource addObjectsFromArray:[weakMy convrtData:responseObject]];
@@ -158,6 +164,8 @@
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    
+    
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.tag = 999;
     btn.frame = Rect(Main_Screen_Width-65, 10, 60, 25);
@@ -174,6 +182,7 @@
 //    if(self.mydelegate && [self.mydelegate respondsToSelector:@selector(didSelectedWithGaoShou:)])
             [self.mydelegate didSelectedWithGaoShou:dArray];
     [[self.navigationController.navigationBar viewWithTag:999]removeFromSuperview];
+    
 }
 
 #pragma mark -
@@ -198,6 +207,32 @@
         }];
     }
     return list;
+}
+
+#pragma mark - searchBarDelegate
+
+- (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar{
+//    printf(searchBar.text);
+    if (searchBar.text != nil && [searchBar.text isEqualToString: @""] == false){
+        [self searchGaoshouWithSearchKey:searchBar.text];
+    }
+}
+
+- (void)searchGaoshouWithSearchKey:(NSString *)searchKey{
+    __weak XHWenGaoShouViewController *weakMy = self;
+    NSArray *keyValue = [QUESTIONS_GAOLIST_PARAM componentsSeparatedByString:@","];
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],nil] forKeys:keyValue];
+    [dic setObject:searchKey forKey:@"keyword"];
+    NSLog(@"高手列表：%@",dic);
+    [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_GAOLIST_API withType:QUESTIONS_GAOLIST success:^(id responseObject){
+        [weakMy.dataSource removeAllObjects];
+        [weakMy.dataSource addObjectsFromArray:[weakMy convrtData:responseObject]];
+        [weakMy.tableView reloadData];
+        [weakMy.tableView.legendHeader endRefreshing];
+    }failure:^(id error){
+        [weakMy.tableView.legendHeader endRefreshing];
+    }];
 }
 
 @end

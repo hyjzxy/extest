@@ -43,6 +43,7 @@
 #import "XHFansHelpViewController.h"
 #import "MZApp.h"
 #import "GexinSdk.h"
+#import "IQKeyboardManager.h"
 
 #define kAppId          @"nZWe1sNnGq6vzrK5NLCIW6"
 #define kAppKey         @"yf0m3vgB9L8UJ8cg9Kmw93"
@@ -173,6 +174,12 @@ static int RTIME = 15;
     }
     [[UIApplication sharedApplication] cancelAllLocalNotifications];
     [UIApplication sharedApplication].applicationIconBadgeNumber = 0;
+    
+    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    manager.enable = YES;//控制整个功能是否启用
+    manager.shouldResignOnTouchOutside = YES;//控制点击背景是否收起键盘
+    manager.shouldToolbarUsesTextFieldTintColor = YES;// 控制键盘上的工具条文字颜色是否用户自定义
+    manager.canAdjustTextView = YES;
     return YES;
 }
 
