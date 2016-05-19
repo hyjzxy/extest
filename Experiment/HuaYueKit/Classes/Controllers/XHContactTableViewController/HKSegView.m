@@ -25,6 +25,9 @@
         if (!self.normalColor) {
             self.normalColor = [UIColor whiteColor];
         }
+        if (!self.lineColor) {
+            self.lineColor = UIColorFromRGB(0x20ACF4);
+        }
         
         if (!self.selectBackgroundColor) {
             self.selectBackgroundColor = [UIColor whiteColor];
@@ -37,6 +40,7 @@
         {
             self.font = [UIFont systemFontOfSize:15];
         }
+        
     }
     return self;
 }
@@ -74,7 +78,12 @@
             [button setBackgroundColor:self.selectBackgroundColor];
         }
         [self addSubview:button];
+        
     }
+    self.lineView = [[UIView alloc]initWithFrame:CGRectMake(0, self.height-2, SCREENWIDTH/self.titleArray.count, 2)];
+    self.lineView.tag = 99;
+    self.lineView.backgroundColor = self.lineColor;
+    [self addSubview:self.lineView];
 }
 
 - (void)buttonAction:(id)sender
@@ -92,6 +101,10 @@
     button.selected = YES;
     button.backgroundColor = self.selectBackgroundColor;
     self.selectTag = button.tag;
+    
+    [UIView animateWithDuration:0.2 animations:^{
+        [self.lineView setFrame:CGRectMake(SCREENWIDTH/self.titleArray.count*(self.selectTag-100), self.height-2, SCREENWIDTH/self.titleArray.count, 2)];
+    }];
     
     [self.delegate segViewSelectIndex:self.selectTag-100 SegView:self];
 }
@@ -137,6 +150,8 @@
         }
     }
 }
+
+
 
 - (void)setFont:(UIFont *)font
 {

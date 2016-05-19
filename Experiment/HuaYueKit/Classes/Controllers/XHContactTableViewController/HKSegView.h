@@ -23,6 +23,8 @@
 @property(nonatomic,strong)UIColor* selectColor;
 @property(nonatomic,strong)UIColor* normalBackgroundColor;
 @property(nonatomic,strong)UIColor* selectBackgroundColor;
+@property(retain,nonatomic) UIView* lineView;
+@property(retain,nonatomic) UIColor* lineColor;
 @property(nonatomic,strong)UIFont* font;
 @property(assign,nonatomic) NSInteger selectTag;
 @property(nonatomic,assign)NSInteger selectIndex;//默认选中

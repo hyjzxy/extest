@@ -106,27 +106,27 @@
 //    [self.chatTbv addGestureRecognizer:lpgr];//把该事件加载到tableview对象上
 }
 
--(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-{
-    CGPoint p = [gestureRecognizer locationInView:self.chatTbv];//点击的位置
-    NSIndexPath *indexPath = [self.chatTbv indexPathForRowAtPoint:p];//根据点击的坐标得出点击的indexpath
-    if(gestureRecognizer.state == UIGestureRecognizerStateBegan)//长按事件开始
-    {
-        UITableViewCell *cell = [self.chatTbv cellForRowAtIndexPath:indexPath];
-
-        [cell becomeFirstResponder];
-       
-        UIMenuController *menu=[UIMenuController sharedMenuController];
-        UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
-//        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
-        //UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
-        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
-         [menu setTargetRect:cell.frame inView:cell.superview];
-        [menu setMenuVisible:YES animated:YES];
-  
-    }
-
-}
+//-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
+//{
+//    CGPoint p = [gestureRecognizer locationInView:self.chatTbv];//点击的位置
+//    NSIndexPath *indexPath = [self.chatTbv indexPathForRowAtPoint:p];//根据点击的坐标得出点击的indexpath
+//    if(gestureRecognizer.state == UIGestureRecognizerStateBegan)//长按事件开始
+//    {
+//        UITableViewCell *cell = [self.chatTbv cellForRowAtIndexPath:indexPath];
+//
+//        [cell becomeFirstResponder];
+//       
+//        UIMenuController *menu=[UIMenuController sharedMenuController];
+//        UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
+////        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
+//        //UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
+//        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
+//         [menu setTargetRect:cell.frame inView:cell.superview];
+//        [menu setMenuVisible:YES animated:YES];
+//  
+//    }
+//
+//}
 
 - (void)mUpdateG
 {

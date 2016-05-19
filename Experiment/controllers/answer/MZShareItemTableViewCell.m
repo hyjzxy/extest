@@ -28,7 +28,7 @@
         [self becomeFirstResponder];
         UIMenuController *menu=[UIMenuController sharedMenuController];
         UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
-        UIMenuItem *copyItem2 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(copyItemClicked:)];
+        UIMenuItem *copyItem2 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClick:)];
 //        copyItem2.tag = 1000
 //        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
       //  UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
@@ -43,6 +43,8 @@
 #pragma mark 处理action事件
 -(BOOL)canPerformAction:(SEL)action withSender:(id)sender{
     if(action ==@selector(copyItemClicked:)){
+        return YES;
+    }else if (action==@selector(deleteItemClick:)){
         return YES;
     }else if (action==@selector(resendItemClicked:)){
         return YES;
@@ -80,7 +82,8 @@
     }];
     
 }
--(void)deleteClick:(id)sender{
+
+-(void)deleteItemClick:(id)sender{
 }
 
 

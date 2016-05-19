@@ -33,6 +33,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 //    UIView *bottnSelectd1;
     UIButton *back;
     int page;
+    
 }
 @property (nonatomic, strong) NSMutableArray    *typeArray;
 @property (nonatomic, strong) NSMutableArray    *sonArray;
@@ -43,6 +44,8 @@ typedef NS_ENUM(NSInteger, DNDType){
 @property (nonatomic, assign) BOOL isSearch;
 @property (nonatomic,strong) UIView* topView;
 @property (nonatomic,strong) HKSelectView* selectView;
+@property (nonatomic,strong) HKSegView* segView;
+@property (nonatomic,strong) NSNumber* status;
 @end
 
 @implementation XHContactTableViewController
@@ -62,6 +65,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _status = @1;
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadData) name:@"ContactNoti" object:nil];
 //    self.tabBarController.title = @"全部问题";
@@ -75,8 +79,10 @@ typedef NS_ENUM(NSInteger, DNDType){
 //    self.tabBarController.title = @"";
     NSArray* segTitle = [NSArray arrayWithObjects:@"网友提问",@"粉丝求助", nil];
     HKSegView* segView = [[HKSegView alloc]initWithFrame:CGRectMake(65, 5, 170, 25)];
+    segView.tag = 10001;
     segView.titleArray = segTitle;
     segView.delegate = self;
+    segView.lineView.hidden = YES;
     [_topView addSubview:segView];
     
     NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
@@ -84,6 +90,23 @@ typedef NS_ENUM(NSInteger, DNDType){
     _selectView.titleArray = selectArray;
     [self.view addSubview:_selectView];
 //    [_selectView.detailArray insertObject:self.typeArray atIndex:0];
+    
+    NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];
+    _segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    _segView.tag = 10002;
+    _segView.titleArray = segArrray;
+    _segView.normalBackgroundColor = [UIColor whiteColor];
+    _segView.normalColor = [UIColor blackColor];
+    _segView.selectColor = [UIColor blackColor];
+    _segView.delegate = self;
+    [self.view addSubview:_segView];
+    _segView.hidden = YES;
+    UIView* sepLine = [[UIView alloc]initWithFrame:CGRectMake(self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
+    [_segView addSubview:sepLine];
+    sepLine.backgroundColor = [UIColor grayColor];
+    UIView* sepLine2 = [[UIView alloc]initWithFrame:CGRectMake(2*self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
+    [_segView addSubview:sepLine2];
+    sepLine2.backgroundColor = [UIColor grayColor];
     
     CGRect frame = self.tableView.frame;
     frame.origin.y = 50;
@@ -174,11 +197,23 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)segViewSelectIndex:(NSInteger)index SegView:(HKSegView *)segView
 {
-    if (index == 0 ){
-        [self leftBtnClick:nil];
-    }else{
+    if (segView.tag == 10001) {
+        if (index == 0 ){
+            [self leftBtnClick:nil];
+        }else{
+            [self rightBtnClick:nil];
+        }
+    }else if (segView.tag == 10002) {
+        if (index == 0) {
+            self.status = @1;
+        } else if (index == 1) {
+            self.status = @3;
+        } else if (index == 2) {
+            self.status = @2;
+        }
         [self rightBtnClick:nil];
     }
+    
 }
 
 - (void)topSelectClick:(UIButton*)btn
@@ -224,6 +259,8 @@ typedef NS_ENUM(NSInteger, DNDType){
 //    rightBtn.selected = !leftBtn.selected;
 //    bottnSelectd0.backgroundColor = UIColorFromRGB(0x00A6F4);
 //    bottnSelectd1.backgroundColor = UIColorFromRGB(0xDBDADA);
+    self.selectView.hidden = NO;
+    self.segView.hidden = YES;
     page = 1;
     self.dndType = kNetQuest;
     [self.dataSource removeAllObjects];
@@ -246,6 +283,8 @@ typedef NS_ENUM(NSInteger, DNDType){
 //    leftBtn.selected = !rightBtn.selected;
 //    bottnSelectd0.backgroundColor = UIColorFromRGB(0xDBDADA);
 //    bottnSelectd1.backgroundColor = UIColorFromRGB(0x00A6F4);
+    self.segView.hidden = NO;
+    self.selectView.hidden = YES;
     page = 1;
     self.dndType = kFsHelp;
     [self.dataSource removeAllObjects];
@@ -299,7 +338,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     NSArray *keyValue = [MY_FANSSLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],@1,nil] forKeys:keyValue];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],_status,nil] forKeys:keyValue];
     NSLog(@"粉丝求助：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_API withType:MY_FANSSLIST success:^(id responseObject){
         if (self.dndType != kFsHelp) return;
