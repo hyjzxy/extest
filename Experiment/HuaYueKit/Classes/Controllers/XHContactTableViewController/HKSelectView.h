@@ -14,7 +14,7 @@
 @protocol HKSelectViewDelegate <NSObject>
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex;
-
+- (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subArray:(NSArray*)subArray;
 @end
 
 @interface HKSelectView : UIView

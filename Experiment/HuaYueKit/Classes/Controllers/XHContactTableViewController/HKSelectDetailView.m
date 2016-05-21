@@ -25,19 +25,37 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self){
         
-        _icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
+        _icon = [[UIImageView alloc] init];
         [self addSubview:_icon];
+        [_icon mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self).offset(10);
+            make.centerY.equalTo(self);
+            make.width.height.equalTo(@20);
+        }];
+        _icon.image = [UIImage imageNamed:@"box-off.png"];
 //        _icon.backgroundColor = [UIColor redColor];
         
-        _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 10, self.width, 20)];
+        _titleLabel = [[UILabel alloc]init];
         [self addSubview:_titleLabel];
+        [_titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(_icon.mas_right).offset(5);
+            make.centerY.equalTo(self);
+            make.height.equalTo(@20);
+            
+        }];
         _titleLabel.font = [UIFont systemFontOfSize:13];
         _titleLabel.textColor = [UIColor grayColor];
         _titleLabel.text = @"分类";
         
-        UIView* sepline = [[UIView alloc]initWithFrame:CGRectMake(10, 39.5, SCREENWIDTH/3.0-20, 0.5)];
+        UIView* sepline = [[UIView alloc]init];
         sepline.backgroundColor = [UIColor grayColor];
         [self addSubview:sepline];
+        [sepline mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(@10);
+            make.right.equalTo(@-10);
+            make.bottom.equalTo(self);
+            make.height.equalTo(@0.5);
+        }];
     }
     return self;
 }
@@ -46,15 +64,21 @@
     _type = type;
     if (type == 1){
         [_icon removeFromSuperview];
-        _titleLabel.frame = CGRectMake(10, 10, SCREENWIDTH/3.0-20, 20);
+        [_titleLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.height.equalTo(@20);
+            make.centerX.centerY.equalTo(self);
+            make.width.equalTo(@(SCREENWIDTH/3.0-20));
+        }];
+//        _titleLabel.frame = CGRectMake(10, 10, SCREENWIDTH/3.0-20, 20);
         //        _titleLabel.text = da taDic[@""];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [_titleLabel makeRoundCorner];
     }else {
-        _icon.layer.masksToBounds = YES;
-        _icon.layer.borderColor = [UIColor grayColor].CGColor;
-        _icon.layer.borderWidth = 0.5;
+        _icon.image = [UIImage imageNamed:@"box-off.png"];
+//        _icon.layer.masksToBounds = YES;
+//        _icon.layer.borderColor = [UIColor grayColor].CGColor;
+//        _icon.layer.borderWidth = 0.5;
         
     }
 }
@@ -73,9 +97,11 @@
         }
     }else{
         if ([dataDic[@"bSelect"] boolValue]) {
-            _icon.image = [UIImage imageNamed:@"common_select"];
+            _icon.image = [UIImage imageNamed:@"box-on.png"];
+//            _icon.image = [UIImage imageNamed:@"common_select"];
         }else{
-            _icon.image = nil;
+            _icon.image = [UIImage imageNamed:@"box-off.png"];
+//            _icon.image = nil;
         }
     }
 
@@ -115,32 +141,50 @@
         [self addSubview:_backView];
         [_backView handleClick:^(UIView *view) {
             [self dismiss];
-            if (self.delegate){
-                [self.delegate selectDetailView:self didselectIndex:-1];
-            }
+//            if (self.delegate){
+//                [self.delegate selectDetailView:self didselectIndex:-1];
+//            }
         }];
         
         [self addSubview:_tableView];
         
-        UIView* footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, self.width, 40)];
+        UIView* footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.width, 40)];
         
         UIButton* doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [doneButton setTitle:@"确定" forState:UIControlStateNormal];
         [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
         doneButton.backgroundColor = UIColorFromRGB(0x2EC9FB);
-        doneButton.frame = CGRectMake(5, 10, self.width-10, 20);
+//        doneButton.frame = CGRectMake(5, 10, self.width-10, 20);
         [footView addSubview:doneButton];
+        [doneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+//            make.left.equalTo(@10);
+//            make.right.equalTo(@10);
+            make.height.equalTo(@20);
+            make.centerX.centerY.equalTo(footView);
+            make.width.equalTo(@(SCREENWIDTH/3.0-20));
+        }];
         self.tableView.tableFooterView = footView;
         doneButton.titleLabel.font = [UIFont systemFontOfSize:13];
         [doneButton makeRoundCornerWithRadius:4];
         [doneButton addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
+        
         self.frame = CGRectMake(0, self.frame.origin.y, SCREENWIDTH, _newHeight);
     }
     return self;
 }
 
 - (void)setTitleArray:(NSArray *)titleArray{
+    [_titleArray removeAllObjects];
     [_titleArray addObjectsFromArray:titleArray];
+    if (self.tag == 1){
+        for (NSInteger i = 0; i<titleArray.count;i++){
+            NSDictionary* dic = titleArray[i];
+            if ([dic[@"bSelect"] isEqualToString:@"1"]){
+                self.selectDetailIndex = i;
+                break;
+            }
+        }
+    }
     [self.tableView reloadData];
 }
 
@@ -164,9 +208,15 @@
 }
 
 - (void)buttonAction:(id)sender{
-//    if (self.delegate){
-//        [self.delegate selectDetailView:self didselectIndex:indexPath.row];
-//    }
+    
+    if (self.delegate){
+        if (self.tag == 1){
+            [self.delegate selectDetailView:self didselectIndex:self.selectDetailIndex];
+        }else{
+            [self.delegate selectDetailView:self didselectIndexs:self.titleArray];
+        }
+        
+    }
 
     [self dismiss];
 }
@@ -180,20 +230,8 @@
         [self.selectArray removeObject:@(indexPath.row)];
         [self.selectArray addObject:@(indexPath.row)];
     }
-    if (self.tag == 0) {
-        NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:self.titleArray[indexPath.row]] ;
-        if ([dic[@"bSelect"] boolValue]){
-            [dic setValue:@"0" forKey:@"bSelect"];
-        }else{
-            [dic setValue:@"1" forKey:@"bSelect"];
-            self.selectDetailIndex = indexPath.row;
-        }
-        [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
-        if (self.delegate){
-            [self.delegate selectDetailView:self didselectIndex:indexPath.row];
-        }
-        [self.tableView reloadData];
-    }else if (self.tag == 1){
+    
+    if (self.tag == 1){//单选
         if (self.selectDetailIndex != -1){
             NSDictionary* dic = self.titleArray[self.selectDetailIndex];
             if ([dic[@"bSelect"] boolValue]){
@@ -211,15 +249,19 @@
             self.selectDetailIndex = indexPath.row;
         }
         [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
-        if (self.delegate){
-            [self.delegate selectDetailView:self didselectIndex:indexPath.row];
-        }
         [self.tableView reloadData];
         
+    }else {
+        NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:self.titleArray[indexPath.row]] ;
+        if ([dic[@"bSelect"] boolValue]){
+            [dic setValue:@"0" forKey:@"bSelect"];
+        }else{
+            [dic setValue:@"1" forKey:@"bSelect"];
+            self.selectDetailIndex = indexPath.row;
+        }
+        [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
+        [self.tableView reloadData];
     }
-    
-    //    sleep(1);
-    
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -232,6 +274,10 @@
         cell = [[HKSelectCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"cellId"];
     }
     NSDictionary* dic = self.titleArray[indexPath.row];
+    NSString* bSelect = [[NSString alloc]initWithFormat:@"%@",dic[@"bSelect"]];
+    if ([bSelect isEqualToString:@"1"]){
+        self.selectDetailIndex = indexPath.row;
+    }
     //    if (self.selectIndex == indexPath.row){
     //        ((HKSelectCell* )cell).icon.backgroundColor = [UIColor grayColor];
     //    }

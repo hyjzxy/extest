@@ -12,6 +12,7 @@
 @protocol HKSelectDetailViewDelegate <NSObject>
 
 - (void)selectDetailView:(HKSelectDetailView*)detailView didselectIndex:(NSInteger)index;
+- (void)selectDetailView:(HKSelectDetailView*)detailView didselectIndexs:(NSArray*)titleArray;
 
 @end
 

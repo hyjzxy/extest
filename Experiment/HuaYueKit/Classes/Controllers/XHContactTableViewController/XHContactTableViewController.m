@@ -24,7 +24,7 @@
 typedef NS_ENUM(NSInteger, DNDType){
     kFsHelp = 1,kNetQuest,kSearchQuest
 };
-@interface XHContactTableViewController ()<loginBtnGotoLoginDelegate,HKSegViewDelegete>
+@interface XHContactTableViewController ()<loginBtnGotoLoginDelegate,HKSegViewDelegete,HKSelectViewDelegate>
 {
     UIImageView *buttonBg;
 //    UIButton *leftBtn;
@@ -89,6 +89,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
     _selectView.titleArray = selectArray;
     [self.view addSubview:_selectView];
+    _selectView.delegate = self;
 //    _selectView.dele
 //    NSDictionary* dic = @{@"bSelect":@0,@"catname":@"悬赏",@"id":@"-1"};
     _selectView.stateArray = [NSArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
@@ -217,6 +218,24 @@ typedef NS_ENUM(NSInteger, DNDType){
         [self rightBtnClick:nil];
     }
     
+}
+
+- (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
+    if (index == 1) {
+        NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
+        [self requestTypeList:newDic[@"id"]];
+    }
+    
+    
+}
+
+- (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
+    if (index == 2){
+        [self.sonArray removeAllObjects];
+        [self.sonArray addObjectsFromArray:subArray];
+        page = 1;
+        [self reloadShaiXuanData];
+    }
 }
 
 - (void)topSelectClick:(UIButton*)btn

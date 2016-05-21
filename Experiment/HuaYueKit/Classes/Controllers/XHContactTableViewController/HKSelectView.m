@@ -102,22 +102,32 @@
     }else if (button.tag == 101){
         [detailView.titleArray addObjectsFromArray: self.classifyArray];
         [detailView.tableView reloadData];
+    } else if (button.tag == 102){
+        detailView.tableView.frame = CGRectMake(SCREENWIDTH/2.0, 0, SCREENWIDTH/2.0, 0);
+        [detailView.titleArray addObjectsFromArray: self.sonArray];
+        [detailView.tableView reloadData];
     }
     
     
     [detailView show];
 }
 
-- (void)selectDetailView:(HKSelectDetailView *)detailView didselectIndex:(NSInteger)index{
-   
-    
-    if (detailView.tag == 1){
-//        [self.detailView dismiss];
-        if (self.delegate) {
-            [self.delegate selectView:self selectIndex:detailView.tag subindex:index];
-        }
-        [self.selectArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInteger:index]];
+- (void)selectDetailView:(HKSelectDetailView *)detailView didselectIndexs:(NSArray *)titleArray {
+    if (self.delegate != nil){
+        [self.delegate selectView:self selectIndex:self.selectIndex subArray:titleArray];
     }
+}
+
+- (void)selectDetailView:(HKSelectDetailView *)detailView didselectIndex:(NSInteger)index{
+    if (self.delegate) {
+        [self.delegate selectView:self selectIndex:detailView.tag subindex:index];
+    }
+
+    
+//    if (detailView.tag == 1){
+////        [self.detailView dismiss];
+//        [self.selectArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInteger:index]];
+//    }
 //    if (index == -1 ){
 //        self.selectIndex = -1;
 //    }
