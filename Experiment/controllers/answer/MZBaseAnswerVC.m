@@ -424,7 +424,7 @@
 
 - (void) clickMoreBtn{
     UIView *view = ViewFromXib(@"jubao", 0);
-    //view.tag = 10001;
+    view.tag = 10001;
     [[UIApplication sharedApplication].keyWindow addSubview:view];
     //[self.view addSubview:view];
     UIButton *shareBtn = (UIButton *)[view viewWithTag:250];
@@ -599,6 +599,9 @@
  */
 - (void)deleteAct:(id)sender
 {
+    UIView* view = (UIView*)sender;
+    [view.superview.superview removeFromSuperview];
+//    [VIEWWITHTAG(self.view, 10001) removeFromSuperview];
     [[UIAlertView mBuildWithTitle:@"提示" msg:@"您确定要删除吗？" okTitle:@"确定" noTitle:@"取消" cancleBlock:nil okBlock:^{
         [[NetManager sharedManager] myRequestParam:[NSMutableDictionary dictionaryWithDictionary:@{@"uid":[[NSUserDefaults standardUserDefaults] objectForKey:UID],@"qid":@(self.qid)}]
                                            withUrl:QUESTIONS_DELETE_API

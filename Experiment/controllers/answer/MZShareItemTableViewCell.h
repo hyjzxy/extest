@@ -8,6 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^MZShareItemTableViewCellDelegateSuccess)();
+
 @interface MZShareItemTableViewCell : UITableViewCell
 @property (strong, nonatomic) NSString *content;
+@property (strong,nonatomic)NSDictionary*data;
+@property (strong,nonatomic)NSIndexPath*indexPath;
+@property (assign, nonatomic) NSInteger uid;
+@property (nonatomic,copy)  MZShareItemTableViewCellDelegateSuccess             deleteSuccess;
 @end

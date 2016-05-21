@@ -441,6 +441,11 @@ typedef NS_ENUM(NSInteger, DNDType){
     cell.userName.text = WYISBLANK([dic objectForKey:@"nickname"]);
     cell.time.text = N2V(dic[@"inputtime"], @"");
     cell.tipImageView.hidden = YES;
+    if ([dic[@"from"]  isEqual: @2]) {
+        cell.recommendIV.hidden = NO;
+    }else {
+        cell.recommendIV.hidden = YES;
+    }
     if (!isEmptyDicForKey(dic, @"reward")) {
         UIFont *font  = cell.reward.font;
         NSString *reward = [NSString stringWithFormat:@"  %@分 ",WYISBLANK([dic objectForKey:@"reward"]) ];

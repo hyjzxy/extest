@@ -108,7 +108,7 @@ static NetManager *_manager;
     [request startAsynchronous];
     
     
-    //DLog(@"\n我的请求数据==%@\n我的请求接口==%@\n我的接口名字==%@\n",postParamDic,request.url,api);
+    DLog(@"\n我的请求数据==%@\n我的请求接口==%@\n我的接口名字==%@\n",postParamDic,request.url,api);
     
     [request setCompletionBlock:^{
         dispatch_async(dispatch_get_main_queue(), ^{

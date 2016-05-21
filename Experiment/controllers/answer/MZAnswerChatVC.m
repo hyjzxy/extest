@@ -270,18 +270,22 @@
         if ([data[@"auid"]integerValue]==[_uID integerValue]) {
             cell = ViewFromXib(@"CustomViews", 8);
             [self mConfigCell:cell data:data isMaster:YES isQuest:YES isAnswer:NO isSignd:YES];
+            ((MZShareItemTableViewCell*)cell).indexPath = indexPath;
         }else{
             cell = ViewFromXib(@"CustomViews", 7);
             [self mConfigCell:cell data:data isMaster:NO isQuest:YES isAnswer:NO isSignd:YES];
+            ((MZShareItemTableViewCell*)cell).indexPath = indexPath;
         }
     }else{
         
         if ([data[@"auid"]integerValue] == [_uID integerValue]) {
             cell = ViewFromXib(@"CustomViews", 8);
             [self mConfigCell:cell data:data isMaster:YES isQuest:NO isAnswer:indexPath.row==1 isSignd:isSignd];
+            ((MZShareItemTableViewCell*)cell).indexPath = indexPath;
         }else{
             cell = ViewFromXib(@"CustomViews", 7);
             [self mConfigCell:cell data:data isMaster:NO isQuest:NO isAnswer:indexPath.row==1 isSignd:isSignd];
+            ((MZShareItemTableViewCell*)cell).indexPath = indexPath;
         }
 
     }
@@ -314,7 +318,16 @@
 - (void)mConfigCell:(MZShareItemTableViewCell*)cell data:(NSDictionary*)data isMaster:(BOOL)isMaster isQuest:(BOOL)isQuest isAnswer:(BOOL)isAnswer isSignd:(BOOL)isSignd
 {
     cell.selectionStyle = UITableViewCellSelectionStyleBlue;
-    
+    cell.data = data;
+    __weak MZAnswerChatVC *weakM = self;
+    __weak MZShareItemTableViewCell *weakCell = cell;
+    cell.deleteSuccess = ^{
+        NSInteger row = weakCell.indexPath.row;
+        [weakM.mDatas removeObjectAtIndex:row];
+        [weakM.chatTbv reloadData];
+        
+    };
+//    cell.uid =self.u
     UILabel *timeLabel = (UILabel*)VIEWWITHTAG(cell, 101);
     UILabel *nickNameLabel = (UILabel*)VIEWWITHTAG(cell, 102);
     UIImageView *headView = (UIImageView*)VIEWWITHTAG(cell, 103);

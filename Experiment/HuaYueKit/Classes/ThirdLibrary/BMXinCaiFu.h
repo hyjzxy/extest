@@ -218,6 +218,9 @@
 #define ANSWER_ADDQUES_API  kINTERFACE_ADDRESS(@"Answer/answerafter.html")
 #define ANSWER_ADDQUES_PARAM  @"uid,qid,aid,content,image,askid,answerID"
 
+#define ANSWER_DELETE @"删除回答"
+#define ANSWER_DELETE_API kINTERFACE_ADDRESS(@"Answer/answerdel.html")
+#define ANSWER_DELETE_PARAM  @"uid,aid"
 
 #define QUESTION_SHARE  @"分享问题"
 #define QUESTION_SHARE_API  kINTERFACE_ADDRESS(@"Question/share.html")

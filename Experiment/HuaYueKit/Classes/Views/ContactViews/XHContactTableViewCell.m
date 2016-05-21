@@ -23,20 +23,21 @@
         self.label.backgroundColor = UIColorFromRGB(0x2EC9FB);
         self.label.textColor = [UIColor whiteColor];
         
-        _recommendIV = [UIImageView new];
-        _recommendIV.image = [UIImage imageNamed:@"answer_ recommend"];
-        [self.contentView addSubview:_recommendIV];
-        [_recommendIV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.top.equalTo(self).offset(20);
-            make.right.equalTo(self).offset(-30);
-        }];
-        [self.contentView bringSubviewToFront:_recommendIV];
+        
         
     }
     return self;
 }
 
 - (void)awakeFromNib {
+    _recommendIV = [UIImageView new];
+    _recommendIV.image = [UIImage imageNamed:@"answer_ recommend"];
+    [self.contentView addSubview:_recommendIV];
+    [_recommendIV mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self).offset(20);
+        make.right.equalTo(self).offset(-30);
+    }];
+    [self.contentView bringSubviewToFront:_recommendIV];
     // Initialization code
 }
 
