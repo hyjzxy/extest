@@ -46,6 +46,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 @property (nonatomic,strong) HKSelectView* selectView;
 @property (nonatomic,strong) HKSegView* segView;
 @property (nonatomic,strong) NSNumber* status;
+@property(nonatomic,strong) NSMutableArray* topArray;
 @end
 
 @implementation XHContactTableViewController
@@ -92,7 +93,8 @@ typedef NS_ENUM(NSInteger, DNDType){
     _selectView.delegate = self;
 //    _selectView.dele
 //    NSDictionary* dic = @{@"bSelect":@0,@"catname":@"悬赏",@"id":@"-1"};
-    _selectView.stateArray = [NSArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+    _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+    _selectView.stateArray = _topArray;
 //    [_selectView.detailArray insertObject:self.typeArray atIndex:0];
     
     NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];
@@ -222,15 +224,24 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
+//        [[NSUserDefaults standardUserDefaults] setObject:self.topArray forKey:@"typeArray"];
         NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
         [self requestTypeList:newDic[@"id"]];
+        page = 1;
+        [self reloadShaiXuanData];
     }
     
     
 }
 
 - (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
-    if (index == 2){
+    if (index == 0){
+        [self.topArray removeAllObjects];
+        [self.topArray addObjectsFromArray:subArray];
+//        [[NSUserDefaults standardUserDefaults] setObject:self.topArray forKey:@"topArray"];
+        page = 1;
+        [self reloadShaiXuanData];
+    }else if (index == 2){
         [self.sonArray removeAllObjects];
         [self.sonArray addObjectsFromArray:subArray];
         page = 1;
@@ -410,9 +421,12 @@ typedef NS_ENUM(NSInteger, DNDType){
         }
     }
 //    self.tabBarController.title = titleStr.length==0?@"全部问题":titleStr;
-    int isreward = self.goldButton.selected;
-    int issolveed = self.solveButton.selected;
-    self.isSearch = !(catId.length<=0 && ! self.goldButton.selected && !self.solveButton.selected);
+//    @"2".integerValue
+    NSString* ward = self.topArray[0][@"bSelect"];
+    NSInteger isreward = ward.integerValue;
+    NSString* solveed = self.topArray[1][@"bSelect"];
+    NSInteger issolveed = solveed.integerValue;
+    self.isSearch = !(catId.length<=0 && isreward > 0 && issolveed > 0);
     if (_isSearch) {
         NSArray *keyValue = [QUESTIONS_SELECT_PARAM componentsSeparatedByString:@","];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:@[@(page),@20,catId,@(isreward),@(issolveed),@(self.dndType)] forKeys:keyValue];
