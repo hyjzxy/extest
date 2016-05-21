@@ -29,7 +29,8 @@
         [self becomeFirstResponder];
         UIMenuController *menu=[UIMenuController sharedMenuController];
         UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
-        if (self.indexPath.row > 0){
+        if (self.indexPath.row > 0 && self.data[@"id"] != nil
+            ){
             UIMenuItem *copyItem2 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClick:)];
             [menu setMenuItems:[NSArray arrayWithObjects:copyItem,copyItem2,nil]];
         }else{
@@ -90,6 +91,7 @@
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
 //    NSLog(@"datas:%@",self.data);
     NSNumber* aid = self.data[@"id"];
+    
 //#define ANSWER_DELETE @"删除回答"
 //#define ANSWER_DELETE_API kINTERFACE_ADDRESS(@"Answer/answeredel.html")
 //#define ANSWER_DELETE_PARAM  @"uid,aid"
@@ -104,9 +106,10 @@
         NSLog(@"responseObject:%@",responseObject);
     } failure:^(id errorString) {
 //        [MBProgressHUD sho]
-        UIAlertView* alterView = [[UIAlertView alloc]initWithTitle:@"删除失败" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-        [alterView show];
-        NSLog(@"errorString:%@",errorString);
+        [SVProgressHUD showWithStatus:@"删除失败"];
+//        UIAlertView* alterView = [[UIAlertView alloc]initWithTitle:@"删除失败" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+//        [alterView show];
+//        NSLog(@"errorString:%@",errorString);
     }];
 }
 

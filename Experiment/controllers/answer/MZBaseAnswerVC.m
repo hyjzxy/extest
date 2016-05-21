@@ -658,19 +658,19 @@
         if(_contentTF){_contentTF.text = @"";}
         if (ws.isChat) {
             [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                NSString *userHead = [[NSUserDefaults standardUserDefaults]objectForKey:USERHEAD];
-                NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:USERNAME];
-                NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
-                NSDictionary *dic = @{@"auid":userId,
-                                      @"inputtime":@"刚刚",
-                                      @"nickname":userName,
-                                      @"content":@"",
-                                      @"image":@"Local",
-                                      @"Local":[UIImage imageWithData:data],
-                                      @"head":userHead,
-                                      @"askname":ws.askNickName?ws.askNickName:@""};
-                [ws.mDatas addObject:dic];
-                [ws mSendSucc:dic[@"auid"]];
+//                NSString *userHead = [[NSUserDefaults standardUserDefaults]objectForKey:USERHEAD];
+//                NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:USERNAME];
+//                NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
+//                NSDictionary *dic = @{@"auid":userId,
+//                                      @"inputtime":@"刚刚",
+//                                      @"nickname":userName,
+//                                      @"content":@"",
+//                                      @"image":@"Local",
+//                                      @"Local":[UIImage imageWithData:data],
+//                                      @"head":userHead,
+//                                      @"askname":ws.askNickName?ws.askNickName:@""};
+//                [ws.mDatas addObject:dic];
+//                [ws mSendSucc:dic[@"auid"]];
             }];
         }
         NSURL *uploadURL = [NSURL URLWithString:UploadPathAPI];
@@ -724,13 +724,13 @@
     NSString *userHead = [[NSUserDefaults standardUserDefaults]objectForKey:USERHEAD];
     NSString *userName = [[NSUserDefaults standardUserDefaults]objectForKey:USERNAME];
     NSString *userId = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
-    NSDictionary *dic = @{@"auid":userId,
-                          @"inputtime":@"刚刚",
-                          @"nickname":userName,
-                          @"content":params[@"content"],
-                          @"image":params[@"image"],
-                          @"head":userHead,
-                          @"askname":self.askNickName?self.askNickName:@""};
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc]initWithDictionary:@{@"auid":userId,
+                                                                               @"inputtime":@"刚刚",
+                                                                               @"nickname":userName,
+                                                                               @"content":params[@"content"],
+                                                                               @"image":params[@"image"],
+                                                                               @"head":userHead,
+                                                                               @"askname":self.askNickName?self.askNickName:@""}] ;
      [_contentTF clearText];
     self.askUId = 0;
     if (sendType == kAnswerChat) {
@@ -740,13 +740,18 @@
                                           withType:ANSWER_ADD
                                            success:^(id responseObject){
 //                                               [SVProgressHUD dismiss];
+                                               [dic setObject:responseObject[@"id"] forKey:@"id"];
                                                [loadingView dissMiss];
-                                               if (isRes) {
-                                                   //添加记录
-                                                   [_contentTF clearText];
-                                                   [self.mDatas addObject:dic];
-                                                   [self mSendSucc:dic[@"auid"]];
-                                               }
+                                               //添加记录
+                                               [_contentTF clearText];
+                                               [self.mDatas addObject:dic];
+                                               [self mSendSucc:dic[@"auid"]];
+//                                               if (isRes) {
+//                                                   //添加记录
+//                                                   [_contentTF clearText];
+//                                                   [self.mDatas addObject:dic];
+//                                                   [self mSendSucc:dic[@"auid"]];
+//                                               }
                                            }failure:^(id error){
                                            [SVProgressHUD dismiss];
                                            }];

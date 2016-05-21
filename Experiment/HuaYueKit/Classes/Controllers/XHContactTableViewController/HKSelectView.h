@@ -7,6 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HKSelectDetailView.h"
+
+@class HKSelectView;
+
+@protocol HKSelectViewDelegate <NSObject>
+
+- (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex;
+
+@end
 
 @interface HKSelectView : UIView
 
@@ -15,5 +24,5 @@
 @property (nonatomic,strong) NSArray* stateArray;
 @property (nonatomic,strong) NSArray* classifyArray;
 @property (nonatomic,strong) NSArray* sonArray;
-
+@property (assign,nonatomic) id<HKSelectViewDelegate> delegate;
 @end

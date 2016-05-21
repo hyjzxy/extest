@@ -531,6 +531,7 @@
 		EEB751471C805BBA009A3EAA /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = EEB751461C805BBA009A3EAA /* MBProgressHUD.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		F32DDA3A1CD60BFC0045AB9A /* HKSegView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA391CD60BFC0045AB9A /* HKSegView.m */; };
 		F32DDA3D1CD615AD0045AB9A /* HKSelectView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */; };
+		F32F2BEB1CF0547400FD6D25 /* HKSelectDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = F32F2BEA1CF0547400FD6D25 /* HKSelectDetailView.m */; };
 		F38C89BB1CE7032F00B3B250 /* MZLoadingVIew.m in Sources */ = {isa = PBXBuildFile; fileRef = F38C89BA1CE7032F00B3B250 /* MZLoadingVIew.m */; };
 		F3B713E21CE848E00079767B /* MZAnwerBaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B713E11CE848E00079767B /* MZAnwerBaseView.m */; };
 		F3B713E81CE855940079767B /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B713E41CE855940079767B /* libSocialQQ.a */; };
@@ -1432,6 +1433,8 @@
 		F32DDA391CD60BFC0045AB9A /* HKSegView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSegView.m; sourceTree = "<group>"; };
 		F32DDA3B1CD615AD0045AB9A /* HKSelectView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSelectView.h; sourceTree = "<group>"; };
 		F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSelectView.m; sourceTree = "<group>"; };
+		F32F2BE91CF0547400FD6D25 /* HKSelectDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HKSelectDetailView.h; sourceTree = "<group>"; };
+		F32F2BEA1CF0547400FD6D25 /* HKSelectDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HKSelectDetailView.m; sourceTree = "<group>"; };
 		F38C89B91CE7032F00B3B250 /* MZLoadingVIew.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZLoadingVIew.h; sourceTree = "<group>"; };
 		F38C89BA1CE7032F00B3B250 /* MZLoadingVIew.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MZLoadingVIew.m; sourceTree = "<group>"; };
 		F3B713E01CE848E00079767B /* MZAnwerBaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MZAnwerBaseView.h; sourceTree = "<group>"; };
@@ -3534,6 +3537,8 @@
 				F32DDA391CD60BFC0045AB9A /* HKSegView.m */,
 				F32DDA3B1CD615AD0045AB9A /* HKSelectView.h */,
 				F32DDA3C1CD615AD0045AB9A /* HKSelectView.m */,
+				F32F2BE91CF0547400FD6D25 /* HKSelectDetailView.h */,
+				F32F2BEA1CF0547400FD6D25 /* HKSelectDetailView.m */,
 			);
 			path = XHContactTableViewController;
 			sourceTree = "<group>";
@@ -4178,6 +4183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F32F2BEB1CF0547400FD6D25 /* HKSelectDetailView.m in Sources */,
 				FC88C27D1A59295500ED3E55 /* WYPlist.m in Sources */,
 				2F8665951B19422700BF5791 /* DailyBoothViewController.m in Sources */,
 				FC52AA151A37E9F000155746 /* XHTiWenViewController.m in Sources */,
