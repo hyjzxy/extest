@@ -91,7 +91,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.view addSubview:_selectView];
 //    _selectView.dele
 //    NSDictionary* dic = @{@"bSelect":@0,@"catname":@"悬赏",@"id":@"-1"};
-    _selectView.stateArray = [NSArray arrayWithObjects:@{@"bSelect":@0,@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@0,@"catname":@"未解决",@"id":@"0"}, nil];
+    _selectView.stateArray = [NSArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
 //    [_selectView.detailArray insertObject:self.typeArray atIndex:0];
     
     NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];

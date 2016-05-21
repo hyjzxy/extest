@@ -25,6 +25,8 @@
 @property (nonatomic,weak) id<HKSelectDetailViewDelegate> delegate;
 @property (nonatomic,assign) NSInteger selectDetailIndex;
 
+@property (nonatomic,assign)BOOL isOne;//是否单选 no是 yes多选
+
 - (void)show;
 - (void)dismiss;
 

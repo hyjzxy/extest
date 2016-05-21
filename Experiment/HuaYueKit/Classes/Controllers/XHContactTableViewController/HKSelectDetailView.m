@@ -16,6 +16,7 @@
 @property (nonatomic,strong) UILabel* titleLabel;
 @property (nonatomic,assign) NSInteger type;
 @property (nonatomic,strong) NSDictionary* dataDic;
+@property (nonatomic,assign) BOOL isOne;
 @end
 
 @implementation HKSelectCell
@@ -26,7 +27,7 @@
         
         _icon = [[UIImageView alloc] initWithFrame:CGRectMake(10, 10, 20, 20)];
         [self addSubview:_icon];
-        _icon.backgroundColor = [UIColor redColor];
+//        _icon.backgroundColor = [UIColor redColor];
         
         _titleLabel = [[UILabel alloc]initWithFrame:CGRectMake(35, 10, self.width, 20)];
         [self addSubview:_titleLabel];
@@ -41,32 +42,43 @@
     return self;
 }
 
-//- (void)setType:(NSInteger)type{
-//    _type = type;
-//    if (type == 1){
-//
-//    }
-//}
-
-- (void)setDataDic:(NSDictionary *)dataDic{
-    _dataDic = dataDic;
-    if (self.type == 1){
+- (void)setType:(NSInteger)type{
+    _type = type;
+    if (type == 1){
         [_icon removeFromSuperview];
         _titleLabel.frame = CGRectMake(10, 10, SCREENWIDTH/3.0-20, 20);
         //        _titleLabel.text = da taDic[@""];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         
         [_titleLabel makeRoundCorner];
+    }else {
+        _icon.layer.masksToBounds = YES;
+        _icon.layer.borderColor = [UIColor grayColor].CGColor;
+        _icon.layer.borderWidth = 0.5;
+        
     }
-    if ([dataDic[@"bSelect"] boolValue]){
-        //        self.icon.backgroundColor = [UIColor grayColor];
-        _titleLabel.backgroundColor = UIColorFromRGB(0x2EC9FB);
-        _titleLabel.textColor = [UIColor whiteColor];
+}
+
+- (void)setDataDic:(NSDictionary *)dataDic{
+    _dataDic = dataDic;
+    if (self.type == 1){
+        if ([dataDic[@"bSelect"] boolValue]){
+            //        self.icon.backgroundColor = [UIColor grayColor];
+            _titleLabel.backgroundColor = UIColorFromRGB(0x2EC9FB);
+            _titleLabel.textColor = [UIColor whiteColor];
+        }else{
+            //       self.icon.backgroundColor = [UIColor yellowColor];
+            _titleLabel.backgroundColor = [UIColor clearColor];
+            _titleLabel.textColor = [UIColor grayColor];
+        }
     }else{
-        //       self.icon.backgroundColor = [UIColor yellowColor];
-        _titleLabel.backgroundColor = [UIColor clearColor];
-        _titleLabel.textColor = [UIColor grayColor];
+        if ([dataDic[@"bSelect"] boolValue]) {
+            _icon.image = [UIImage imageNamed:@"common_select"];
+        }else{
+            _icon.image = nil;
+        }
     }
+
     
     self.titleLabel.text = dataDic[@"catname"];
 }
@@ -77,7 +89,7 @@
 
 @interface HKSelectDetailView() <UITableViewDelegate,UITableViewDataSource>
 
-
+@property(nonatomic,strong)NSMutableArray* selectArray;
 
 @end
 
@@ -87,6 +99,9 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
+        _selectArray = [NSMutableArray new];
+        _isOne = YES;
+        
         _titleArray = [NSMutableArray new];
         self.selectDetailIndex = -1;
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(frame.origin.x, 0, self.width, 0) style:UITableViewStylePlain];
@@ -161,8 +176,12 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (self.isOne) {
+        [self.selectArray removeObject:@(indexPath.row)];
+        [self.selectArray addObject:@(indexPath.row)];
+    }
     if (self.tag == 0) {
-        NSDictionary* dic = self.titleArray[indexPath.row];
+        NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:self.titleArray[indexPath.row]] ;
         if ([dic[@"bSelect"] boolValue]){
             [dic setValue:@"0" forKey:@"bSelect"];
         }else{
