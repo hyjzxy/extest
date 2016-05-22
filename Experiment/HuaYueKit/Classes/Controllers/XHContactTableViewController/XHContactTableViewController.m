@@ -554,6 +554,11 @@ typedef NS_ENUM(NSInteger, DNDType){
     NSString* label = WYISBLANK([dic objectForKey:@"lable"]);
     cell.label.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
     [cell.label makeRoundCorner];
+    
+//    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(cell.label.text, [UIFont systemFontOfSize:10], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+//    [cell.label mas_updateConstraints:^(MASConstraintMaker *make) {
+//        make.width.equalTo(@(sizeEng.width));
+//    }];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];

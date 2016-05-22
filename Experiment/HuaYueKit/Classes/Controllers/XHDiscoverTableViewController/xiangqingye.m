@@ -173,7 +173,8 @@
             WS(ws);
             [[[UIImageView alloc]init]sd_setImageWithURL:IMG_URL(_mData[@"thumb"]) completed:^(UIImage *image, NSError *error, SDImageCacheType cacheType, NSURL *imageURL) {
                 [[NSOperationQueue mainQueue]addOperationWithBlock:^{
-                    [[MZShare shared]shareInVC:self title:_mData[@"title"]image:image url:_mData[@"url"] block:^(NSInteger flag) {
+                    NSString* shareUrl = [NSString stringWithFormat:@"%@?rn=1",_mData[@"url"]];
+                    [[MZShare shared]shareInVC:self title:_mData[@"title"]image:image url:shareUrl block:^(NSInteger flag) {
                         [HYHelper mLoginID:^(id uid) {
                             if(uid){
                                 [[NetManager sharedManager] myRequestParam:[NSMutableDictionary dictionaryWithDictionary:@{@"uid":uid,@"id":@(ws.wID),@"type":@(flag)}] withUrl:kINTERFACE_ADDRESS(@"Found/sharecount.html") withType:FIND_ARTICLE success:^(id responseObject) {

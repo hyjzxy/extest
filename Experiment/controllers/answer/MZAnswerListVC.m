@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *issolveBtn;
 @property (weak, nonatomic) IBOutlet UIImageView *imgView;
 @property (weak, nonatomic) IBOutlet UILabel *dataTip;
+@property (weak, nonatomic) IBOutlet UIButton *readBtn;
 @end
 
 @implementation MZAnswerListVC
@@ -138,6 +139,7 @@
         _invateLabel.text = @"";
     }
     self.issolveBtn.hidden = ![self.mQuest[@"issolveed"]boolValue];
+    [self.readBtn setTitle:[NSString stringWithFormat:@" %@",N2V(self.mQuest[@"hits"],@"0")] forState:UIControlStateNormal];
     NSString *imgURL = [N2V(self.mQuest[@"image"], @"")stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
     if (imgURL.length>0) {
         [_imgView setImageWithURL:IMG_URL(imgURL) usingActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
@@ -298,6 +300,7 @@
     UIButton *supportBtn = (UIButton*)VIEWWITHTAG(cell, 1006);
     UIButton *addQuestBtn = (UIButton*)VIEWWITHTAG(cell, 1007);
     UIButton *answerSumBtn = (UIButton*)VIEWWITHTAG(cell, 1008);
+    UIButton *readsBtn = (UIButton*)VIEWWITHTAG(cell, 3000);
     UIImageView *answered = (UIImageView*)VIEWWITHTAG(cell, 1009);
     [answered setImage:[UIImage imageNamed:[data[@"answernum"]integerValue]>0?@"huida":@"unhuida"]];
     UIButton *adoptBtn = (UIButton*)VIEWWITHTAG(cell, 1010);
@@ -343,6 +346,7 @@
     [addQuestBtn setTitle:[NSString stringWithFormat:@" 追问（%@）",N2V(data[@"anum"],@"0")] forState:UIControlStateNormal];
     [addQuestBtn setInfo:data];
     [answerSumBtn setTitle:[NSString stringWithFormat:@" %@",N2V(data[@"answernum"],@"0")] forState:UIControlStateNormal];
+    [readsBtn setTitle:[NSString stringWithFormat:@" %@",N2V(data[@"hits"],@"0")] forState:UIControlStateNormal];
     [supportBtn setTitle:[NSString stringWithFormat:@" 支持（%@）",N2V(data[@"snum"],@"0")] forState:UIControlStateNormal];
     if ([data[@"isadopt"]boolValue]) {
         [adoptBtn setImage:[UIImage imageNamed:@"accepted"] forState:UIControlStateNormal];
