@@ -62,6 +62,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
+    
 }
 
 - (void)viewDidLoad {
@@ -91,11 +92,15 @@ typedef NS_ENUM(NSInteger, DNDType){
     _selectView.titleArray = selectArray;
     [self.view addSubview:_selectView];
     _selectView.delegate = self;
-//    _selectView.dele
-//    NSDictionary* dic = @{@"bSelect":@0,@"catname":@"悬赏",@"id":@"-1"};
-    _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+    
+    NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
+        _topArray = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults] objectForKey:uidS]];
+    }else{
+        _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+    }
+    
     _selectView.stateArray = _topArray;
-//    [_selectView.detailArray insertObject:self.typeArray atIndex:0];
     
     NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];
     _segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
@@ -225,6 +230,9 @@ typedef NS_ENUM(NSInteger, DNDType){
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
 //        [[NSUserDefaults standardUserDefaults] setObject:self.topArray forKey:@"typeArray"];
+        NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
+        [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
         NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
         [self requestTypeList:newDic[@"id"]];
         page = 1;
@@ -236,14 +244,28 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
     if (index == 0){
-        [self.topArray removeAllObjects];
-        [self.topArray addObjectsFromArray:subArray];
-//        [[NSUserDefaults standardUserDefaults] setObject:self.topArray forKey:@"topArray"];
+//        for (NSInteger i = 0; i<self.topArray.count; i++) {
+//            self.topArray[i][@"bSelect"] = subArray[i][@"bSelect"];
+//        }
+        self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
+//        [self.topArray removeAllObjects];
+//        [self.topArray addObjectsFromArray:subArray];
+        NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        
+        [[NSUserDefaults standardUserDefaults] setObject:subArray forKey:uidS];
+        self.selectView.stateArray = self.topArray;
         page = 1;
         [self reloadShaiXuanData];
     }else if (index == 2){
+        NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+            NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+            NSString* sonA = [NSString stringWithFormat:@"%@%@",uidS,sub];
+            [[NSUserDefaults standardUserDefaults]setObject:subArray forKey:sonA];
+        }
         [self.sonArray removeAllObjects];
         [self.sonArray addObjectsFromArray:subArray];
+        
         page = 1;
         [self reloadShaiXuanData];
     }
@@ -326,6 +348,14 @@ typedef NS_ENUM(NSInteger, DNDType){
 }
 //网友提问
 -(void)requestDataArticle{
+    NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
+        _topArray = [[NSUserDefaults standardUserDefaults] objectForKey:uidS];
+    }else{
+        _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+    }
+    
+    _selectView.stateArray = _topArray;
     if (![NetManager isNetAlive]) {
         NSString *filePath = NSDocFilePath(kQuestionFileName);
         if([[NSFileManager defaultManager]fileExistsAtPath:filePath]){

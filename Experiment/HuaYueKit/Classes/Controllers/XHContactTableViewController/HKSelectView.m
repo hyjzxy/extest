@@ -86,6 +86,11 @@
 //    if (button.tag - 100 == selectIndex) {
 //        return;
 //    }
+    if (self.selectIndex == button.tag - 100 && self.detailView != nil){
+        [self.detailView dismiss];
+        self.detailView = nil;
+        return;
+    }
     self.selectIndex = button.tag - 100;
     if (self.detailView != nil){
         [self.detailView dismiss];
@@ -98,13 +103,38 @@
     detailView.tag = button.tag-100;
     if (button.tag == 100){
         [detailView.titleArray addObjectsFromArray: self.stateArray];
+//        NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+//        if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+//            NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+//            for( NSInteger i= 0;i<detailView.titleArray.count;i++){
+//                detailView.titleArray[i][@"bSelect"] = son[i][@"bSelect"];
+//            }
+//        }
         [detailView.tableView reloadData];
     }else if (button.tag == 101){
         [detailView.titleArray addObjectsFromArray: self.classifyArray];
+        NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+            NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+            NSInteger index = sub.integerValue;
+            detailView.titleArray[index][@"bSelect"] =  @"1";
+        }
+        
         [detailView.tableView reloadData];
     } else if (button.tag == 102){
         detailView.tableView.frame = CGRectMake(SCREENWIDTH/2.0, 0, SCREENWIDTH/2.0, 0);
         [detailView.titleArray addObjectsFromArray: self.sonArray];
+        NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+            NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+            NSString* sonA = [NSString stringWithFormat:@"%@%@",uidS,sub];
+            if ([[NSUserDefaults standardUserDefaults]objectForKey:sonA]!=nil){
+                NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
+                for( NSInteger i= 0;i<detailView.titleArray.count;i++){
+                    detailView.titleArray[i][@"bSelect"] = son[i][@"bSelect"];
+                }
+            }
+        }
         [detailView.tableView reloadData];
     }
     
