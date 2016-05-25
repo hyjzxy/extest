@@ -113,11 +113,15 @@
         [detailView.tableView reloadData];
     }else if (button.tag == 101){
         [detailView.titleArray addObjectsFromArray: self.classifyArray];
+        for (NSInteger i = 0; i<self.classifyArray.count; i++) {
+            self.classifyArray[i][@"bSelect"] =  @"0";
+        }
         NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
             NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
             NSInteger index = sub.integerValue;
             detailView.titleArray[index][@"bSelect"] =  @"1";
+            detailView.selectDetailIndex = index;
         }
         
         [detailView.tableView reloadData];

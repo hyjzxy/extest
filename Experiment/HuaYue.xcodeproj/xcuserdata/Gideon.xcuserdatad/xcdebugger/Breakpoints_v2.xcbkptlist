@@ -33,38 +33,6 @@
             endingLineNumber = "109"
             landmarkName = "-loadDataSource"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[XHFansHelpViewController loadDataSource]"
-                  moduleName = "HuaYue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gideon/extest/Experiment/HuaYueKit/Classes/Controllers/XHProfileTableViewController/XHMoreMyFavoritesTableViewController/XHFansHelpViewController.m"
-                  timestampString = "485620710.776517"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "109"
-                  endingLineNumber = "109"
-                  offsetFromSymbolStart = "712">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__42-[XHFansHelpViewController loadDataSource]_block_invoke"
-                  moduleName = "HuaYue"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Gideon/extest/Experiment/HuaYueKit/Classes/Controllers/XHProfileTableViewController/XHMoreMyFavoritesTableViewController/XHFansHelpViewController.m"
-                  timestampString = "485620710.776653"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "111"
-                  endingLineNumber = "111"
-                  offsetFromSymbolStart = "84">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy

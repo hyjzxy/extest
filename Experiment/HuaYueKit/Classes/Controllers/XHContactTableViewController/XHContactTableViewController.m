@@ -88,7 +88,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [_topView addSubview:segView];
     
     NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
-    _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     _selectView.titleArray = selectArray;
     [self.view addSubview:_selectView];
     _selectView.delegate = self;
@@ -103,7 +103,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     _selectView.stateArray = _topArray;
     
     NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];
-    _segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 50)];
+    _segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     _segView.tag = 10002;
     _segView.titleArray = segArrray;
     _segView.normalBackgroundColor = [UIColor whiteColor];
@@ -120,8 +120,8 @@ typedef NS_ENUM(NSInteger, DNDType){
     sepLine2.backgroundColor = [UIColor grayColor];
     
     CGRect frame = self.tableView.frame;
-    frame.origin.y = 50;
-    frame.size.height = frame.size.height - 50;
+    frame.origin.y = 40;
+    frame.size.height = frame.size.height - 40;
     
     self.tableView.frame = frame;
     self.tableView.backgroundColor = [UIColor clearColor];

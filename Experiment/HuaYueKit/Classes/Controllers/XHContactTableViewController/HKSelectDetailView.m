@@ -244,6 +244,7 @@
         NSDictionary* dic = self.titleArray[indexPath.row];
         if ([dic[@"bSelect"] boolValue]){
             [dic setValue:@"0" forKey:@"bSelect"];
+            self.selectDetailIndex = -1;
         }else{
             [dic setValue:@"1" forKey:@"bSelect"];
             self.selectDetailIndex = indexPath.row;
