@@ -36,8 +36,12 @@
     [_recommendIV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(self).offset(20);
         make.right.equalTo(self).offset(-30);
+        make.width.equalTo(@76);
+        make.height.equalTo(@60);
+        
     }];
     [self.contentView bringSubviewToFront:_recommendIV];
+    _recommendIV.hidden = YES;
     // Initialization code
 }
 

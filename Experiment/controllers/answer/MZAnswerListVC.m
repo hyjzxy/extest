@@ -129,7 +129,15 @@
 - (void)mSetUI
 {
     NSMutableAttributedString *mAttr = [[NSMutableAttributedString alloc]init];
-    _labeLabel.attributedText = [HYHelper mBuildLable:N2V(self.mQuest[@"lable"],@"") font:_labeLabel.font];
+    NSString* label = WYISBLANK([self.mQuest objectForKey:@"lable"]);
+    _labeLabel.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [_labeLabel makeRoundCornerWithRadius:2];
+    
+    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(_labeLabel.text, [UIFont systemFontOfSize:11], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+    [_labeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(sizeEng.width+6));
+    }];
+//    _labeLabel.attributedText = [HYHelper mBuildLable:N2V(self.mQuest[@"lable"],@"") font:_labeLabel.font];
     [_answerTimeBtn setTitle:[NSString stringWithFormat:@" %@", self.mQuest[@"inputtime"]] forState:UIControlStateNormal];
     [_answerPersonsBtn setTitle:[NSString stringWithFormat:@" %@人回答", N2V(self.mQuest[@"anum"],@"0")] forState:UIControlStateNormal];
     NSString *superlist = self.mQuest[@"superlist"];
