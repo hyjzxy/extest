@@ -462,11 +462,12 @@
 {
     [sender.superview.superview removeFromSuperview];
     // 分享一个问题
+    NSString* title = [NSString stringWithFormat:@"问题分享\n%@",_mQuest[@"content"]];
     [[NetManager sharedManager] myRequestParam:[NSMutableDictionary dictionaryWithObjects:@[@(self.qid)] forKeys:@[@"qid"]]
                                        withUrl:QUESTION_SHARE_API
                                       withType:QUESTION_SHARE
                                        success:^(id responseObject){
-                                           [[MZShare shared]shareInVC:self title:_mQuest[@"content"] image:[UIImage imageNamed:@"share-logo"] url:responseObject[@"url"] block:nil];
+                                           [[MZShare shared]shareInVC:self title:title image:[UIImage imageNamed:@"share-logo"] url:responseObject[@"url"] block:nil];
                                        }failure:^(id error){}];
 
 }
