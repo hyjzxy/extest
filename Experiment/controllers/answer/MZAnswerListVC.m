@@ -132,7 +132,7 @@
     NSString* label = WYISBLANK([self.mQuest objectForKey:@"lable"]);
     _labeLabel.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
     [_labeLabel makeRoundCornerWithRadius:2];
-    
+    [_labeLabel setColorWithText:_labeLabel.text];
     CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(_labeLabel.text, [UIFont systemFontOfSize:11], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
     [_labeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(sizeEng.width+6));

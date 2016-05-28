@@ -537,6 +537,7 @@
 		F3B713E81CE855940079767B /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B713E41CE855940079767B /* libSocialQQ.a */; };
 		F3B713E91CE855940079767B /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3B713E51CE855940079767B /* TencentOpenAPI.framework */; };
 		F3B713EA1CE855940079767B /* TencentOpenApi_IOS_Bundle.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F3B713E61CE855940079767B /* TencentOpenApi_IOS_Bundle.bundle */; };
+		F3B8E07C1CF9757F00E24612 /* UILabel+BackColor.m in Sources */ = {isa = PBXBuildFile; fileRef = F3B8E07B1CF9757F00E24612 /* UILabel+BackColor.m */; };
 		FC0CE3F61A60DDC00072715F /* MainTopView.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F51A60DDC00072715F /* MainTopView.m */; };
 		FC0CE3F91A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FC0CE3F81A60DF2B0072715F /* MAinaaaaaaaTableViewCell.m */; };
 		FC0CE3FD1A60EACC0072715F /* gy_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = FC0CE3FC1A60EACC0072715F /* gy_logo.png */; };
@@ -1443,6 +1444,8 @@
 		F3B713E51CE855940079767B /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		F3B713E61CE855940079767B /* TencentOpenApi_IOS_Bundle.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TencentOpenApi_IOS_Bundle.bundle; sourceTree = "<group>"; };
 		F3B713E71CE855940079767B /* UMSocialQQHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UMSocialQQHandler.h; sourceTree = "<group>"; };
+		F3B8E07A1CF9757F00E24612 /* UILabel+BackColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+BackColor.h"; sourceTree = "<group>"; };
+		F3B8E07B1CF9757F00E24612 /* UILabel+BackColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+BackColor.m"; sourceTree = "<group>"; };
 		FC0CE3F41A60DDC00072715F /* MainTopView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTopView.h; sourceTree = "<group>"; };
 		FC0CE3F51A60DDC00072715F /* MainTopView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTopView.m; sourceTree = "<group>"; };
 		FC0CE3F71A60DF2B0072715F /* MAinaaaaaaaTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MAinaaaaaaaTableViewCell.h; sourceTree = "<group>"; };
@@ -2572,6 +2575,8 @@
 				2F6CEE531B2C7201003B4E51 /* UIButton+Theme.m */,
 				2F77E7E21B31AD0D001F9D6C /* UITableViewCell+Theme.h */,
 				2F77E7E31B31AD0D001F9D6C /* UITableViewCell+Theme.m */,
+				F3B8E07A1CF9757F00E24612 /* UILabel+BackColor.h */,
+				F3B8E07B1CF9757F00E24612 /* UILabel+BackColor.m */,
 				2F879D2D1B344E56009834B7 /* UIScrollView+Theme.h */,
 				2F879D2E1B344E56009834B7 /* UIScrollView+Theme.m */,
 				2F6FBE941B4AB82100973048 /* MZApp.h */,
@@ -4418,6 +4423,7 @@
 				A037BBFC1ADFE849005F03C2 /* MJRefreshGifFooter.m in Sources */,
 				A05046091ADA71C7000254CE /* IQUIWindow+Hierarchy.m in Sources */,
 				A037BC031ADFE849005F03C2 /* UIView+MJExtension.m in Sources */,
+				F3B8E07C1CF9757F00E24612 /* UILabel+BackColor.m in Sources */,
 				FCDA04171983BEBE00E77779 /* XHContactPhotosTableViewCell.m in Sources */,
 				FCB544031A600FDD001FA8B4 /* HuiDaWyTableViewCell.m in Sources */,
 				A56C67011A6CAE3400EAB0A4 /* DDSearchViewController.m in Sources */,

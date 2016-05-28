@@ -130,7 +130,7 @@
         
         _titleArray = [NSMutableArray new];
         self.selectDetailIndex = -1;
-        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(frame.origin.x, 0, self.width, 0) style:UITableViewStylePlain];
+        _tableView = [[UITableView alloc]initWithFrame:CGRectMake(frame.origin.x+3, 0, self.width-6, 0) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -148,12 +148,19 @@
         
         [self addSubview:_tableView];
         
+        UIImageView* upIV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"answer_up"]];
+        [self addSubview:upIV];
+        [upIV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(_tableView);
+            make.bottom.equalTo(_tableView.mas_top);
+        }];
+        
         UIView* footView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, _tableView.width, 40)];
         
         UIButton* doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [doneButton setTitle:@"确定" forState:UIControlStateNormal];
         [doneButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        doneButton.backgroundColor = UIColorFromRGB(0x2EC9FB);
+        doneButton.backgroundColor = UIColorFromRGB(0x02A8F3);
 //        doneButton.frame = CGRectMake(5, 10, self.width-10, 20);
         [footView addSubview:doneButton];
         [doneButton mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -193,7 +200,12 @@
     
     [UIView animateWithDuration:0.2 animations:^{
         self.backView.backgroundColor = [UIColor colorWithWhite:0.3 alpha:0.3];
-        self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count+40);
+        if (self.tag != 1){
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count+40);
+        }else{
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count);
+        }
+        
     }];
 }
 
@@ -217,8 +229,8 @@
         }
         
     }
-
     [self dismiss];
+    
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
@@ -251,7 +263,8 @@
         }
         [self.titleArray replaceObjectAtIndex:indexPath.row withObject:dic];
         [self.tableView reloadData];
-        
+        [self.delegate selectDetailView:self didselectIndex:self.selectDetailIndex];
+        [self dismiss];
     }else {
         NSMutableDictionary* dic = [[NSMutableDictionary alloc]initWithDictionary:self.titleArray[indexPath.row]] ;
         if ([dic[@"bSelect"] boolValue]){

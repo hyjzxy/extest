@@ -115,7 +115,19 @@
     [btn addTarget:self action:@selector(toChatAct:) forControlEvents:UIControlEventTouchUpInside];
     titileLabel.text = WYISBLANK(dic[@"title"]);
     timeLabel.text = N2V(dic[@"inputtime"], @"");
-    markLabel.attributedText = [HYHelper mBuildLable:N2V(dic[@"lable"], @"") font:markLabel.font];
+    NSString* labelS = WYISBLANK([dic objectForKey:@"lable"]);
+    markLabel.text = [labelS stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [markLabel makeRoundCornerWithRadius:2];
+    
+    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(markLabel.text, [UIFont systemFontOfSize:11], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+    [markLabel mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(sizeEng.width+10));
+    }];
+    markLabel.textAlignment = NSTextAlignmentCenter;
+    markLabel.textColor = [UIColor whiteColor];
+    [markLabel setColorWithText:markLabel.text];
+
+//    markLabel.attributedText = [HYHelper mBuildLable:N2V(dic[@"lable"], @"") font:markLabel.font];
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
     contentLabel.attributedText = [HYHelper mBuildAnswer:N2V(dic[@"content"], @"") font:contentLabel.font userId:uid isAnswer:YES];
     adopt.hidden = ![dic[@"isadopt"]boolValue];

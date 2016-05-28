@@ -80,6 +80,7 @@
     UILabel *time = (UILabel*)VIEWWITHTAG(cell, 109);
     UILabel *asum  = (UILabel*)VIEWWITHTAG(cell, 110);
     UILabel *newMsg  = (UILabel*)VIEWWITHTAG(cell, 111);
+    UIButton* readsB = (UIButton*)VIEWWITHTAG(cell, 120);
     NSDictionary *dic = [self.dataSource objectAtIndex:indexPath.row];
     userName.text = WYISBLANK([dic objectForKey:@"nickname"]);
     [HYHelper mSetLevelLabel:level level:dic[@"rank"]];
@@ -111,7 +112,22 @@
     rewards.layer.borderWidth = 1;
     rewards.layer.borderColor = [UIColor colorWithWhite:0.741 alpha:0.290].CGColor;
     rewards.layer.cornerRadius = VHeight(rewards)/2;
-    label.attributedText = [HYHelper mBuildLable:dic[@"lable"] font:label.font];
+    NSString* labelS = WYISBLANK([dic objectForKey:@"lable"]);
+    label.text = [labelS stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [label makeRoundCornerWithRadius:2];
+    
+    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(label.text, [UIFont systemFontOfSize:11], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+    [label mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(sizeEng.width+10));
+    }];
+    label.textColor = [UIColor whiteColor];
+    [label setColorWithText:label.text];
+    if (dic[@"hits"]){
+        [readsB setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    }else{
+        [readsB setTitle:@"0" forState:UIControlStateNormal];
+    }
+    
     id superlist  = dic[@"superlist"];
     supperlists.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     asum.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];

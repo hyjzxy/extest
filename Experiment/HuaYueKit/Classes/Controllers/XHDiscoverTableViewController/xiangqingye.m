@@ -64,7 +64,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"图层-1-副本"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(shareClick:)];
+//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[[UIImage imageNamed:@"图层-1-副本"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] style:UIBarButtonItemStylePlain target:self action:@selector(shareClick:)];
     self.webView = [[UIWebView alloc]init];
     _webView.delegate=self;
     _webView.backgroundColor=[UIColor clearColor];

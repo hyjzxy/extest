@@ -162,6 +162,12 @@ alpha:1.0]
     cell.userName.text = WYISBLANK([dic objectForKey:@"nickname"]);
     [HYHelper mSetLevelLabel:cell.level level:dic[@"rank"]];
     cell.time.text = N2V(dic[@"inputtime"], @"");
+    if (dic[@"hits"] != nil){
+        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    }else{
+        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+    }
+    
     //关键字处理
     NSString * content = WYISBLANK([dic objectForKey:@"content"]);
     NSArray *tmp = [keyword componentsSeparatedByString:@" "];
@@ -209,7 +215,15 @@ alpha:1.0]
     cell.reward.layer.borderWidth = 1;
     cell.reward.layer.borderColor = [UIColor colorWithWhite:0.741 alpha:0.290].CGColor;
     cell.reward.layer.cornerRadius = VHeight(cell.reward)/2;
-    cell.label.text = WYISBLANK([dic objectForKey:@"lable"]);
+//    cell.label.text = WYISBLANK([dic objectForKey:@"lable"]);
+    NSString* label = WYISBLANK([dic objectForKey:@"lable"]);
+    cell.label.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [cell.label makeRoundCornerWithRadius:2];
+    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(cell.label.text, [UIFont systemFontOfSize:10], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+    [cell.label mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(sizeEng.width+10));
+    }];
+    [cell.label setColorWithText:cell.label.text];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     cell.count.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];

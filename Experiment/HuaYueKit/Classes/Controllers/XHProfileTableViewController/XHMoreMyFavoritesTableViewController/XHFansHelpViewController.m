@@ -167,7 +167,15 @@
     cell.reward.layer.borderColor = [UIColor colorWithWhite:0.741 alpha:0.290].CGColor;
     cell.reward.layer.cornerRadius = VHeight(cell.reward)/2;
     [cell.huidaIMG setImage:[UIImage imageNamed:[dic[@"isanswer"]boolValue]?@"huida":@"unhuida"]];
-    cell.label.text = WYISBLANK([dic objectForKey:@"lable"]);
+    NSString* label = WYISBLANK([dic objectForKey:@"lable"]);
+    cell.label.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+    [cell.label makeRoundCornerWithRadius:2];
+    
+    CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(cell.label.text, [UIFont systemFontOfSize:10], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+    [cell.label mas_updateConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(sizeEng.width+10));
+    }];
+    [cell.label setColorWithText:cell.label.text];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];

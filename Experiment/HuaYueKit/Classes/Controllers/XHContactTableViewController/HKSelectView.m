@@ -61,7 +61,12 @@
         //        }
         
         [button setTitle:self.titleArray[i] forState:UIControlStateNormal];
-        
+        UIImageView* downIV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"answer_down"]];
+        [button addSubview:downIV];
+        [downIV mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.right.equalTo(button).offset(-10);
+            make.centerY.equalTo(button);
+        }];
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
         if ( i != titleArray.count-1 ){
             UIView* sepLine = [[UIView alloc]initWithFrame:CGRectMake(button.width-0.5, 10, 0.5, self.height-20)];
@@ -103,15 +108,11 @@
     detailView.tag = button.tag-100;
     if (button.tag == 100){
         [detailView.titleArray addObjectsFromArray: self.stateArray];
-//        NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
-//        if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
-//            NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
-//            for( NSInteger i= 0;i<detailView.titleArray.count;i++){
-//                detailView.titleArray[i][@"bSelect"] = son[i][@"bSelect"];
-//            }
-//        }
         [detailView.tableView reloadData];
     }else if (button.tag == 101){
+        detailView.tableView.tableFooterView = nil;
+        CGRect frame = detailView.tableView.frame;
+        detailView.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 0);
         [detailView.titleArray addObjectsFromArray: self.classifyArray];
         for (NSInteger i = 0; i<self.classifyArray.count; i++) {
             self.classifyArray[i][@"bSelect"] =  @"0";
@@ -126,7 +127,7 @@
         
         [detailView.tableView reloadData];
     } else if (button.tag == 102){
-        detailView.tableView.frame = CGRectMake(SCREENWIDTH/2.0, 0, SCREENWIDTH/2.0, 0);
+        detailView.tableView.frame = CGRectMake(SCREENWIDTH/2.0+5, 0, SCREENWIDTH/2.0-10, 0);
         [detailView.titleArray addObjectsFromArray: self.sonArray];
         NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
@@ -144,6 +145,14 @@
     
     
     [detailView show];
+}
+
+- (void)setSonArray:(NSArray *)sonArray{
+    _sonArray = sonArray;
+    UIButton* button = [self viewWithTag:102];
+    if (button != nil){
+        [self buttonAction:button];
+    }
 }
 
 - (void)selectDetailView:(HKSelectDetailView *)detailView didselectIndexs:(NSArray *)titleArray {

@@ -9,22 +9,6 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HuaYueKit/Classes/Controllers/XHTiWenTableViewController/XHWenGaoShouViewController.m"
-            timestampString = "484993942.389982"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "218"
-            endingLineNumber = "218"
-            landmarkName = "-searchBarSearchButtonClicked:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "HuaYueKit/Classes/Controllers/XHProfileTableViewController/XHMoreMyFavoritesTableViewController/XHFansHelpViewController.m"
             timestampString = "484994587.206917"
             startingColumnNumber = "9223372036854775807"
@@ -75,6 +59,22 @@
             continueAfterRunningActions = "No"
             scope = "0"
             stopOnStyle = "0">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HuaYueKit/Classes/Controllers/XHProfileTableViewController/XHMoreMyFavoritesTableViewController/XHMoreMyFavoritesTableViewController.m"
+            timestampString = "486118373.538623"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "125"
+            endingLineNumber = "125"
+            landmarkName = "-tableView:cellForRowAtIndexPath:"
+            landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

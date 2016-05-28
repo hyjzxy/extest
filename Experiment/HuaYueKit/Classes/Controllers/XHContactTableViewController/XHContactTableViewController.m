@@ -202,7 +202,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.tabBarController.view addSubview:back];
     [self.tabBarController.view bringSubviewToFront:back];
     back.alpha = 0;
-    [self.tableView.legendHeader beginRefreshing];
+//    [self.tableView.legendHeader beginRefreshing];
     
 }
 
@@ -235,8 +235,6 @@ typedef NS_ENUM(NSInteger, DNDType){
         [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
         NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
         [self requestTypeList:newDic[@"id"]];
-        page = 1;
-        [self reloadShaiXuanData];
     }
     
     
@@ -271,13 +269,14 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
 }
 
-- (void)topSelectClick:(UIButton*)btn
-{
-    btn.selected    = !btn.selected;
-}
+//- (void)topSelectClick:(UIButton*)btn
+//{
+//    btn.selected    = !btn.selected;
+//}
 
 - (void)reloadData
 {
+    page = 1;
     if(self.dndType == kNetQuest){
         if (_isSearch) {
             [self reloadShaiXuanData];
@@ -512,7 +511,12 @@ typedef NS_ENUM(NSInteger, DNDType){
     }else {
         cell.recommendIV.hidden = YES;
     }
-    [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    if (dic[@"hits"] != nil ){
+        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    }else{
+        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+    }
+    
     if (!isEmptyDicForKey(dic, @"reward")) {
         UIFont *font  = cell.reward.font;
         NSString *reward = [NSString stringWithFormat:@"  %@分 ",WYISBLANK([dic objectForKey:@"reward"]) ];
@@ -560,6 +564,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [cell.label mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(sizeEng.width+10));
     }];
+    [cell.label setColorWithText:cell.label.text];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
@@ -598,10 +603,10 @@ typedef NS_ENUM(NSInteger, DNDType){
 }
 #pragma mark - UITableView Delegate
 
-- (void)enterNewsController {
-    XHNewsTableViewController *newsTableViewController = [[XHNewsTableViewController alloc] init];
-    [self pushNewViewController:newsTableViewController];
-}
+//- (void)enterNewsController {
+//    XHNewsTableViewController *newsTableViewController = [[XHNewsTableViewController alloc] init];
+//    [self pushNewViewController:newsTableViewController];
+//}
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     NSDictionary *dic = [self.dataSource objectAtIndex:indexPath.row];
@@ -617,16 +622,16 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
 }
 
-#pragma mark - 复选框
-//点确定
-- (void)commitClick
-{
-    page = 1;
-    [self reloadShaiXuanData];
-    [self clickedLeftAction];
-}
+//#pragma mark - 复选框
+////点确定
+//- (void)commitClick
+//{
+//    page = 1;
+//    [self reloadShaiXuanData];
+//    [self clickedLeftAction];
+//}
 
-//请求筛选栏目列表
+#pragma mark - 请求筛选栏目列表
 - (void)requestTypeList:(NSString*)typeId
 {
     if ([typeId isEqualToString:@"-1"]) {
