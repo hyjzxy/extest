@@ -730,8 +730,9 @@
                                                                                @"nickname":userName,
                                                                                @"content":params[@"content"],
                                                                                @"image":params[@"image"],
-                                                                               @"head":userHead,
-                                                                               @"askname":self.askNickName?self.askNickName:@""}] ;
+                                                                                @"head":userHead,@"sign":@"1",
+                                                                            
+                                                                @"askname":self.askNickName?self.askNickName:@""}] ;
      [_contentTF clearText];
     self.askUId = 0;
     if (sendType == kAnswerChat) {
@@ -741,7 +742,10 @@
                                           withType:ANSWER_ADD
                                            success:^(id responseObject){
 //                                               [SVProgressHUD dismiss];
-                                               [dic setObject:responseObject[@"id"] forKey:@"id"];
+                                               if (responseObject[@"id"] != nil){
+                                                  [dic setObject:responseObject[@"id"] forKey:@"id"];
+                                               }
+                                               
                                                [loadingView dissMiss];
                                                //添加记录
                                                [_contentTF clearText];

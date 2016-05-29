@@ -99,34 +99,7 @@
     [_chatTbv.legendHeader beginRefreshing];
     
     
-    //tableview的长按事件
-//    UILongPressGestureRecognizer *lpgr = [[UILongPressGestureRecognizer alloc]
-//                                          initWithTarget:self action:@selector(handleLongPress:)];//声明长按对象
-//    lpgr.minimumPressDuration = 1.0; //seconds  设置长按多长事件触发长按事件
-//    [self.chatTbv addGestureRecognizer:lpgr];//把该事件加载到tableview对象上
 }
-
-//-(void)handleLongPress:(UILongPressGestureRecognizer *)gestureRecognizer
-//{
-//    CGPoint p = [gestureRecognizer locationInView:self.chatTbv];//点击的位置
-//    NSIndexPath *indexPath = [self.chatTbv indexPathForRowAtPoint:p];//根据点击的坐标得出点击的indexpath
-//    if(gestureRecognizer.state == UIGestureRecognizerStateBegan)//长按事件开始
-//    {
-//        UITableViewCell *cell = [self.chatTbv cellForRowAtIndexPath:indexPath];
-//
-//        [cell becomeFirstResponder];
-//       
-//        UIMenuController *menu=[UIMenuController sharedMenuController];
-//        UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
-////        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClicked:)];
-//        //UIMenuItem *resendItem = [[UIMenuItem alloc] initWithTitle:@"转发" action:@selector(resendItemClicked:)];
-//        [menu setMenuItems:[NSArray arrayWithObjects:copyItem,nil]];
-//         [menu setTargetRect:cell.frame inView:cell.superview];
-//        [menu setMenuVisible:YES animated:YES];
-//  
-//    }
-//
-//}
 
 - (void)mUpdateG
 {
@@ -291,29 +264,6 @@
     }
     return cell;
 }
-
-//允许 Menu菜单
-//- (BOOL)tableView:(UITableView *)tableView shouldShowMenuForRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return YES;
-//}
-//
-////每个cell都会点击出现Menu菜单
-//- (BOOL)tableView:(UITableView *)tableView canPerformAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-//{
-//    return YES;
-//}
-//
-//- (void)tableView:(UITableView *)tableView performAction:(SEL)action forRowAtIndexPath:(NSIndexPath *)indexPath withSender:(id)sender
-//{
-//    if (action == @selector(copy:)) {
-//        NSDictionary *data = self.mDatas[indexPath.row];
-//        [UIPasteboard generalPasteboard].string = data[@"content"];
-//    }
-//    
-//}
-
-
 
 - (void)mConfigCell:(MZShareItemTableViewCell*)cell data:(NSDictionary*)data isMaster:(BOOL)isMaster isQuest:(BOOL)isQuest isAnswer:(BOOL)isAnswer isSignd:(BOOL)isSignd
 {

@@ -115,6 +115,13 @@
     UIImageView *rank = (UIImageView *)[cell viewWithTag:205];
     UILabel *level = (UILabel *)[cell viewWithTag:206];
     selectBtn.selected = [dic[@"bselect"] boolValue];
+    for (NSDictionary* dict in dArray) {
+        if ([dict[@"id"] integerValue] == [dic[@"id"] integerValue]){
+            selectBtn.selected = [dict[@"bselect"] boolValue];
+            break;
+        }
+    }
+    
     selectBtn.arrayIndex = [dic[@"id"] integerValue];
     [selectBtn addTarget:self action:@selector(userSelect:) forControlEvents:UIControlEventTouchUpInside];
     
@@ -155,8 +162,8 @@
         }
         [mDic setObject:@"1" forKey:@"bselect"];
         NSArray *idArray   = [dArray valueForKeyPath:@"id"];
-        if (![idArray containsObject:dic[@"id"]]) {
-            [dArray addObject:dic];
+        if (![idArray containsObject:mDic[@"id"]]) {
+            [dArray addObject:mDic];
         }
     }
     [self.dataSource replaceObjectAtIndex:index withObject:mDic];
@@ -181,7 +188,6 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-//    if(self.mydelegate && [self.mydelegate respondsToSelector:@selector(didSelectedWithGaoShou:)])
             [self.mydelegate didSelectedWithGaoShou:dArray];
     [[self.navigationController.navigationBar viewWithTag:999]removeFromSuperview];
     
@@ -221,6 +227,7 @@
 }
 
 - (void)searchGaoshouWithSearchKey:(NSString *)searchKey{
+    
     __weak XHWenGaoShouViewController *weakMy = self;
     NSArray *keyValue = [QUESTIONS_GAOLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
@@ -228,6 +235,7 @@
     [dic setObject:searchKey forKey:@"keyword"];
     [[NetManager sharedManager] myRequestParam:dic withUrl:QUESTIONS_GAOLIST_API withType:QUESTIONS_GAOLIST success:^(id responseObject){
         [weakMy.dataSource removeAllObjects];
+//        weakMy.d
         [weakMy.dataSource addObjectsFromArray:[weakMy convrtData:responseObject]];
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];

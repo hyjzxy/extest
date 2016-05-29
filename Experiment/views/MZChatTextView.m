@@ -61,10 +61,12 @@
     [self clearText];
     self.leftText = leftTxt;
     NSMutableAttributedString *ma = [[NSMutableAttributedString alloc]init];
+    [ma appendAttributedString:[[NSAttributedString alloc]initWithString:leftTxt attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:UIColorFromRGB(0x2EC9FB)}]];
+    
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
 //    [ma appendAttributedString:self.attributedText];
     
-    [ma appendAttributedString:[[NSAttributedString alloc]initWithString:leftTxt attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:UIColorFromRGB(0x2EC9FB)}]];
+    
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:@" " attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
     
     

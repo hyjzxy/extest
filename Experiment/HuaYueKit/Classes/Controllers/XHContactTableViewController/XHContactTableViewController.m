@@ -27,19 +27,12 @@ typedef NS_ENUM(NSInteger, DNDType){
 @interface XHContactTableViewController ()<loginBtnGotoLoginDelegate,HKSegViewDelegete,HKSelectViewDelegate>
 {
     UIImageView *buttonBg;
-//    UIButton *leftBtn;
-//    UIButton *rightBtn;
-//    UIView *bottnSelectd0;
-//    UIView *bottnSelectd1;
     UIButton *back;
     int page;
     
 }
 @property (nonatomic, strong) NSMutableArray    *typeArray;
 @property (nonatomic, strong) NSMutableArray    *sonArray;
-//@property (nonatomic,strong) UICollectionView   *collectionView;
-//@property (nonatomic,strong) UIButton           *goldButton;
-//@property (nonatomic,strong) UIButton           *solveButton;
 @property (nonatomic, assign) DNDType dndType;
 @property (nonatomic, assign) BOOL isSearch;
 @property (nonatomic,strong) UIView* topView;
@@ -55,8 +48,6 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-//    self.tabBarController.title = @"全部问题";
-//    self.tabBarController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithTitle:@"筛选" style:UIBarButtonItemStyleBordered target:self action:@selector(clickedLeftAction)];
     self.tabBarController.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:_topView];
 }
 
@@ -70,7 +61,6 @@ typedef NS_ENUM(NSInteger, DNDType){
     _status = @1;
     // Do any additional setup after loading the view.
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(reloadData) name:@"ContactNoti" object:nil];
-//    self.tabBarController.title = @"全部问题";
     [self requestTypeList:@""];
     page = 1;
     
@@ -90,7 +80,8 @@ typedef NS_ENUM(NSInteger, DNDType){
     NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
     _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
     _selectView.titleArray = selectArray;
-    [self.view addSubview:_selectView];
+//    [self.view addSubview:_selectView];
+    self.tableView.tableHeaderView = _selectView;
     _selectView.delegate = self;
     
     NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -110,7 +101,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     _segView.normalColor = [UIColor blackColor];
     _segView.selectColor = [UIColor blackColor];
     _segView.delegate = self;
-    [self.view addSubview:_segView];
+//    [self.view addSubview:_segView];
     _segView.hidden = YES;
     UIView* sepLine = [[UIView alloc]initWithFrame:CGRectMake(self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
     [_segView addSubview:sepLine];
@@ -119,11 +110,11 @@ typedef NS_ENUM(NSInteger, DNDType){
     [_segView addSubview:sepLine2];
     sepLine2.backgroundColor = [UIColor grayColor];
     
-    CGRect frame = self.tableView.frame;
-    frame.origin.y = 40;
-    frame.size.height = frame.size.height - 40;
-    
-    self.tableView.frame = frame;
+//    CGRect frame = self.tableView.frame;
+//    frame.origin.y = 40;
+//    frame.size.height = frame.size.height - 40;
+//    
+//    self.tableView.frame = frame;
     self.tableView.backgroundColor = [UIColor clearColor];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.estimatedRowHeight = 44.0f;
@@ -144,74 +135,36 @@ typedef NS_ENUM(NSInteger, DNDType){
     WS(ws);
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         page = 1;
-        ws.isSearch = NO;
-//        ws.tabBarController.title = @"全部问题";
-//        ws.goldButton.selected = NO;
-//        ws.solveButton.selected = NO;
+//        ws.isSearch = NO;
         [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             obj[@"bSelect"] = @(NO);
         }];
         [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             obj[@"bSelect"] = @(NO);
         }];
-//        [ws.collectionView reloadData];
         [blockSelf reloadData];
     }];
-//    UICollectionViewFlowLayout  *flowLayout = [[UICollectionViewFlowLayout alloc] init];
-//    flowLayout.minimumLineSpacing   = 0;
-//    flowLayout.minimumInteritemSpacing = 0;
-//    flowLayout.headerReferenceSize  = CGSizeMake(320, 30);
-//    
-//    
-//    UIView  *backContentView    = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 280, self.view.bounds.size.height)];
-//    [backContentView setBackgroundColor:[UIColor whiteColor]];
-//    UIView  *topSelectView= ViewFromXib(@"MyTableViewCell", 16);
-//    [backContentView addSubview:topSelectView];
-    
-//    self.goldButton     = (UIButton*)[topSelectView viewWithTag:666];
-//    self.solveButton    = (UIButton*)[topSelectView viewWithTag:555];
-//    [self.goldButton addTarget:self action:@selector(topSelectClick:) forControlEvents:UIControlEventTouchUpInside];
-//    [self.solveButton addTarget:self action:@selector(topSelectClick:) forControlEvents:UIControlEventTouchUpInside];
-//
-//    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, topSelectView.frame.size.height, 280, VHeight(self.view)-VMaxY(topSelectView) - 250.0f) collectionViewLayout:flowLayout];
-//    [self.collectionView registerClass:[selectCollectionCell class]
-//            forCellWithReuseIdentifier:@"selectCollectionCell"];
-//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionOne"];
-//    [self.collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"sectionTwo"];
-//    self.collectionView.delegate    = (id)self;
-//    self.collectionView.dataSource  = (id)self;
-//    self.collectionView.backgroundColor = [UIColor whiteColor];
-//    [backContentView addSubview:self.collectionView];
-
-//    UIView  *line   = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.collectionView.frame), 280, .5)];
-//    [line setBackgroundColor:[UIColor lightGrayColor]];
-//    [backContentView addSubview:line];
-//    
-//    UIButton *commitBtn  = [[UIButton alloc] initWithFrame:CGRectMake(90, CGRectGetMaxY(line.frame)+20, 100, 40)];
-//    [commitBtn setTitle:@"确定" forState:UIControlStateNormal];
-//    [commitBtn setBackgroundImage:[UIImage imageNamed:@"dengNIDaOk"] forState:UIControlStateNormal];
-//    [commitBtn addTarget:self action:@selector(commitClick) forControlEvents:UIControlEventTouchUpInside];
-//    [backContentView addSubview:commitBtn];
-    
-//    CGRect tableViewFrame = self.view.bounds;
-    
-//    back = [[UIButton alloc] initWithFrame:tableViewFrame];
-//    back.backgroundColor = RGBACOLOR(100, 100, 100, .7);
-//    [back addTarget:self action:@selector(closeView:) forControlEvents:UIControlEventTouchUpInside];
-//    [back addSubview:backContentView];
     [self.tabBarController.view addSubview:back];
     [self.tabBarController.view bringSubviewToFront:back];
     back.alpha = 0;
-//    [self.tableView.legendHeader beginRefreshing];
     
+}
+
+- (void)setIsSearch:(BOOL)isSearch{
+    _isSearch = isSearch;
+    NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+
+    [[NSUserDefaults standardUserDefaults]setBool:isSearch forKey:uidS];
 }
 
 - (void)segViewSelectIndex:(NSInteger)index SegView:(HKSegView *)segView
 {
     if (segView.tag == 10001) {
         if (index == 0 ){
+            self.tableView.tableHeaderView = self.selectView;
             [self leftBtnClick:nil];
         }else{
+            self.tableView.tableHeaderView = self.segView;
             [self rightBtnClick:nil];
         }
     }else if (segView.tag == 10002) {
@@ -229,25 +182,22 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
-//        [[NSUserDefaults standardUserDefaults] setObject:self.topArray forKey:@"typeArray"];
-        NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
-        NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
-        [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
-        NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
-        [self requestTypeList:newDic[@"id"]];
+        if( subindex == 0 ){
+            [self reloadShaiXuanData];
+        }else{
+            NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+            NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
+            [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
+            NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
+            [self requestTypeList:newDic[@"id"]];
+        }
+        
     }
-    
-    
 }
 
 - (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
     if (index == 0){
-//        for (NSInteger i = 0; i<self.topArray.count; i++) {
-//            self.topArray[i][@"bSelect"] = subArray[i][@"bSelect"];
-//        }
         self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
-//        [self.topArray removeAllObjects];
-//        [self.topArray addObjectsFromArray:subArray];
         NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         
         [[NSUserDefaults standardUserDefaults] setObject:subArray forKey:uidS];
@@ -269,16 +219,30 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
 }
 
-//- (void)topSelectClick:(UIButton*)btn
-//{
-//    btn.selected    = !btn.selected;
-//}
 
 - (void)reloadData
 {
     page = 1;
     if(self.dndType == kNetQuest){
+         NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        self.isSearch = [[NSUserDefaults standardUserDefaults]boolForKey:uidS];
         if (_isSearch) {
+            NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+            if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+                NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+                NSInteger index = sub.integerValue;
+                self.typeArray[index][@"bSelect"] =  @"1";
+                NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+                if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+                    NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+                    NSString* sonA = [NSString stringWithFormat:@"%@%@",uidS,sub];
+                    if ([[NSUserDefaults standardUserDefaults]objectForKey:sonA]!=nil){
+                        NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
+                        self.sonArray = [[NSMutableArray alloc]initWithArray:son];
+                    }
+                }
+
+            }
             [self reloadShaiXuanData];
         }else{
            [self requestDataArticle];
@@ -293,33 +257,30 @@ typedef NS_ENUM(NSInteger, DNDType){
     back.alpha = 0;
 }
 
--(void)clickedLeftAction{
-    if(back.alpha == 0){
-        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
-        back.alpha = 1;
-    }else{
-        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-        back.alpha = 0;
-    }
-}
+//-(void)clickedLeftAction{
+//    if(back.alpha == 0){
+//        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
+//        back.alpha = 1;
+//    }else{
+//        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
+//        back.alpha = 0;
+//    }
+//}
 
--(void)clickedBarButtonItemAction{
-    
-}
+//-(void)clickedBarButtonItemAction{
+//    
+//}
 
 -(void)leftBtnClick:(id)sender
 {
-//    leftBtn.selected = YES;
-//    rightBtn.selected = !leftBtn.selected;
-//    bottnSelectd0.backgroundColor = UIColorFromRGB(0x00A6F4);
-//    bottnSelectd1.backgroundColor = UIColorFromRGB(0xDBDADA);
     self.selectView.hidden = NO;
     self.segView.hidden = YES;
     page = 1;
     self.dndType = kNetQuest;
     [self.dataSource removeAllObjects];
     [self.tableView reloadData];
-    [self requestDataArticle];
+    [self reloadData];
+//    [self requestDataArticle];
     
 }
 -(void)rightBtnClick:(id)sender
@@ -333,17 +294,15 @@ typedef NS_ENUM(NSInteger, DNDType){
         
         return;
     }
-//    rightBtn.selected = YES;
-//    leftBtn.selected = !rightBtn.selected;
-//    bottnSelectd0.backgroundColor = UIColorFromRGB(0xDBDADA);
-//    bottnSelectd1.backgroundColor = UIColorFromRGB(0x00A6F4);
     self.segView.hidden = NO;
     self.selectView.hidden = YES;
     page = 1;
     self.dndType = kFsHelp;
     [self.dataSource removeAllObjects];
     [self.tableView reloadData];
-    [self requestDataComment];
+//    [self requestDataComment];
+    [self reloadData];
+
 }
 //网友提问
 -(void)requestDataArticle{
@@ -401,7 +360,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],_status,nil] forKeys:keyValue];
-    NSLog(@"粉丝求助：%@",dic);
+//    NSLog(@"粉丝求助：%@",dic);
     [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_API withType:MY_FANSSLIST success:^(id responseObject){
         if (self.dndType != kFsHelp) return;
         if (page == 1) {
@@ -449,13 +408,11 @@ typedef NS_ENUM(NSInteger, DNDType){
             catId   = [catId substringToIndex:catId.length - 1];
         }
     }
-//    self.tabBarController.title = titleStr.length==0?@"全部问题":titleStr;
-//    @"2".integerValue
     NSString* ward = self.topArray[0][@"bSelect"];
     NSInteger isreward = ward.integerValue;
     NSString* solveed = self.topArray[1][@"bSelect"];
     NSInteger issolveed = solveed.integerValue;
-    self.isSearch = !(catId.length<=0 && isreward > 0 && issolveed > 0);
+    self.isSearch = (catId.length > 0 || isreward > 0 || issolveed > 0);
     if (_isSearch) {
         NSArray *keyValue = [QUESTIONS_SELECT_PARAM componentsSeparatedByString:@","];
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:@[@(page),@20,catId,@(isreward),@(issolveed),@(self.dndType)] forKeys:keyValue];
@@ -622,21 +579,12 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
 }
 
-//#pragma mark - 复选框
-////点确定
-//- (void)commitClick
-//{
-//    page = 1;
-//    [self reloadShaiXuanData];
-//    [self clickedLeftAction];
-//}
 
 #pragma mark - 请求筛选栏目列表
 - (void)requestTypeList:(NSString*)typeId
 {
     if ([typeId isEqualToString:@"-1"]) {
         [self.sonArray removeAllObjects];
-//        [self.collectionView reloadData];
         return;
     }
     __weak XHContactTableViewController *weakMy = self;
@@ -662,14 +610,12 @@ typedef NS_ENUM(NSInteger, DNDType){
                                                weakMy.sonArray  = array;
                                                weakMy.selectView.sonArray = weakMy.sonArray;
                                            }
-//                                           [self.collectionView reloadData];
                                        }failure:^(id error){
                                            if (typeId.length <= 0) {
                                                [weakMy.typeArray removeAllObjects];
                                            }else {
                                                [weakMy.sonArray removeAllObjects];
                                            }
-//                                           [self.collectionView reloadData];
                                        }];
 }
 
@@ -684,112 +630,5 @@ typedef NS_ENUM(NSInteger, DNDType){
     
     return list;
 }
-
-//单选
-//- (void)reSetDataSourceForOne:(NSDictionary*)dic indexPath:(NSIndexPath*)indexPath
-//{
-//    NSMutableDictionary *newDict   = [NSMutableDictionary dictionaryWithDictionary:dic];
-//    if ([newDict[@"bSelect"] boolValue]) {
-//        [newDict setObject:@"0" forKey:@"bSelect"];
-//    }else {
-//        [newDict setObject:@"1" forKey:@"bSelect"];
-//        for (int i = 0; i < self.typeArray.count; i++) {
-//            NSMutableDictionary *oldDict    = [NSMutableDictionary dictionaryWithDictionary:[self.typeArray objectAtIndex:i]];
-//            if (![newDict[@"id"] isEqualToString:oldDict[@"id"]]) {
-//                [oldDict setObject:@"0" forKey:@"bSelect"];
-//                [self.typeArray replaceObjectAtIndex:i withObject:oldDict];
-//            }
-//        }
-//    }
-//    [self.typeArray replaceObjectAtIndex:indexPath.row withObject:newDict];
-//}
-
-//复选
-//- (void)reSetDataSourceForTwo:(NSDictionary*)dic indexPath:(NSIndexPath*)indexPath
-//{
-//    NSMutableDictionary *newDict   = [NSMutableDictionary dictionaryWithDictionary:dic];
-//    if ([newDict[@"bSelect"] boolValue]) {
-//        [newDict setObject:@"0" forKey:@"bSelect"];
-//    }else {
-//        [newDict setObject:@"1" forKey:@"bSelect"];
-//    }
-//    [self.sonArray replaceObjectAtIndex:indexPath.row withObject:newDict];
-//    
-//    [self.collectionView reloadData];
-//}
-
-//定义展示的Section的个数
-//- (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView
-//{
-//    return 2;
-//}
-//
-//- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-//{
-//    return section?self.sonArray.count:self.typeArray.count;
-//}
-
-//定义每个UICollectionView 的大小
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    return CGSizeMake(140, 30);
-//}
-
-//UICollectionView被选中时调用的方法
-//-(void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (indexPath.section) {
-//        NSDictionary    *dic    = [self.sonArray objectAtIndex:indexPath.row];
-//
-//        [self reSetDataSourceForTwo:dic indexPath:indexPath];
-//    }else {
-//        NSDictionary    *dic    = [self.typeArray objectAtIndex:indexPath.row];
-//
-//        [self reSetDataSourceForOne:dic indexPath:indexPath];
-//        
-//        [self requestTypeList:dic[@"id"]];
-//    }
-//}
-
-//每个UICollectionView展示的内容
-//-(UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    static NSString * CellIdentifier = @"selectCollectionCell";
-//    selectCollectionCell * cell = [collectionView dequeueReusableCellWithReuseIdentifier:CellIdentifier forIndexPath:indexPath];
-//    
-//    NSArray *dataSource = indexPath.section?self.sonArray:self.typeArray;
-//    NSDictionary    *dic    = [dataSource objectAtIndex:indexPath.row];
-//    
-//    cell.titleLabel.text    = [dic objectForKey:@"catname"];
-//    
-//    if ([dic[@"bSelect"] boolValue]) {
-//        cell.titleLabel.textColor   =  RGBCOLOR(17, 198, 236);
-//    }else {
-//        cell.titleLabel.textColor   =  [UIColor darkGrayColor];
-//    }
-//    
-//    return cell;
-//}
-//
-//- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-//{
-//    NSString    *reuseIdentifier    = indexPath.section?@"sectionOne":@"sectionTwo";
-//    UICollectionReusableView    *reusableView   = nil;
-//    if (kind == UICollectionElementKindSectionHeader) {
-//        reusableView    = [collectionView dequeueReusableSupplementaryViewOfKind:kind
-//                                                             withReuseIdentifier:reuseIdentifier
-//                                                                    forIndexPath:indexPath];
-//        UILabel *sectionTitle   = (UILabel*)[reusableView viewWithTag:1314];
-//        if (sectionTitle == nil) {
-//            sectionTitle   = [[UILabel alloc] initWithFrame:CGRectMake(10, 0, 300, 30)];
-//            sectionTitle.textColor  = [UIColor whiteColor];
-//            sectionTitle.font = [UIFont systemFontOfSize:14.0f];
-//            [reusableView addSubview:sectionTitle];
-//        }
-//        sectionTitle.text   = indexPath.section?@"选择子类":@"选择分类";
-//        reusableView.backgroundColor = UIColorFromRGB(0x55C3E8);
-//    }
-//    return reusableView;
-//}
 
 @end
