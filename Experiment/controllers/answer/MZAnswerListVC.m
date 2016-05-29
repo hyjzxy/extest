@@ -137,7 +137,6 @@
     [_labeLabel mas_updateConstraints:^(MASConstraintMaker *make) {
         make.width.equalTo(@(sizeEng.width+6));
     }];
-//    _labeLabel.attributedText = [HYHelper mBuildLable:N2V(self.mQuest[@"lable"],@"") font:_labeLabel.font];
     [_answerTimeBtn setTitle:[NSString stringWithFormat:@" %@", self.mQuest[@"inputtime"]] forState:UIControlStateNormal];
     [_answerPersonsBtn setTitle:[NSString stringWithFormat:@" %@人回答", N2V(self.mQuest[@"anum"],@"0")] forState:UIControlStateNormal];
     NSString *superlist = self.mQuest[@"superlist"];

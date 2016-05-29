@@ -40,6 +40,9 @@
     socialData.extConfig.wechatTimelineData.title = title;
     socialData.extConfig.wechatSessionData.url = url;
     socialData.extConfig.wechatTimelineData.url = url;
+    socialData.extConfig.qzoneData.title = title;
+    socialData.extConfig.qqData.title = @"实验助手";
+//    socialData.extConfig.
     socialData.title = title;
     [UMSocialSnsService presentSnsIconSheetView:vc
                                          appKey:@"54b9aefefd98c5f227000907"

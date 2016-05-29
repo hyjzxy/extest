@@ -429,8 +429,6 @@
     //[self.view addSubview:view];
     UIButton *shareBtn = (UIButton *)[view viewWithTag:250];
     [shareBtn addTarget:self action:@selector(shareAct:) forControlEvents:UIControlEventTouchUpInside];
-//    UIButton *shareQBtn = (UIButton *)[view viewWithTag:253];
-//    [shareQBtn addTarget:self action:@selector(shareQuest:) forControlEvents:UIControlEventTouchUpInside];
     UIButton *jubaoBtn = (UIButton *)[view viewWithTag:251];
     if([self isKindOfClass:[MZAnswerChatVC class]]){
         [jubaoBtn setTitle:@"举报" forState:UIControlStateNormal];
@@ -536,33 +534,6 @@
         [VIEWWITHTAG(self.view, 10001) removeFromSuperview];
     }]show];
 }
-//分享到我的实验圈
-//- (void)shareQuest:(UIButton*)sender
-//{
-//    [sender.superview.superview removeFromSuperview];
-//    [HYHelper mLoginID:^(id uid) {
-//        if(uid){
-//            [[UIAlertView mBuildWithTitle:@"提示" msg:@"您确定要分享该问题吗？" okTitle:@"确定" noTitle:@"取消" cancleBlock:nil okBlock:^{
-//                NSArray *keyValue = [QUESTIONS_SHARE_PARAM componentsSeparatedByString:@","];
-//                NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:@[uid,@(_qid)] forKeys:keyValue];
-//                [[NetManager sharedManager] myRequestParam:dic
-//                                                   withUrl:QUESTIONS_SHARE_API
-//                                                  withType:QUESTIONS_SHARE_PARAM
-//                                                   success:^(id responseObject)
-//                 {
-//                     [BMUtils showSuccess:@"分享成功"];
-//                 }failure:^(id error){
-//                     [BMUtils showError:error];
-//                 }];
-//                [VIEWWITHTAG(self.view, 10001) removeFromSuperview];
-//            }]show];
-//        } else {
-//            [BMUtils showError:@"你还没有登录"];
-//        }
-//    }];
-//    
-//}
-
 
 /**
  *  @author 崔俊红, 15-05-02 15:05:09
@@ -751,12 +722,7 @@
                                                [_contentTF clearText];
                                                [self.mDatas addObject:dic];
                                                [self mSendSucc:dic[@"auid"]];
-//                                               if (isRes) {
-//                                                   //添加记录
-//                                                   [_contentTF clearText];
-//                                                   [self.mDatas addObject:dic];
-//                                                   [self mSendSucc:dic[@"auid"]];
-//                                               }
+
                                            }failure:^(id error){
                                            [SVProgressHUD dismiss];
                                            }];
@@ -766,12 +732,15 @@
                                           withType:ANSWER_ADDQUES
                                            success:^(id responseObject){
 //                                               [SVProgressHUD dismiss];
-                                               [loadingView dissMiss];
-                                               if (isRes) {
-                                                   //添加记录
-                                                   [self.mDatas addObject:dic];
-                                                   [self mSendSucc:dic[@"auid"]];
+                                               if (responseObject[@"id"] != nil){
+                                                   [dic setObject:responseObject[@"id"] forKey:@"id"];
                                                }
+                                               
+                                               [loadingView dissMiss];
+                                               //添加记录
+                                               [_contentTF clearText];
+                                               [self.mDatas addObject:dic];
+                                               [self mSendSucc:dic[@"auid"]];
                                            }failure:^(id error){
                                            [SVProgressHUD dismiss];
                                            }];

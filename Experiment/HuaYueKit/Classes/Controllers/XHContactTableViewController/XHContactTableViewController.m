@@ -49,6 +49,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.tabBarController.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:_topView];
+    
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -147,7 +148,18 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.tabBarController.view addSubview:back];
     [self.tabBarController.view bringSubviewToFront:back];
     back.alpha = 0;
-    
+//    if ([[NSUserDefaults standardUserDefaults] objectForKey:UID]!=nil){
+//        
+//    }else{
+//        [self reloadData];
+//    }
+//    [HYHelper mLoginID:^(id uid) {
+//        if (uid){
+//            NSLog(@"%@",uid);
+//        }else{
+//            [self reloadData];
+//        }
+//    }];
 }
 
 - (void)setIsSearch:(BOOL)isSearch{
@@ -630,5 +642,6 @@ typedef NS_ENUM(NSInteger, DNDType){
     
     return list;
 }
+
 
 @end

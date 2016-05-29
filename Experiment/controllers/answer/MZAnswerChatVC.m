@@ -309,7 +309,7 @@
         content = [@"回答：" stringByAppendingString:content];
     }
     
-     cell.content = content;
+    cell.content = content;
     
     if ([data[@"image"]length]>0) {
         MZImageView *iv  = nil;

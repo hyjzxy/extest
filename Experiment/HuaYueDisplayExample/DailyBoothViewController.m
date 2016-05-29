@@ -125,30 +125,7 @@
     [userDefault removeObjectForKey:UID];
     [userDefault setBool:NO forKey:AUTH];
     [userDefault synchronize];
-    BOOL isAuto = [userDefault boolForKey:@"IsAutoLogin"];
-    if ([userDefault boolForKey:@"Remember"] && isAuto) {
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault stringForKey:USERLGN],[userDefault stringForKey:USERPWD],[MZApp share].deivceToken,nil]
-                                                                        forKeys:[MY_LOGIN_PARAM componentsSeparatedByString:@","]];
-        [[NetManager sharedManager] myRequestParam:dic
-                                           withUrl:MY_LOGIN_API
-                                          withType:MY_LOGIN
-                                           success:^(id responseObject){
-                                               //将登录信息保存本地
-                                               [userDefault setValue:[responseObject objectForKey:@"nickname"] forKey:USERNAME];
-                                               [userDefault setValue:[responseObject objectForKey:@"head"] forKey:USERHEAD];
-                                               [userDefault setValue:[responseObject objectForKey:@"sex"] forKey:SEX];
-                                               [userDefault setValue:[responseObject objectForKey:@"id"] forKey:UID];
-                                               [userDefault setBool:[responseObject[@"realname_status"]boolValue]forKey:AUTH];
-                                               [userDefault setValue:[responseObject objectForKey:@"integral"] forKey:INTEGRAL];
-                                               [userDefault setValue:[responseObject objectForKey:@"invitation"] forKey:INVITATION];
-                                               [userDefault synchronize];
-                                               [[NSNotificationCenter defaultCenter] postNotificationName:@"wangyu" object:nil userInfo:nil];
-                                               [[NSNotificationCenter defaultCenter]postNotificationName:@"ContactNoti" object:nil];
-                                               [MobClick endEvent:@"login"];
-                                           }failure:^(id error){
-                                               [BMUtils showError:error];
-                                           }];
-    }
+    
 
     XHMessageRootViewController *messageRootViewController = [[XHMessageRootViewController alloc] init];
     messageRootViewController.tabBarItem = [[UITabBarItem alloc] initWithTitle:@"首页" image:[[UIImage imageNamed:@"tab-0-n"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[[UIImage imageNamed:@"tab-0-l"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal]];
@@ -180,6 +157,32 @@
     
     self.viewControllers = [NSArray arrayWithObjects:messageRootViewController,contactTableViewController,view,discoverTableViewController,profileTableViewController,nil];
     self.selectedIndex = 1;
+    BOOL isAuto = [userDefault boolForKey:@"IsAutoLogin"];
+    if ([userDefault boolForKey:@"Remember"] && isAuto) {
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault stringForKey:USERLGN],[userDefault stringForKey:USERPWD],[MZApp share].deivceToken,nil]
+                                                                        forKeys:[MY_LOGIN_PARAM componentsSeparatedByString:@","]];
+        [[NetManager sharedManager] myRequestParam:dic
+                                           withUrl:MY_LOGIN_API
+                                          withType:MY_LOGIN
+                                           success:^(id responseObject){
+                                               //将登录信息保存本地
+                                               [userDefault setValue:[responseObject objectForKey:@"nickname"] forKey:USERNAME];
+                                               [userDefault setValue:[responseObject objectForKey:@"head"] forKey:USERHEAD];
+                                               [userDefault setValue:[responseObject objectForKey:@"sex"] forKey:SEX];
+                                               [userDefault setValue:[responseObject objectForKey:@"id"] forKey:UID];
+                                               [userDefault setBool:[responseObject[@"realname_status"]boolValue]forKey:AUTH];
+                                               [userDefault setValue:[responseObject objectForKey:@"integral"] forKey:INTEGRAL];
+                                               [userDefault setValue:[responseObject objectForKey:@"invitation"] forKey:INVITATION];
+                                               [userDefault synchronize];
+                                               [[NSNotificationCenter defaultCenter] postNotificationName:@"wangyu" object:nil userInfo:nil];
+                                               [[NSNotificationCenter defaultCenter]postNotificationName:@"ContactNoti" object:nil];
+                                               [MobClick endEvent:@"login"];
+                                           }failure:^(id error){
+                                               [BMUtils showError:error];
+                                           }];
+    }else{
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"ContactNoti" object:nil];
+    }
     // [[[MZTabBar alloc]init]setupWithTabVC:self];
 }
 
