@@ -63,6 +63,7 @@
 
 - (void)clickedBarButtonItemAction
 {
+    [self.mydelegate didSelectedWithGaoShou:dArray];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -188,7 +189,7 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-            [self.mydelegate didSelectedWithGaoShou:dArray];
+    
     [[self.navigationController.navigationBar viewWithTag:999]removeFromSuperview];
     
 }
@@ -240,6 +241,8 @@
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
     }failure:^(id error){
+        [weakMy.dataSource removeAllObjects];
+        [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
     }];
 }

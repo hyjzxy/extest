@@ -172,6 +172,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 - (void)segViewSelectIndex:(NSInteger)index SegView:(HKSegView *)segView
 {
     if (segView.tag == 10001) {
+        [self.selectView dismiss];
         if (index == 0 ){
             self.tableView.tableHeaderView = self.selectView;
             [self leftBtnClick:nil];
@@ -194,7 +195,8 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
-        if( subindex == 0 ){
+        if(subindex == 0 ){
+            self.selectView.sonArray = [NSArray new];
             [self reloadShaiXuanData];
         }else{
             NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -537,7 +539,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
-    cell.count.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];
+    cell.count.text = [NSString stringWithFormat:@"%@",WYISBLANK([dic objectForKey:@"anum"])];
     
     // 布局 LogImg reward checkbtn
     if(cell.checkBtn.hidden){

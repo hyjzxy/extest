@@ -25,4 +25,7 @@
 @property (nonatomic,strong) NSArray* classifyArray;
 @property (nonatomic,strong) NSArray* sonArray;
 @property (assign,nonatomic) id<HKSelectViewDelegate> delegate;
+
+- (void)dismiss;
+
 @end
