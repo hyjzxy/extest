@@ -354,7 +354,7 @@
         contentLB.text = N2V(data[@"content"],@"");
         lableLB.attributedText = [HYHelper mBuildLable:N2V(data[@"lable"],@"") font:lableLB.font];
         [HYHelper mSuperList:invateLB supers:N2V(data[@"superlist"],@"")];
-        [ansSumLB setTitle:[NSString stringWithFormat:@" %@人回答",N2V(data[@"anum"],@0)] forState:UIControlStateNormal];
+        [ansSumLB setTitle:[NSString stringWithFormat:@" %@",N2V(data[@"anum"],@0)] forState:UIControlStateNormal];
         solveedIV.hidden = !(type==3&&[data[@"issolveed"]boolValue]);
         NSString *image = N2V(data[@"image"], @"");
         [imageIV mas_updateConstraints:^(MASConstraintMaker *make) {

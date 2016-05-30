@@ -79,6 +79,9 @@
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
     }failure:^(id error){
+        [BMUtils showError:error];
+        [weakMy.dataSource removeAllObjects];
+        [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
     }];
 }
@@ -241,6 +244,7 @@
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
     }failure:^(id error){
+        [BMUtils showError:error];
         [weakMy.dataSource removeAllObjects];
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];

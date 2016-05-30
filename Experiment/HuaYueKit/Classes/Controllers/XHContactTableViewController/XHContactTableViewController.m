@@ -140,9 +140,12 @@ typedef NS_ENUM(NSInteger, DNDType){
         [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
             obj[@"bSelect"] = @(NO);
         }];
-        [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            obj[@"bSelect"] = @(NO);
-        }];
+        if (ws.sonArray.count > 0){
+            [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+                obj[@"bSelect"] = @"0";
+            }];
+        }
+        
         [blockSelf reloadData];
     }];
     [self.tabBarController.view addSubview:back];

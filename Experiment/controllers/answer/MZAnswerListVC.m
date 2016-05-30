@@ -138,7 +138,7 @@
         make.width.equalTo(@(sizeEng.width+6));
     }];
     [_answerTimeBtn setTitle:[NSString stringWithFormat:@" %@", self.mQuest[@"inputtime"]] forState:UIControlStateNormal];
-    [_answerPersonsBtn setTitle:[NSString stringWithFormat:@" %@人回答", N2V(self.mQuest[@"anum"],@"0")] forState:UIControlStateNormal];
+    [_answerPersonsBtn setTitle:[NSString stringWithFormat:@" %@", N2V(self.mQuest[@"anum"],@"0")] forState:UIControlStateNormal];
     NSString *superlist = self.mQuest[@"superlist"];
     if (superlist && superlist.length>0) {
         [HYHelper mSuperList:_invateLabel supers:superlist];

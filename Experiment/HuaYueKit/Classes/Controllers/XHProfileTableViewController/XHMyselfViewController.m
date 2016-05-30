@@ -307,7 +307,7 @@
         name.text = N2V(dic[@"nickname"], @" ");
         [HYHelper mSetLevelLabel:lve level:N2V(dic[@"rank"], @"")];
         titileLabel.text = dic[@"content"];
-        NSString *anumStr = [NSString stringWithFormat:@"%@人回答", dic[@"anum"]];
+        NSString *anumStr = [NSString stringWithFormat:@"%@", dic[@"anum"]];
         anumLabel.text = anumStr;
         resloveBtn.hidden = ![dic[@"issolveed"]boolValue];
         NSString *responseString =dic[@"lable"];

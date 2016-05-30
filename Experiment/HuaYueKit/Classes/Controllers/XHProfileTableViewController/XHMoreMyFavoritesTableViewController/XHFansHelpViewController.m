@@ -179,7 +179,7 @@
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
-    cell.count.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];
+    cell.count.text = [NSString stringWithFormat:@"%@",WYISBLANK([dic objectForKey:@"anum"])];
     if(cell.checkBtn.hidden){
         [cell.checkBtn mas_updateConstraints:^(MASConstraintMaker *make) {
             make.width.mas_equalTo(@1);

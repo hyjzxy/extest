@@ -661,7 +661,7 @@
         view.title.text = self.dic[@"content"];
         view.label.text = [self.dic objectForKey:@"lable"];
         view.time.text =  N2V(self.dic[@"inputtime"], @"");
-        view.person.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([self.dic objectForKey:@"anum"])];
+        view.person.text = [NSString stringWithFormat:@"%@",WYISBLANK([self.dic objectForKey:@"anum"])];
         NSString    *superlist  = WYISBLANK([self.dic objectForKey:@"superlist"]);
         view.gaoshou.text = superlist.length > 0?[NSString stringWithFormat:@"邀请%@回答",superlist]:@"";
         

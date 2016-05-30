@@ -31,7 +31,7 @@
         UIMenuItem *copyItem = [[UIMenuItem alloc] initWithTitle:@"复制" action:@selector(copyItemClicked:)];
         NSString* uid = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
         if (self.indexPath.row > 0 && self.data[@"id"] != nil
-             && [self.data[@"id"] integerValue] == [uid integerValue]) {
+             && [self.data[@"auid"] integerValue] == [uid integerValue]) {
             UIMenuItem *copyItem2 = [[UIMenuItem alloc] initWithTitle:@"删除" action:@selector(deleteItemClick:)];
             [menu setMenuItems:[NSArray arrayWithObjects:copyItem,copyItem2,nil]];
         }else{

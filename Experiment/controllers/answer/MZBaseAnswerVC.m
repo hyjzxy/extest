@@ -701,9 +701,11 @@
                                                                                @"nickname":userName,
                                                                                @"content":params[@"content"],
                                                                                @"image":params[@"image"],
-                                                                                @"head":userHead,@"sign":@"1",
+                                                                                @"head":userHead,
+//                                                                                @"sign":self.askNickName?@"1":@"0",
                                                                             
                                                                 @"askname":self.askNickName?self.askNickName:@""}] ;
+    
      [_contentTF clearText];
     self.askUId = 0;
     if (sendType == kAnswerChat) {

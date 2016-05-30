@@ -130,7 +130,7 @@
     
     id superlist  = dic[@"superlist"];
     supperlists.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
-    asum.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];
+    asum.text = [NSString stringWithFormat:@"%@",WYISBLANK([dic objectForKey:@"anum"])];
     
     // 布局 LogImg reward checkbtn
     if(resovle.hidden){

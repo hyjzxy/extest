@@ -194,7 +194,7 @@ alpha:1.0]
     }else{
         cell.checkBtn.alpha = 1;
     }
-    cell.count.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];
+    cell.count.text = [NSString stringWithFormat:@"%@",WYISBLANK([dic objectForKey:@"anum"])];
     cell.huidaIMG.hidden = YES;
     if (!isEmptyDicForKey(dic, @"reward")) {
         UIFont *font  = cell.reward.font;
@@ -226,7 +226,7 @@ alpha:1.0]
     [cell.label setColorWithText:cell.label.text];
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
-    cell.count.text = [NSString stringWithFormat:@"%@人回答",WYISBLANK([dic objectForKey:@"anum"])];
+    cell.count.text = [NSString stringWithFormat:@"%@",WYISBLANK([dic objectForKey:@"anum"])];
     
     // 布局 LogImg reward checkbtn
     if(cell.checkBtn.hidden){
