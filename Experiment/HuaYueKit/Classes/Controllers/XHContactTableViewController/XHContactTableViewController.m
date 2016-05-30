@@ -137,12 +137,12 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.tableView addLegendHeaderWithRefreshingBlock:^{
         page = 1;
 //        ws.isSearch = NO;
-        [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            obj[@"bSelect"] = @(NO);
-        }];
-        [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            obj[@"bSelect"] = @(NO);
-        }];
+//        [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            obj[@"bSelect"] = @(NO);
+//        }];
+//        [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
+//            obj[@"bSelect"] = @(NO);
+//        }];
         [blockSelf reloadData];
     }];
     [self.tabBarController.view addSubview:back];
@@ -194,13 +194,18 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
+        NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
+        [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
+        NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
         if( subindex == 0 ){
+            self.isSearch = NO;
             [self reloadShaiXuanData];
         }else{
-            NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
-            NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
-            [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
-            NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
+//            NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+//            NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
+//            [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
+//            NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
             [self requestTypeList:newDic[@"id"]];
         }
         
@@ -268,20 +273,6 @@ typedef NS_ENUM(NSInteger, DNDType){
     self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
     back.alpha = 0;
 }
-
-//-(void)clickedLeftAction{
-//    if(back.alpha == 0){
-//        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor blackColor];
-//        back.alpha = 1;
-//    }else{
-//        self.tabBarController.navigationItem.leftBarButtonItem.tintColor = [UIColor whiteColor];
-//        back.alpha = 0;
-//    }
-//}
-
-//-(void)clickedBarButtonItemAction{
-//    
-//}
 
 -(void)leftBtnClick:(id)sender
 {

@@ -442,7 +442,7 @@
                         <rect key="frame" x="8" y="8" width="40" height="40"/>
                         <color key="backgroundColor" red="0.97254901960784312" green="0.62745098039215685" blue="0.55686274509803924" alpha="1" colorSpace="calibratedRGB"/>
                         <inset key="imageEdgeInsets" minX="1" minY="1" maxX="1" maxY="1"/>
-                        <state key="normal" backgroundImage="55AF480F-562B-4025-B692-EEF5F3D775BA">
+                        <state key="normal" backgroundImage="61FCAD67-169B-4A0B-87CA-2C1B40D25C22">
                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                         <userDefinedRuntimeAttributes>
@@ -1929,7 +1929,7 @@
     </objects>
     <resources>
         <image name="1.png" width="852" height="1102"/>
-        <image name="55AF480F-562B-4025-B692-EEF5F3D775BA" width="50" height="50">
+        <image name="61FCAD67-169B-4A0B-87CA-2C1B40D25C22" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPT5YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQrLjE3OlUkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
