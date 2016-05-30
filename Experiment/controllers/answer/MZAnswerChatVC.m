@@ -388,6 +388,9 @@
         }else{
              bImge = [UIImage imageNamed:isMaster?@"me-answer":@"other-answer"];
         }
+        if (isMaster){
+            bImge = [UIImage imageNamed:@"me-answer"];
+        }
        
     }
     

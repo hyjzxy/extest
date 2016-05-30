@@ -165,15 +165,12 @@
     if (self.delegate) {
         [self.delegate selectView:self selectIndex:detailView.tag subindex:index];
     }
+}
 
-    
-//    if (detailView.tag == 1){
-////        [self.detailView dismiss];
-//        [self.selectArray replaceObjectAtIndex:1 withObject:[NSNumber numberWithInteger:index]];
-//    }
-//    if (index == -1 ){
-//        self.selectIndex = -1;
-//    }
+- (void)dismiss{
+    if (self.detailView != nil){
+        [self.detailView dismiss];
+    }
 }
 
 @end

@@ -203,7 +203,7 @@
         if (self.tag != 1){
             self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count+40);
         }else{
-            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count);
+            self.tableView.frame = CGRectMake(self.tableView.frame.origin.x, self.tableView.frame.origin.y, self.tableView.frame.size.width, 40*self.titleArray.count-1);
         }
         
     }];
