@@ -89,7 +89,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
         _topArray = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults] objectForKey:uidS]];
     }else{
-        _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"-1"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+        _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"0"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
     }
     
     _selectView.stateArray = _topArray;
@@ -264,11 +264,27 @@ typedef NS_ENUM(NSInteger, DNDType){
          NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         self.isSearch = [[NSUserDefaults standardUserDefaults]boolForKey:uidS];
         if (_isSearch) {
+            NSString *uidS1 = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
+                _topArray = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults] objectForKey:uidS1]];
+            }
+            NSMutableString *titleStr0 = [NSMutableString string];
+            for (int i = 0; i < self.sonArray.count; i++) {
+                NSDictionary *dic   = [self.sonArray objectAtIndex:i];
+                if ([dic[@"bSelect"] boolValue]) {
+                    [titleStr0 appendString:dic[@"catname"]];
+                }
+            }
+            if (titleStr0.length > 0){
+                [self.selectView setButtonTitle:titleStr0 index:0];
+            }
             NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
             if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
                 NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
                 NSInteger index = sub.integerValue;
                 self.typeArray[index][@"bSelect"] =  @"1";
+                NSString* title = self.typeArray[index][@"catname"];
+                [self.selectView setButtonTitle:title index:1];
                 NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
                 if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
                     NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
@@ -276,6 +292,17 @@ typedef NS_ENUM(NSInteger, DNDType){
                     if ([[NSUserDefaults standardUserDefaults]objectForKey:sonA]!=nil){
                         NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
                         self.sonArray = [[NSMutableArray alloc]initWithArray:son];
+                        self.selectView.sonArray = self.sonArray;
+                        NSMutableString *titleStr = [NSMutableString string];
+                        for (int i = 0; i < self.sonArray.count; i++) {
+                            NSDictionary *dic   = [self.sonArray objectAtIndex:i];
+                            if ([dic[@"bSelect"] boolValue]) {
+                                [titleStr appendString:dic[@"catname"]];
+                            }
+                        }
+                        if (titleStr.length > 0){
+                            [self.selectView setButtonTitle:titleStr index:2];
+                        }
                     }
                 }
 
