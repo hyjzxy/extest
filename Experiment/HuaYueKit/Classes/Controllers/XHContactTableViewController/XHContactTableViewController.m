@@ -198,6 +198,16 @@ typedef NS_ENUM(NSInteger, DNDType){
 
 - (void)selectView:(HKSelectView*)selectView selectIndex:(NSInteger)index subindex:(NSInteger)subindex{
     if (index == 1) {
+        NSMutableString *titleStr = [NSMutableString string];
+        for (int i = 0; i < self.typeArray.count; i++) {
+            NSDictionary *dic   = [self.typeArray objectAtIndex:i];
+            if ([dic[@"bSelect"] boolValue]) {
+                [titleStr appendString:dic[@"catname"]];
+            }
+        }
+        if (titleStr.length > 0){
+            [self.selectView setButtonTitle:titleStr index:index];
+        }
         if(subindex == 0 ){
             self.selectView.sonArray = [NSArray new];
             [self reloadShaiXuanData];
@@ -213,6 +223,16 @@ typedef NS_ENUM(NSInteger, DNDType){
 }
 
 - (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
+    NSMutableString *titleStr = [NSMutableString string];
+    for (int i = 0; i < subArray.count; i++) {
+        NSDictionary *dic   = [subArray objectAtIndex:i];
+        if ([dic[@"bSelect"] boolValue]) {
+            [titleStr appendString:dic[@"catname"]];
+        }
+    }
+    if (titleStr.length > 0){
+        [self.selectView setButtonTitle:titleStr index:index];
+    }
     if (index == 0){
         self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
         NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];

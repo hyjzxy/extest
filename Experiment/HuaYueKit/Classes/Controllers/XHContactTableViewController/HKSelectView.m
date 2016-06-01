@@ -83,6 +83,13 @@
     }
 }
 
+- (void)setButtonTitle:(NSString*)title index:(NSInteger)index{
+    UIButton* button = [self viewWithTag:100+index];
+    if (button != nil ){
+        [button setTitle:title forState:UIControlStateNormal];
+    }
+}
+
 - (void)buttonAction:(id)sender
 {
 //    UIButton* selectButton = (UIButton*)sender;
@@ -164,12 +171,14 @@
     if (self.delegate != nil){
         [self.delegate selectView:self selectIndex:self.selectIndex subArray:titleArray];
     }
+    
 }
 
 - (void)selectDetailView:(HKSelectDetailView *)detailView didselectIndex:(NSInteger)index{
     if (self.delegate) {
         [self.delegate selectView:self selectIndex:detailView.tag subindex:index];
     }
+    
 }
 
 - (void)dismiss{

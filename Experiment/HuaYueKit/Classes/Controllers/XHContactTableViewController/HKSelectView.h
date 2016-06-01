@@ -26,6 +26,7 @@
 @property (nonatomic,strong) NSArray* sonArray;
 @property (assign,nonatomic) id<HKSelectViewDelegate> delegate;
 
+- (void)setButtonTitle:(NSString*)title index:(NSInteger)index;
 - (void)dismiss;
 
 @end
