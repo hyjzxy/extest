@@ -89,13 +89,24 @@
 }
 
 -(void)deleteItemClick:(id)sender{
+    if (((NSString*)self.data[@"aid"]).integerValue == 0){
+        [[UIAlertView mBuildWithTitle:@"确认删除" msg:@"是不是确认删除所有回答内容?" okTitle:@"确定" noTitle:@"取消" cancleBlock:nil okBlock:^{
+            [self deleteMessage];
+        }]show];
+    }else{
+        [self deleteMessage];
+    }
+    
+}
+
+- (void)deleteMessage{
     NSString *uid = [[NSUserDefaults standardUserDefaults] objectForKey:UID];
-//    NSLog(@"datas:%@",self.data);
+    //    NSLog(@"datas:%@",self.data);
     NSNumber* aid = self.data[@"id"];
     
-//#define ANSWER_DELETE @"删除回答"
-//#define ANSWER_DELETE_API kINTERFACE_ADDRESS(@"Answer/answeredel.html")
-//#define ANSWER_DELETE_PARAM  @"uid,aid"
+    //#define ANSWER_DELETE @"删除回答"
+    //#define ANSWER_DELETE_API kINTERFACE_ADDRESS(@"Answer/answeredel.html")
+    //#define ANSWER_DELETE_PARAM  @"uid,aid"
     NSString *urlStr = ANSWER_DELETE_API;
     NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjects:@[@(uid.integerValue),aid] forKeys:@[@"uid",@"aid"]];
     NSString *urtType = ANSWER_DELETE;
@@ -106,15 +117,13 @@
         }
         NSLog(@"responseObject:%@",responseObject);
     } failure:^(id errorString) {
-//        [MBProgressHUD sho]
+        //        [MBProgressHUD sho]
         [SVProgressHUD showWithStatus:@"删除失败"];
-//        UIAlertView* alterView = [[UIAlertView alloc]initWithTitle:@"删除失败" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
-//        [alterView show];
-//        NSLog(@"errorString:%@",errorString);
+        //        UIAlertView* alterView = [[UIAlertView alloc]initWithTitle:@"删除失败" message:errorString delegate:self cancelButtonTitle:@"确定" otherButtonTitles: nil];
+        //        [alterView show];
+        //        NSLog(@"errorString:%@",errorString);
     }];
 }
-
-
 
 
 @end
