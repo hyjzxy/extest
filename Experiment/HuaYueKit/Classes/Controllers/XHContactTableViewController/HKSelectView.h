@@ -28,5 +28,5 @@
 
 - (void)setButtonTitle:(NSString*)title index:(NSInteger)index;
 - (void)dismiss;
-
+- (void)showDetailIndex:(NSInteger)index;
 @end

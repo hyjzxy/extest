@@ -210,6 +210,10 @@ typedef NS_ENUM(NSInteger, DNDType){
         }
         if(subindex == 0 ){
             self.selectView.sonArray = [NSArray new];
+            [self.selectView setButtonTitle:@"全部" index:2];
+//            if (weakMy.selectView.sonArray.count > 0){
+//                [weakMy.selectView showDetailIndex:2];
+//            }
             [self reloadShaiXuanData];
         }else{
             NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -270,15 +274,18 @@ typedef NS_ENUM(NSInteger, DNDType){
                 _topArray = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults] objectForKey:uidS1]];
             }
             NSLog(@"topArray:%@",_topArray);
+            self.selectView.stateArray = _topArray;
             NSMutableString *titleStr0 = [NSMutableString string];
-            for (int i = 0; i < self.sonArray.count; i++) {
-                NSDictionary *dic   = [self.sonArray objectAtIndex:i];
+            for (int i = 0; i < self.topArray.count; i++) {
+                NSDictionary *dic   = [self.topArray objectAtIndex:i];
                 if ([dic[@"bSelect"] boolValue]) {
                     [titleStr0 appendString:dic[@"catname"]];
                 }
             }
             if (titleStr0.length > 0){
                 [self.selectView setButtonTitle:titleStr0 index:0];
+            }else{
+                [self.selectView setButtonTitle:@"选择状态" index:0];
             }
             //选择分类
             NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -287,7 +294,12 @@ typedef NS_ENUM(NSInteger, DNDType){
                 NSInteger index = sub.integerValue;
                 self.typeArray[index][@"bSelect"] =  @"1";
                 NSString* title = self.typeArray[index][@"catname"];
-                [self.selectView setButtonTitle:title index:1];
+                if (title.length > 0){
+                    [self.selectView setButtonTitle:title index:1];
+                }else{
+                    [self.selectView setButtonTitle:@"选择分类" index:1];
+                }
+                
                 //子类
                 NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
                 if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
@@ -297,6 +309,7 @@ typedef NS_ENUM(NSInteger, DNDType){
                         NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
                         self.sonArray = [[NSMutableArray alloc]initWithArray:son];
                         self.selectView.sonArray = self.sonArray;
+                        
                         NSMutableString *titleStr = [NSMutableString string];
                         for (int i = 0; i < self.sonArray.count; i++) {
                             NSDictionary *dic   = [self.sonArray objectAtIndex:i];
@@ -306,6 +319,8 @@ typedef NS_ENUM(NSInteger, DNDType){
                         }
                         if (titleStr.length > 0){
                             [self.selectView setButtonTitle:titleStr index:2];
+                        }else{
+                            [self.selectView setButtonTitle:@"选择子类" index:2];
                         }
                     }
                 }
@@ -677,6 +692,9 @@ typedef NS_ENUM(NSInteger, DNDType){
                                                [weakMy.sonArray removeAllObjects];
                                                weakMy.sonArray  = array;
                                                weakMy.selectView.sonArray = weakMy.sonArray;
+                                               if (weakMy.selectView.sonArray.count > 0){
+                                                   [weakMy.selectView showDetailIndex:2];
+                                               }
                                            }
                                        }failure:^(id error){
                                            if (typeId.length <= 0) {

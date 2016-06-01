@@ -86,7 +86,14 @@
 - (void)setButtonTitle:(NSString*)title index:(NSInteger)index{
     UIButton* button = [self viewWithTag:100+index];
     if (button != nil ){
-        [button setTitle:title forState:UIControlStateNormal];
+        NSMutableString* mStr = [NSMutableString new];
+        if (title.length > 4){
+            [mStr appendString:[title substringToIndex:5]];
+            [mStr appendString:@"..."];
+        }else{
+            [mStr appendString:title];
+        }
+        [button setTitle:mStr forState:UIControlStateNormal];
     }
 }
 
@@ -160,11 +167,12 @@
 
 - (void)setSonArray:(NSArray *)sonArray{
     _sonArray = sonArray;
-    if (sonArray.count > 0){
-        UIButton* button = [self viewWithTag:102];
-        if (button != nil){
-            [self buttonAction:button];
-        }
+}
+
+- (void)showDetailIndex:(NSInteger)index{
+    UIButton* button = [self viewWithTag:100+index];
+    if (button != nil){
+        [self buttonAction:button];
     }
 }
 
