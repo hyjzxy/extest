@@ -83,7 +83,7 @@
         } else if (self.pn == UMShareToQQ){
             flag = 4;
         } else if (self.pn == UMShareToQzone){
-            flag = 4;
+            flag = 5;
         }
         if (self.mBlock) {
             self.mBlock(flag);
