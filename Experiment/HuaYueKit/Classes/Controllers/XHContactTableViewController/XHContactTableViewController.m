@@ -234,11 +234,11 @@ typedef NS_ENUM(NSInteger, DNDType){
         [self.selectView setButtonTitle:titleStr index:index];
     }
     if (index == 0){
-        self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
+//        self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
         NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         
         [[NSUserDefaults standardUserDefaults] setObject:subArray forKey:uidS];
-        self.selectView.stateArray = self.topArray;
+//        self.selectView.stateArray = self.topArray;
         page = 1;
         [self reloadShaiXuanData];
     }else if (index == 2){
@@ -264,10 +264,12 @@ typedef NS_ENUM(NSInteger, DNDType){
          NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         self.isSearch = [[NSUserDefaults standardUserDefaults]boolForKey:uidS];
         if (_isSearch) {
+            //悬赏
             NSString *uidS1 = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
             if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
                 _topArray = [[NSMutableArray alloc]initWithArray: [[NSUserDefaults standardUserDefaults] objectForKey:uidS1]];
             }
+            NSLog(@"topArray:%@",_topArray);
             NSMutableString *titleStr0 = [NSMutableString string];
             for (int i = 0; i < self.sonArray.count; i++) {
                 NSDictionary *dic   = [self.sonArray objectAtIndex:i];
@@ -278,6 +280,7 @@ typedef NS_ENUM(NSInteger, DNDType){
             if (titleStr0.length > 0){
                 [self.selectView setButtonTitle:titleStr0 index:0];
             }
+            //选择分类
             NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
             if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
                 NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
@@ -285,6 +288,7 @@ typedef NS_ENUM(NSInteger, DNDType){
                 self.typeArray[index][@"bSelect"] =  @"1";
                 NSString* title = self.typeArray[index][@"catname"];
                 [self.selectView setButtonTitle:title index:1];
+                //子类
                 NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
                 if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
                     NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];

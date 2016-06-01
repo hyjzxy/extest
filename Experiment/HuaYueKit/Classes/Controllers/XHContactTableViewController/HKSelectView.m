@@ -144,7 +144,8 @@
                 NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
                 for( NSInteger i= 0;i<detailView.titleArray.count;i++){
                     if (son.count > i){
-                        detailView.titleArray[i][@"bSelect"] = son[i][@"bSelect"];
+                        [detailView.titleArray replaceObjectAtIndex:i withObject:son[i]];
+//                        detailView.titleArray[i][@"bSelect"] = son[i][@"bSelect"];
                     }
                     
                 }
