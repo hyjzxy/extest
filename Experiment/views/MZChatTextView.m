@@ -94,6 +94,7 @@
     }];
 }
 
+
 /**
  *  @author 麦子收割队-崔俊红, 15-05-09 19:05:30
  *
@@ -163,13 +164,21 @@
     [self resetSize];
 }
 
-- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
-{
-//    if (self.leftText && self.leftText.length>0) {
-//        if (range.location<=self.leftText.length) {
-//            return NO;
-//        }
-//    }
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if([textView.text isEqual: @""] || textView.text == nil){
+        [self clearText];
+    }
     return YES;
 }
+
+
+//- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+//{
+////    if (self.leftText && self.leftText.length>0) {
+////        if (range.location<=self.leftText.length) {
+////            return NO;
+////        }
+////    }
+//    return YES;
+//}
 @end

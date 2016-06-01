@@ -758,6 +758,11 @@
  */
 - (void)addQuestPersonAct:(UITapGestureRecognizer*)sender
 {
+    if ([sender.info[@"auid"]integerValue] == [[[NSUserDefaults standardUserDefaults] objectForKey:UID]integerValue]){
+        [BMUtils showError:@"不能追问自己"];
+        return;
+    }
+    [[NSUserDefaults standardUserDefaults] objectForKey:UID];
     self.askUId = [sender.info[@"auid"]integerValue];
     self.askNickName = sender.info[@"nickname"];
     if (self.isAddQuest) {

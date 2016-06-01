@@ -300,7 +300,7 @@
 
 #define QUESTIONS_SELECT  @"筛选问题"
 #define QUESTIONS_SELECT_API  kINTERFACE_ADDRESS(@"Question/select.html")
-#define QUESTIONS_SELECT_PARAM  @"pid,num,catid,isreward,issolveed,type"
+#define QUESTIONS_SELECT_PARAM  @"pid,num,catid,isreward,issolveed,type,istop"
 
 //礼品接口
 #define PRODUC_LIST  @"获取礼品列表"

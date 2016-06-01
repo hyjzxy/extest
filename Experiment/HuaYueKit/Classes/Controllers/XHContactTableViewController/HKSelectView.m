@@ -127,6 +127,7 @@
         detailView.tableView.tableFooterView = nil;
         CGRect frame = detailView.tableView.frame;
         detailView.tableView.frame = CGRectMake(frame.origin.x, frame.origin.y, frame.size.width, 0);
+//        detailView.tableView.scrollEnabled = NO;
         [detailView.titleArray addObjectsFromArray: self.classifyArray];
         for (NSInteger i = 0; i<self.classifyArray.count; i++) {
             self.classifyArray[i][@"bSelect"] =  @"0";

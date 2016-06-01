@@ -80,6 +80,10 @@
             flag = 2;
         } else if(self.pn == UMShareToWechatTimeline){//微信圈
             flag = 3;
+        } else if (self.pn == UMShareToQQ){
+            flag = 4;
+        } else if (self.pn == UMShareToQzone){
+            flag = 4;
         }
         if (self.mBlock) {
             self.mBlock(flag);

@@ -138,11 +138,11 @@ typedef NS_ENUM(NSInteger, DNDType){
         page = 1;
 //        ws.isSearch = NO;
         [ws.typeArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-            obj[@"bSelect"] = @(NO);
+//            obj[@"bSelect"] = @(NO);
         }];
         if (ws.sonArray.count > 0){
             [ws.sonArray enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
-                obj[@"bSelect"] = @"0";
+//                obj[@"bSelect"] = @"0";
             }];
         }
         
@@ -208,6 +208,9 @@ typedef NS_ENUM(NSInteger, DNDType){
         if (titleStr.length > 0){
             [self.selectView setButtonTitle:titleStr index:index];
         }
+        NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+        NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
+        [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
         if(subindex == 0 ){
             self.selectView.sonArray = [NSArray new];
             [self.selectView setButtonTitle:@"全部" index:2];
@@ -216,9 +219,6 @@ typedef NS_ENUM(NSInteger, DNDType){
 //            }
             [self reloadShaiXuanData];
         }else{
-            NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
-            NSString* sub = [NSString stringWithFormat:@"%ld",(long)subindex];
-            [[NSUserDefaults standardUserDefaults]setObject:sub forKey:uidS];
             NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
             [self requestTypeList:newDic[@"id"]];
         }
@@ -236,13 +236,17 @@ typedef NS_ENUM(NSInteger, DNDType){
     }
     if (titleStr.length > 0){
         [self.selectView setButtonTitle:titleStr index:index];
+    }else{
+        if (index == 0) {
+            [self.selectView setButtonTitle:@"问题状态" index:index];
+        }
     }
     if (index == 0){
-//        self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
         NSString *uidS = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         
         [[NSUserDefaults standardUserDefaults] setObject:subArray forKey:uidS];
-//        self.selectView.stateArray = self.topArray;
+        self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
+        self.selectView.stateArray = self.topArray;
         page = 1;
         [self reloadShaiXuanData];
     }else if (index == 2){
@@ -491,6 +495,10 @@ typedef NS_ENUM(NSInteger, DNDType){
             catId   = [catId substringToIndex:catId.length - 1];
         }
     }
+    if(self.topArray.count <= 0 || self.topArray == nil){
+        _topArray = [NSMutableArray arrayWithObjects:@{@"bSelect":@"0",@"catname":@"悬赏",@"id":@"0"},@{@"bSelect":@"0",@"catname":@"未解决",@"id":@"0"}, nil];
+        self.selectView.stateArray = _topArray;
+    }
     NSString* ward = self.topArray[0][@"bSelect"];
     NSInteger isreward = ward.integerValue;
     NSString* solveed = self.topArray[1][@"bSelect"];
@@ -498,7 +506,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     self.isSearch = (catId.length > 0 || isreward > 0 || issolveed > 0);
     if (_isSearch) {
         NSArray *keyValue = [QUESTIONS_SELECT_PARAM componentsSeparatedByString:@","];
-        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:@[@(page),@20,catId,@(isreward),@(issolveed),@(self.dndType)] forKeys:keyValue];
+        NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:@[@(page),@20,catId,@(isreward),@(issolveed),@(self.dndType),@1] forKeys:keyValue];
         [[NetManager sharedManager] myRequestParam:dic
                                            withUrl:QUESTIONS_SELECT_API
                                           withType:QUESTIONS_SELECT
@@ -551,7 +559,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     }else {
         cell.recommendIV.hidden = YES;
     }
-    if (dic[@"hits"] != nil ){
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
         [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
     }else{
         [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];

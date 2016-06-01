@@ -47,14 +47,15 @@
         _titleLabel.textColor = [UIColor grayColor];
         _titleLabel.text = @"分类";
         
-        UIView* sepline = [[UIView alloc]init];
-        sepline.backgroundColor = [UIColor grayColor];
+        UIImageView* sepline = [[UIImageView alloc]init];
+        sepline.image = [UIImage imageNamed:@"common_sepline"];
+//        sepline.backgroundColor = [UIColor grayColor];
         [self addSubview:sepline];
         [sepline mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@10);
             make.right.equalTo(@-10);
-            make.bottom.equalTo(self);
-            make.height.equalTo(@0.5);
+            make.bottom.equalTo(@0.5);
+//            make.height.equalTo(@0.5);
         }];
     }
     return self;
@@ -133,6 +134,7 @@
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(frame.origin.x+3, 0, self.width-6, 0) style:UITableViewStylePlain];
         _tableView.delegate = self;
         _tableView.dataSource = self;
+        _tableView.scrollEnabled = NO;
         _tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
         _newHeight = SCREENHEIGHT - frame.origin.y;
         

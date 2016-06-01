@@ -45,6 +45,7 @@
 @property (nonatomic, strong)UIAlertView *myAlert;
 @property (nonatomic, strong) NSArray *superList;
 @property (strong, nonatomic) NSString *imageURL;
+@property (strong,nonnull)UIColor* gaoshouColor;
 @end
 
 @implementation XHTiWenViewController
@@ -77,6 +78,7 @@
     rmImgBtn.hidden = YES;
     picImageView = (MZImageView*)VIEWWITHTAG(contentView, 601);
     gaoShouLabel = (UILabel*)VIEWWITHTAG(contentView, 602);
+    self.gaoshouColor = gaoShouLabel.textColor;
     scoreLabel = (UILabel*)VIEWWITHTAG(contentView, 603);
     textView = (HYTextView*)VIEWWITHTAG(contentView, 605);
     scoreLabel.text = @"";
@@ -461,7 +463,7 @@
     }
     if (string.length>0) {
         NSMutableAttributedString *mAttr = [[NSMutableAttributedString alloc]initWithString:@"邀请" attributes:@{NSForegroundColorAttributeName:[UIColor grayColor],NSFontAttributeName:gaoShouLabel.font}];
-        [mAttr appendAttributedString:[[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:gaoShouLabel.font,NSForegroundColorAttributeName:gaoShouLabel.textColor}]];
+        [mAttr appendAttributedString:[[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:gaoShouLabel.font,NSForegroundColorAttributeName:self.gaoshouColor}]];
         [mAttr appendAttributedString:[[NSAttributedString alloc]initWithString:@"回答" attributes:@{NSFontAttributeName:gaoShouLabel.font,NSForegroundColorAttributeName:[UIColor grayColor]}]];
         gaoShouLabel.attributedText = mAttr;
     }else {

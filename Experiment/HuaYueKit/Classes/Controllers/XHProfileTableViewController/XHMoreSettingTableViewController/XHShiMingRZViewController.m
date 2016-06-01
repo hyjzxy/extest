@@ -14,7 +14,7 @@
 #import "Masonry.h"
 #import "UIView+UIActivityIndicatorForSDWebImage.h"
 
-@interface XHShiMingRZViewController ()<UIWebViewDelegate>
+@interface XHShiMingRZViewController ()<UIWebViewDelegate,UITextFieldDelegate>
 {
     UITextField *currentFiled;
     
@@ -71,6 +71,33 @@
         self.rzScroll.contentInset = UIEdgeInsetsMake(0, 0, 0, 0);
         [self.rzScroll setContentOffset:CGPointMake(0, 0)];
     }};
+//    @property (weak, nonatomic) IBOutlet UITextField *realNameField;
+//    @property (weak, nonatomic) IBOutlet UITextField *campanyField;
+//    @property (weak, nonatomic) IBOutlet UITextField *zhiwuField;
+//    @property (weak, nonatomic) IBOutlet UITextField *mobilePhoneField;
+//    @property (weak, nonatomic) IBOutlet UITextField *emailField;
+//    @property (weak, nonatomic) IBOutlet UITextField *otherInfoField;
+    self.realNameField.delegate = self;
+    self.campanyField.delegate = self;
+    self.zhiwuField.delegate = self;
+    self.mobilePhoneField.delegate = self;
+    self.emailField.delegate = self;
+    self.otherInfoField.delegate = self;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    if (textField == self.realNameField){
+        [self.campanyField becomeFirstResponder];
+    }else if (textField == self.campanyField) {
+        [self.zhiwuField becomeFirstResponder];
+    }else if (textField == self.zhiwuField) {
+        [self.mobilePhoneField becomeFirstResponder];
+    }else if (textField == self.mobilePhoneField) {
+        [self.emailField becomeFirstResponder];
+    }else if (textField == self.emailField) {
+        [self.otherInfoField becomeFirstResponder];
+    }
+    return YES;
 }
 
 - (void)loadRealInfo
