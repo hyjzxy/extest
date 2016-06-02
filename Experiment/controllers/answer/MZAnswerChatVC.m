@@ -162,7 +162,7 @@
  */
 - (void)mDownLoad
 {
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"ReloadAnswerList" object:nil];
+//    [[NSNotificationCenter defaultCenter]postNotificationName:@"ReloadAnswerList" object:nil];
     [self.view endEditing:YES];
     self.pid = @0;
     [self mLoadRmoteData];

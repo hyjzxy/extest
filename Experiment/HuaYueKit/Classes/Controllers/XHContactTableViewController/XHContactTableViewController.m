@@ -519,6 +519,8 @@ typedef NS_ENUM(NSInteger, DNDType){
                                                [self.tableView.legendHeader endRefreshing];
                                                [self.tableView.legendFooter endRefreshing];
                                            }failure:^(id error){
+                                               [BMUtils showError:error];
+                                               [self.dataSource removeAllObjects];
                                                [self.tableView reloadData];
                                                [self.tableView.legendHeader endRefreshing];
                                                [self.tableView.legendFooter endRefreshing];

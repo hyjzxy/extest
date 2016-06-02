@@ -37,7 +37,11 @@
 
 #pragma mark - Life cycle
 - (void)initShareSdk{
-    [[MZShare shared]shareInVC:self title:APPSTOREURL image:[UIImage imageNamed:@"share-logo"] url:APPSTOREURL block:nil];
+    NSUserDefaults * userDefault = [NSUserDefaults standardUserDefaults];
+    
+    NSString* zhushouId = [userDefault objectForKey:INVITATION];
+    NSString *str = [NSString stringWithFormat:@"实验助手，实验室从业人员的专属社区，邀请码%@，赶快来加入我们吧！", zhushouId];
+    [[MZShare shared]shareInVC:self title:str image:[UIImage imageNamed:@"share-logo"] url:APPSTOREURL block:nil];
 }
 - (void)viewDidLoad {
     [super viewDidLoad];

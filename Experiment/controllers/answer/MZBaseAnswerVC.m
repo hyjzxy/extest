@@ -706,9 +706,9 @@
                                                                                 
                                                                 @"askname":self.askNickName?self.askNickName:@""}] ;
     if (sendType == kAddQuestChat){
-        [dic setObject:@"1" forKey:@"sign"];
-    }else if (sendType == kAnswerChat){
         [dic setObject:@"0" forKey:@"sign"];
+    }else if (sendType == kAnswerChat){
+        [dic setObject:@"1" forKey:@"sign"];
     }
     
      [_contentTF clearText];

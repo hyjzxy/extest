@@ -87,7 +87,7 @@
     UIButton* button = [self viewWithTag:100+index];
     if (button != nil ){
         NSMutableString* mStr = [NSMutableString new];
-        if (title.length > 4){
+        if (title.length > 5){
             [mStr appendString:[title substringToIndex:5]];
             [mStr appendString:@"..."];
         }else{
