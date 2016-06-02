@@ -703,8 +703,13 @@
                                                                                @"image":params[@"image"],
                                                                                 @"head":userHead,
 //                                                                                @"sign":self.askNickName?@"1":@"0",
-                                                                            
+                                                                                
                                                                 @"askname":self.askNickName?self.askNickName:@""}] ;
+    if (sendType == kAddQuestChat){
+        [dic setObject:@"1" forKey:@"sign"];
+    }else if (sendType == kAnswerChat){
+        [dic setObject:@"0" forKey:@"sign"];
+    }
     
      [_contentTF clearText];
     self.askUId = 0;
