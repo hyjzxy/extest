@@ -176,6 +176,16 @@
         make.width.equalTo(@(sizeEng.width+10));
     }];
     [cell.label setColorWithText:cell.label.text];
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {//阅读数
+        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    }else{
+        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+    }
+    if ([dic[@"from"]  isEqual: @2]) {//推荐
+        cell.recommendIV.hidden = NO;
+    }else {
+        cell.recommendIV.hidden = YES;
+    }
     id superlist  = dic[@"superlist"];
     cell.gaoShou.text = [superlist isEqualToString:@"null"]||!superlist||[superlist length]<=0?@"":[NSString stringWithFormat:@"邀请%@回答",superlist];
     [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
