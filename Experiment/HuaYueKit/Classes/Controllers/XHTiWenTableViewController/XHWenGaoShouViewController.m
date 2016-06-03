@@ -161,7 +161,7 @@
         }
     }else {
         if (dArray.count>=3) {
-            [BMUtils showError:@"@高手不能超3人"];
+            [BMUtils showError:@"@邀请回答不能超3人"];
             return;
         }
         [mDic setObject:@"1" forKey:@"bselect"];

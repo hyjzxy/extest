@@ -190,7 +190,13 @@
     cell.headBtn.tag = indexPath.row;
     [cell.headBtn addTarget:self action:@selector(toPerson:) forControlEvents:UIControlEventTouchUpInside];
     cell.praiseBtn.tag = indexPath.row;
-    [cell.praiseBtn setTitle:N2V(dic[@"hits"], @"0") forState:UIControlStateNormal];
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
+        NSString* hits = [NSString stringWithFormat:@"  %@",dic[@"hits"]];
+        [cell.praiseBtn setTitle:hits forState:UIControlStateNormal];
+    }else{
+        [cell.praiseBtn setTitle:@"  0" forState:UIControlStateNormal];
+    }
+//    [cell.praiseBtn setTitle:N2V(dic[@"hits"], @" 0") forState:UIControlStateNormal];
     if ([dic[@"ispraise"]boolValue]) {
         [cell.praiseBtn setImage:[UIImage imageNamed:@"praise-on"] forState:UIControlStateNormal];
     }else{

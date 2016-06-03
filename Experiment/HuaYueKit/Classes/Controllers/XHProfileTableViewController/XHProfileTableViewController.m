@@ -489,6 +489,8 @@
             cell.detailTextLabel.text = [self.myinforMationDic objectForKey:@"interest"];
         }else if(section == 2 && row == 3){
             cell.detailTextLabel.text = [self.myinforMationDic objectForKey:@"invitation"];
+        }else{
+            cell.detailTextLabel.text = @"";
         }
         
         return cell;

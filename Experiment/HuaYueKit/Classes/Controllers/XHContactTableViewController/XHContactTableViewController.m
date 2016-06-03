@@ -203,9 +203,12 @@ typedef NS_ENUM(NSInteger, DNDType){
             NSDictionary *dic   = [self.typeArray objectAtIndex:i];
             if ([dic[@"bSelect"] boolValue]) {
                 [titleStr appendString:dic[@"catname"]];
+                [titleStr appendString:@"/"];
             }
         }
+        
         if (titleStr.length > 0){
+            [titleStr deleteCharactersInRange:NSMakeRange(titleStr.length-1, 1)];
             [self.selectView setButtonTitle:titleStr index:index];
         }
         NSString *uidS = [NSString stringWithFormat:@"%@Index", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -227,14 +230,20 @@ typedef NS_ENUM(NSInteger, DNDType){
 }
 
 - (void)selectView:(HKSelectView *)selectView selectIndex:(NSInteger)index subArray:(NSArray *)subArray{
+    BOOL isSelect = NO;
     NSMutableString *titleStr = [NSMutableString string];
     for (int i = 0; i < subArray.count; i++) {
         NSDictionary *dic   = [subArray objectAtIndex:i];
         if ([dic[@"bSelect"] boolValue]) {
             [titleStr appendString:dic[@"catname"]];
+            [titleStr appendString:@"/"];
+            if (index == 2 ){
+                isSelect = YES;
+            }
         }
     }
     if (titleStr.length > 0){
+        [titleStr deleteCharactersInRange:NSMakeRange(titleStr.length-1, 1)];
         [self.selectView setButtonTitle:titleStr index:index];
     }else{
         if (index == 0) {
@@ -250,6 +259,10 @@ typedef NS_ENUM(NSInteger, DNDType){
         page = 1;
         [self reloadShaiXuanData];
     }else if (index == 2){
+        if (isSelect == NO){
+            [BMUtils showError:@"您未选择子类"];
+            return;
+        }
         NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
             NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
@@ -284,8 +297,10 @@ typedef NS_ENUM(NSInteger, DNDType){
                 NSDictionary *dic   = [self.topArray objectAtIndex:i];
                 if ([dic[@"bSelect"] boolValue]) {
                     [titleStr0 appendString:dic[@"catname"]];
+                    [titleStr0 appendString:@"/"];
                 }
             }
+            [titleStr0 deleteCharactersInRange:NSMakeRange(titleStr0.length-1, 1)];
             if (titleStr0.length > 0){
                 [self.selectView setButtonTitle:titleStr0 index:0];
             }else{
@@ -319,9 +334,12 @@ typedef NS_ENUM(NSInteger, DNDType){
                             NSDictionary *dic   = [self.sonArray objectAtIndex:i];
                             if ([dic[@"bSelect"] boolValue]) {
                                 [titleStr appendString:dic[@"catname"]];
+                                [titleStr appendString:@"/"];
                             }
                         }
+                        
                         if (titleStr.length > 0){
+                            [titleStr deleteCharactersInRange:NSMakeRange(titleStr.length-1, 1)];
                             [self.selectView setButtonTitle:titleStr index:2];
                         }else{
                             [self.selectView setButtonTitle:@"选择子类" index:2];
@@ -562,9 +580,10 @@ typedef NS_ENUM(NSInteger, DNDType){
         cell.recommendIV.hidden = YES;
     }
     if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
-        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+        NSString* hits = [NSString stringWithFormat:@"  %@",dic[@"hits"]];
+        [cell.readsButton setTitle:hits forState:UIControlStateNormal];
     }else{
-        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+        [cell.readsButton setTitle:@"  0" forState:UIControlStateNormal];
     }
     
     if (!isEmptyDicForKey(dic, @"reward")) {

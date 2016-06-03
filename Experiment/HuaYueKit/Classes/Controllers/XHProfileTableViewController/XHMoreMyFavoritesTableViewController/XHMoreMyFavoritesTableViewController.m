@@ -122,10 +122,11 @@
     }];
     label.textColor = [UIColor whiteColor];
     [label setColorWithText:label.text];
-    if (dic[@"hits"]){
-        [readsB setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
+        NSString* hits = [NSString stringWithFormat:@"  %@",dic[@"hits"]];
+        [readsB setTitle:hits forState:UIControlStateNormal];
     }else{
-        [readsB setTitle:@"0" forState:UIControlStateNormal];
+        [readsB setTitle:@"  0" forState:UIControlStateNormal];
     }
     
     id superlist  = dic[@"superlist"];

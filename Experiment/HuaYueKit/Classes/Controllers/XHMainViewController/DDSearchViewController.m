@@ -162,10 +162,11 @@ alpha:1.0]
     cell.userName.text = WYISBLANK([dic objectForKey:@"nickname"]);
     [HYHelper mSetLevelLabel:cell.level level:dic[@"rank"]];
     cell.time.text = N2V(dic[@"inputtime"], @"");
-    if (dic[@"hits"] != nil){
-        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
+        NSString* hits = [NSString stringWithFormat:@"  %@",dic[@"hits"]];
+        [cell.readsButton setTitle:hits forState:UIControlStateNormal];
     }else{
-        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+        [cell.readsButton setTitle:@"  0" forState:UIControlStateNormal];
     }
     
     //关键字处理

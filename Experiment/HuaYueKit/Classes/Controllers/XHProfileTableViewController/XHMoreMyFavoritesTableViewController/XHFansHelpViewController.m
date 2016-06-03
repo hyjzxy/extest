@@ -176,10 +176,11 @@
         make.width.equalTo(@(sizeEng.width+10));
     }];
     [cell.label setColorWithText:cell.label.text];
-    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {//阅读数
-        [cell.readsButton setTitle:dic[@"hits"] forState:UIControlStateNormal];
+    if (dic[@"hits"] != nil && ![dic[@"hits"] isEqualToString:@""]) {
+        NSString* hits = [NSString stringWithFormat:@"  %@",dic[@"hits"]];
+        [cell.readsButton setTitle:hits forState:UIControlStateNormal];
     }else{
-        [cell.readsButton setTitle:@"0" forState:UIControlStateNormal];
+        [cell.readsButton setTitle:@"  0" forState:UIControlStateNormal];
     }
     if ([dic[@"from"]  isEqual: @2]) {//推荐
         cell.recommendIV.hidden = NO;

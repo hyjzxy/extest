@@ -165,6 +165,12 @@
 }
 
 - (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text{
+    if (self.leftText && self.leftText.length>0) {
+        if (range.location<=self.leftText.length) {
+            return NO;
+        }
+    }
+
     if([textView.text isEqual: @""] || textView.text == nil){
         [self clearText];
     }
@@ -174,11 +180,11 @@
 
 //- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
 //{
-////    if (self.leftText && self.leftText.length>0) {
-////        if (range.location<=self.leftText.length) {
-////            return NO;
-////        }
-////    }
+//    if (self.leftText && self.leftText.length>0) {
+//        if (range.location<=self.leftText.length) {
+//            return NO;
+//        }
+//    }
 //    return YES;
 //}
 @end

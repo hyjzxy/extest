@@ -64,7 +64,7 @@
         UIImageView* downIV = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"answer_down"]];
         [button addSubview:downIV];
         [downIV mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.right.equalTo(button).offset(-10);
+            make.right.equalTo(button).offset(-5);
             make.centerY.equalTo(button);
         }];
         [button addTarget:self action:@selector(buttonAction:) forControlEvents:UIControlEventTouchUpInside];
