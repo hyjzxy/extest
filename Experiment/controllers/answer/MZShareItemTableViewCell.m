@@ -68,23 +68,24 @@
     UIMenuController* item = sender;
     NSLog(@"%@",item.menuItems);
     [UIPasteboard generalPasteboard].string = self.content;
-    // 通知代理
-    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
-    [self addSubview:HUD];
-    HUD.label.text = @"复制成功";
-    HUD.mode = MBProgressHUDModeText;
-    
-    //指定距离中心点的X轴和Y轴的位置，不指定则在屏幕中间显示
-      // HUD.yOffset = -100.0f;
-       // HUD.xOffset = 0.0f;
-    
-    [HUD showAnimated:YES whileExecutingBlock:^{
-        sleep(1);
-    } completionBlock:^{
-        [HUD removeFromSuperview];
-        //        [HUD release];
-        //HUD = nil;
-    }];
+    [SVProgressHUD showSuccessWithStatus:@"复制成功"];
+//    // 通知代理
+//    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self];
+//    [self addSubview:HUD];
+//    HUD.label.text = @"复制成功";
+//    HUD.mode = MBProgressHUDModeText;
+//    
+//    //指定距离中心点的X轴和Y轴的位置，不指定则在屏幕中间显示
+//      // HUD.yOffset = -100.0f;
+//       // HUD.xOffset = 0.0f;
+//    
+//    [HUD showAnimated:YES whileExecutingBlock:^{
+//        sleep(1);
+//    } completionBlock:^{
+//        [HUD removeFromSuperview];
+//        //        [HUD release];
+//        //HUD = nil;
+//    }];
     
 }
 

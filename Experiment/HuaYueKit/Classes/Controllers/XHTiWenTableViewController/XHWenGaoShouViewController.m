@@ -218,6 +218,7 @@
            }];
         }];
     }
+    self.selectedDics = nil;
     return list;
 }
 

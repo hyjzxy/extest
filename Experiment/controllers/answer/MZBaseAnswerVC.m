@@ -360,6 +360,7 @@
     if([[NSUserDefaults standardUserDefaults]boolForKey:AUTH]){
         XHWenGaoShouViewController *gsVC = [[XHWenGaoShouViewController alloc]init];
         gsVC.mydelegate = self;
+        gsVC.selectedDics = self.invates;
         [self.navigationController pushViewController:gsVC animated:YES];
     } else{
         [BMUtils showError:@"非认证用户不能邀请高手"];
