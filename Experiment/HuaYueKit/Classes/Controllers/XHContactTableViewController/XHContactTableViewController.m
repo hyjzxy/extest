@@ -300,8 +300,9 @@ typedef NS_ENUM(NSInteger, DNDType){
                     [titleStr0 appendString:@"/"];
                 }
             }
-            [titleStr0 deleteCharactersInRange:NSMakeRange(titleStr0.length-1, 1)];
+            
             if (titleStr0.length > 0){
+                [titleStr0 deleteCharactersInRange:NSMakeRange(titleStr0.length-1, 1)];
                 [self.selectView setButtonTitle:titleStr0 index:0];
             }else{
                 [self.selectView setButtonTitle:@"选择状态" index:0];
