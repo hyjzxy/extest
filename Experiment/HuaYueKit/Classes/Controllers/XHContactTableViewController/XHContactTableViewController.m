@@ -284,7 +284,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     if(self.dndType == kNetQuest){
          NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         self.isSearch = [[NSUserDefaults standardUserDefaults]boolForKey:uidS];
-        if (_isSearch) {
+        if (_isSearch && [[NSUserDefaults standardUserDefaults] objectForKey:UID] != nil) {
             //悬赏
             NSString *uidS1 = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
             if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
@@ -305,7 +305,7 @@ typedef NS_ENUM(NSInteger, DNDType){
                 [titleStr0 deleteCharactersInRange:NSMakeRange(titleStr0.length-1, 1)];
                 [self.selectView setButtonTitle:titleStr0 index:0];
             }else{
-                [self.selectView setButtonTitle:@"选择状态" index:0];
+                [self.selectView setButtonTitle:@"问题状态" index:0];
             }
             //选择分类
             NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
@@ -316,38 +316,36 @@ typedef NS_ENUM(NSInteger, DNDType){
                 NSString* title = self.typeArray[index][@"catname"];
                 if (title.length > 0){
                     [self.selectView setButtonTitle:title index:1];
+                    //子类
+                    NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
+                    if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
+                        NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
+                        NSString* sonA = [NSString stringWithFormat:@"%@%@",uidS,sub];
+                        if ([[NSUserDefaults standardUserDefaults]objectForKey:sonA]!=nil){
+                            NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
+                            self.sonArray = [[NSMutableArray alloc]initWithArray:son];
+                            self.selectView.sonArray = self.sonArray;
+                            
+                            NSMutableString *titleStr = [NSMutableString string];
+                            for (int i = 0; i < self.sonArray.count; i++) {
+                                NSDictionary *dic   = [self.sonArray objectAtIndex:i];
+                                if ([dic[@"bSelect"] boolValue]) {
+                                    [titleStr appendString:dic[@"catname"]];
+                                    [titleStr appendString:@"/"];
+                                }
+                            }
+                            
+                            if (titleStr.length > 0){
+                                [titleStr deleteCharactersInRange:NSMakeRange(titleStr.length-1, 1)];
+                                [self.selectView setButtonTitle:titleStr index:2];
+                            }else{
+                                [self.selectView setButtonTitle:@"选择子类" index:2];
+                            }
+                        }
+                    }
                 }else{
                     [self.selectView setButtonTitle:@"选择分类" index:1];
                 }
-                
-                //子类
-                NSString *uidS = [NSString stringWithFormat:@"%@Index",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
-                if ([[NSUserDefaults standardUserDefaults]objectForKey:uidS]!=nil){
-                    NSString* sub = [[NSUserDefaults standardUserDefaults]objectForKey:uidS];
-                    NSString* sonA = [NSString stringWithFormat:@"%@%@",uidS,sub];
-                    if ([[NSUserDefaults standardUserDefaults]objectForKey:sonA]!=nil){
-                        NSArray* son = [[NSUserDefaults standardUserDefaults]objectForKey:sonA];
-                        self.sonArray = [[NSMutableArray alloc]initWithArray:son];
-                        self.selectView.sonArray = self.sonArray;
-                        
-                        NSMutableString *titleStr = [NSMutableString string];
-                        for (int i = 0; i < self.sonArray.count; i++) {
-                            NSDictionary *dic   = [self.sonArray objectAtIndex:i];
-                            if ([dic[@"bSelect"] boolValue]) {
-                                [titleStr appendString:dic[@"catname"]];
-                                [titleStr appendString:@"/"];
-                            }
-                        }
-                        
-                        if (titleStr.length > 0){
-                            [titleStr deleteCharactersInRange:NSMakeRange(titleStr.length-1, 1)];
-                            [self.selectView setButtonTitle:titleStr index:2];
-                        }else{
-                            [self.selectView setButtonTitle:@"选择子类" index:2];
-                        }
-                    }
-                }
-
             }
             [self reloadShaiXuanData];
         }else{
