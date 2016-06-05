@@ -58,6 +58,10 @@
 {
 //    [self clearText];
     NSString* string = self.text;
+    if (self.leftText != nil && ![self.leftText isEqualToString:@""]){
+        string = [string substringFromIndex:self.leftText.length];
+    }
+    
     [self clearText];
     self.leftText = leftTxt;
     NSMutableAttributedString *ma = [[NSMutableAttributedString alloc]init];
@@ -68,7 +72,7 @@
     
     
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:@" " attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
-    
+    self.textColor = [UIColor blackColor];
     
     self.attributedText = ma;
 //    [self resetSize];
