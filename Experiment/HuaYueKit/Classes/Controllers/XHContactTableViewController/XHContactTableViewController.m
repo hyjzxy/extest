@@ -273,7 +273,8 @@ typedef NS_ENUM(NSInteger, DNDType){
         [self.sonArray addObjectsFromArray:subArray];
         
         page = 1;
-        [self reloadShaiXuanData];
+//        [self reloadShaiXuanData];
+//        [self.tableView ber]
     }
 }
 
