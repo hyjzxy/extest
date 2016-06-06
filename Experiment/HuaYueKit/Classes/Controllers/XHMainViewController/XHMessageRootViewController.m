@@ -352,7 +352,16 @@
         nickNameLB.text = [HYHelper mNickLable:N2V(data[@"nickname"],@"") userId:data[@"uid"]];
         inputTimeLB.text = N2V(data[@"inputtime"],@"");
         contentLB.text = N2V(data[@"content"],@"");
-        lableLB.attributedText = [HYHelper mBuildLable:N2V(data[@"lable"],@"") font:lableLB.font];
+//        lableLB.attributedText = [HYHelper mBuildLable:N2V(data[@"lable"],@"") font:lableLB.font];
+        NSString* label = WYISBLANK([data objectForKey:@"lable"]);
+        lableLB.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+        [lableLB makeRoundCornerWithRadius:2];
+        
+        CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(lableLB.text, [UIFont systemFontOfSize:12], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+        [lableLB mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(sizeEng.width+10));
+        }];
+        [lableLB setColorWithText:lableLB.text];
         [HYHelper mSuperList:invateLB supers:N2V(data[@"superlist"],@"")];
         [ansSumLB setTitle:[NSString stringWithFormat:@" %@",N2V(data[@"anum"],@0)] forState:UIControlStateNormal];
         solveedIV.hidden = !(type==3&&[data[@"issolveed"]boolValue]);
@@ -420,7 +429,16 @@
             contentLB.text = N2V(data[@"title"], @"");
             newAskLB.attributedText  = [HYHelper mBuildAnswer:N2V(data[@"content"], @"")  font:newAskLB.font userId:data[@"uid"] isAnswer:type==4];
         }
-        lableLB.attributedText = [HYHelper mBuildLable:data[@"lable"] font:lableLB.font];
+//        lableLB.attributedText = [HYHelper mBuildLable:data[@"lable"] font:lableLB.font];
+        NSString* label = WYISBLANK([data objectForKey:@"lable"]);
+        lableLB.text = [label stringByReplacingOccurrencesOfString:@" " withString:@"/"];
+        [lableLB makeRoundCornerWithRadius:2];
+        
+        CGSize sizeEng = XZ_MULTILINE_TEXTSIZE(lableLB.text, [UIFont systemFontOfSize:12], CGSizeMake(SCREENWIDTH, 20), NSLineBreakByWordWrapping);
+        [lableLB mas_updateConstraints:^(MASConstraintMaker *make) {
+            make.width.equalTo(@(sizeEng.width+10));
+        }];
+        [lableLB setColorWithText:lableLB.text];
         NSString *image = N2V(data[@"qimage"], @"");
         [qImageView mas_updateConstraints:^(MASConstraintMaker *make) {
             if (image.length>0) {
