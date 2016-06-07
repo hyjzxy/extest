@@ -258,7 +258,7 @@
                 imageName = @"MySomething";
                 break;
             case 3:
-                title = @"助手ID";
+                title = @"邀请好友";
                 subTitle = @"";
                 imageName = @"FansAskMy";
                 break;
