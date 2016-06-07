@@ -150,6 +150,15 @@
 {
     NSArray *uidArray   = [self.dataSource valueForKeyPath:@"id"];
     NSInteger   index   = [uidArray indexOfObject:[NSString stringWithFormat:@"%ld",(long)btn.arrayIndex]];
+    for (NSDictionary* dic in dArray) {
+        if ([dic[@"id"] isEqualToString:uidArray[index]]){
+            NSDictionary *dic1   = [self.dataSource objectAtIndex:index];
+            NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:dic1];
+            [mDic setObject:dic[@"bselect"] forKey:@"bselect"];
+            [self.dataSource replaceObjectAtIndex:index withObject:mDic];
+            break;
+        }
+    }
     NSDictionary *dic   = [self.dataSource objectAtIndex:index];
     NSMutableDictionary *mDic = [NSMutableDictionary dictionaryWithDictionary:dic];
     if ([mDic[@"bselect"] boolValue]) {

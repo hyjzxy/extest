@@ -242,6 +242,8 @@
             }
         }];
         [self.contentTF mAddLable:ms];
+    }else{
+        [self.contentTF mAddLable:@""];
     }
 }
 #pragma mark - 事件处理

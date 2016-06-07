@@ -70,8 +70,10 @@
     [ma appendAttributedString:[[NSAttributedString alloc]initWithString:string attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
 //    [ma appendAttributedString:self.attributedText];
     
+    if (leftTxt != nil && ![leftTxt isEqualToString:@""]){
+        [ma appendAttributedString:[[NSAttributedString alloc]initWithString:@" " attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
+    }
     
-    [ma appendAttributedString:[[NSAttributedString alloc]initWithString:@" " attributes:@{NSFontAttributeName:self.font,NSForegroundColorAttributeName:[UIColor colorWithWhite:0.195 alpha:1.000]}]];
     self.textColor = [UIColor blackColor];
     
     self.attributedText = ma;
