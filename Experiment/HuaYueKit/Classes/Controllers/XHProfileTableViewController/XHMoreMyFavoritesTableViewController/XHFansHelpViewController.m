@@ -51,7 +51,7 @@
     _segView.selectColor = [UIColor blackColor];
     _segView.delegate = self;
     //    [self.view addSubview:_segView];
-    _segView.hidden = YES;
+//    _segView.hidden = YES;
     UIView* sepLine = [[UIView alloc]initWithFrame:CGRectMake(self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
     [_segView addSubview:sepLine];
     sepLine.backgroundColor = [UIColor grayColor];
@@ -74,12 +74,12 @@
     __weak XHFansHelpViewController *weakMy = self;
     
     
-    NSArray *keyValue = [MY_FANSSLIST_PARAM componentsSeparatedByString:@","];
+    NSArray *keyValue = [MY_FANSSLIST_NEW_PARAM componentsSeparatedByString:@","];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
     NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],_status,nil] forKeys:keyValue];
     
-    [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_NEW_API withType:MY_FANSSLIST_NEW success:^(id responseObject){
+    [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_API withType:MY_FANSSLIST_NEW success:^(id responseObject){
         
         if (page == 1) {
             [weakMy.dataSource removeAllObjects];
@@ -117,6 +117,7 @@
     } else if (index == 2) {
         self.status = @2;
     }
+    [self reloadData];
     
 }
 - (void)didReceiveMemoryWarning {

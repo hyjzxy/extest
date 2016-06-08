@@ -577,6 +577,10 @@
     UIView* view = (UIView*)sender;
     [view.superview.superview removeFromSuperview];
 //    [VIEWWITHTAG(self.view, 10001) removeFromSuperview];
+    if ([self.mQuest[@"issolveed"] boolValue]){
+        [BMUtils showError:@"被采纳回答无法删除"];
+        return;
+    }
     [[UIAlertView mBuildWithTitle:@"提示" msg:@"删除后将无法恢复,是否确定要删除?" okTitle:@"确定" noTitle:@"取消" cancleBlock:nil okBlock:^{
         [[NetManager sharedManager] myRequestParam:[NSMutableDictionary dictionaryWithDictionary:@{@"uid":[[NSUserDefaults standardUserDefaults] objectForKey:UID],@"qid":@(self.qid)}]
                                            withUrl:QUESTIONS_DELETE_API

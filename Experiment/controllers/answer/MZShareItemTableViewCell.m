@@ -9,6 +9,7 @@
 #import "MZShareItemTableViewCell.h"
 #import "MBProgressHUD.h"
 #import "NetManager.h"
+#import "BMUtils.h"
 
 @implementation MZShareItemTableViewCell
 
@@ -90,6 +91,10 @@
 }
 
 -(void)deleteItemClick:(id)sender{
+    if ([self.data[@"isadopt"] boolValue]){
+        [BMUtils showError:@"被采纳回答无法删除"];
+        return;
+    }
     if (((NSString*)self.data[@"aid"]).integerValue == 0){
         [[UIAlertView mBuildWithTitle:@"确认删除" msg:@"是不是确认删除所有回答内容?" okTitle:@"确定" noTitle:@"取消" cancleBlock:nil okBlock:^{
             [self deleteMessage];
