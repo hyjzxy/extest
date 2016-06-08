@@ -15,11 +15,16 @@
 #import "HYHelper.h"
 #import "Masonry.h"
 #import "NSObject+Cate.h"
+#import "HKSegView.h"
 
-@interface XHFansHelpViewController ()
+@interface XHFansHelpViewController ()<HKSegViewDelegete>
+
 {
     int page;
+    
 }
+@property (nonatomic,strong) HKSegView* segView;
+@property (nonatomic,strong) NSNumber* status;
 @end
 
 @implementation XHFansHelpViewController
@@ -32,11 +37,28 @@
     self.tableView.estimatedRowHeight = 100.0f;
     self.tableView.rowHeight = UITableViewAutomaticDimension;
     page = 1;
-    
+    self.status = @1;
     [self configuraTableViewNormalSeparatorInset];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     
+    NSArray* segArrray = [NSArray arrayWithObjects:@"全部",@"未回答",@"已回答", nil];
+    _segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
+//    _segView.tag = 10002;
+    _segView.titleArray = segArrray;
+    _segView.normalBackgroundColor = [UIColor whiteColor];
+    _segView.normalColor = [UIColor blackColor];
+    _segView.selectColor = [UIColor blackColor];
+    _segView.delegate = self;
+    //    [self.view addSubview:_segView];
+    _segView.hidden = YES;
+    UIView* sepLine = [[UIView alloc]initWithFrame:CGRectMake(self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
+    [_segView addSubview:sepLine];
+    sepLine.backgroundColor = [UIColor grayColor];
+    UIView* sepLine2 = [[UIView alloc]initWithFrame:CGRectMake(2*self.view.width/3.0-0.5, 10, 0.5, _segView.height-20)];
+    [_segView addSubview:sepLine2];
+    sepLine2.backgroundColor = [UIColor grayColor];
+    self.tableView.tableHeaderView = _segView;
     //添加上拉加载更多
     __weak XHFansHelpViewController *blockSelf = self;
     [self.tableView addLegendFooterWithRefreshingBlock:^{
@@ -52,10 +74,10 @@
     __weak XHFansHelpViewController *weakMy = self;
     
     
-    NSArray *keyValue = [MY_FANSSLIST_NEW_PARAM componentsSeparatedByString:@","];
+    NSArray *keyValue = [MY_FANSSLIST_PARAM componentsSeparatedByString:@","];
     NSUserDefaults *userDefault = [NSUserDefaults standardUserDefaults];
     
-    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],nil] forKeys:keyValue];
+    NSMutableDictionary *dic = [[NSMutableDictionary alloc] initWithObjects:[NSArray arrayWithObjects:[userDefault objectForKey:UID],[NSString stringWithFormat:@"%d",page],[NSNumber numberWithInt:20],_status,nil] forKeys:keyValue];
     
     [[NetManager sharedManager] myRequestParam:dic withUrl:MY_FANSSLIST_NEW_API withType:MY_FANSSLIST_NEW success:^(id responseObject){
         
@@ -86,6 +108,17 @@
     [self reloadMoreData];
 }
 
+- (void)segViewSelectIndex:(NSInteger)index SegView:(HKSegView *)segView
+{
+    if (index == 0) {
+        self.status = @1;
+    } else if (index == 1) {
+        self.status = @3;
+    } else if (index == 2) {
+        self.status = @2;
+    }
+    
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
