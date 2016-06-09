@@ -94,6 +94,9 @@
         [weakMy.tableView.legendHeader endRefreshing];
         [weakMy.tableView.legendFooter endRefreshing];
     }failure:^(id error){
+        [BMUtils showError:error];
+        
+        [weakMy.dataSource removeAllObjects];
         [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
         [weakMy.tableView.legendFooter endRefreshing];
@@ -117,6 +120,8 @@
     } else if (index == 2) {
         self.status = @2;
     }
+    [self.dataSource removeAllObjects];
+    [self.tableView reloadData];
     [self reloadData];
     
 }

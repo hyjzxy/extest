@@ -478,6 +478,9 @@ typedef NS_ENUM(NSInteger, DNDType){
         [weakMy.tableView.legendHeader endRefreshing];
         [weakMy.tableView.legendFooter endRefreshing];
     }failure:^(id error){
+        [BMUtils showError:error];
+        [weakMy.dataSource removeAllObjects];
+        [weakMy.tableView reloadData];
         [weakMy.tableView.legendHeader endRefreshing];
         [weakMy.tableView.legendFooter endRefreshing];
     }];
