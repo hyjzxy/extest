@@ -159,7 +159,7 @@ alpha:1.0]
     cell.headBtn.tapBlock = ^(UIButton *iv){
         [HYHelper pushPersonCenterOnVC:self uid:[iv.info[@"uid"]intValue]];
     };
-    [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
+//    [HYHelper mSetVImageView:cell.head v:dic[@"type"] head:cell.headBtn];
     cell.userName.text = WYISBLANK([dic objectForKey:@"nickname"]);
     [HYHelper mSetLevelLabel:cell.level level:dic[@"rank"]];
     cell.time.text = N2V(dic[@"inputtime"], @"");
