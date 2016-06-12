@@ -198,7 +198,7 @@
                 [_andAnswerBtn setTitle:@"回复" forState:UIControlStateNormal];
                 [_andAnswerBtn addTarget:self action:@selector(mSendAddQuestAct:) forControlEvents:UIControlEventTouchUpInside];
             }
-            [self mLeftGaoShou];
+//            [self mLeftGaoShou];
         }
     } else if(_chatType==kNoneChat && (qUId!=userId || self.chatFrom==kChatFromMyAnswer)){
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"auid.intValue=%d",userId];
@@ -211,7 +211,7 @@
             self.contentTF = (MZChatTextView*)VIEWWITHTAG(_answerInvateView, 1003);
             [_andAnswerBtn setTitle:@"回答" forState:UIControlStateNormal];
             [_andAnswerBtn addTarget:self action:@selector(mSendAnswerAct:) forControlEvents:UIControlEventTouchUpInside];
-            [self mLeftGaoShou];
+//            [self mLeftGaoShou];
         }
     }else if(_chatType==kAnswerChat ){
         if(qUId==userId || self.auid== userId){
