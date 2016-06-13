@@ -199,7 +199,10 @@
                                            [weakM.chatTbv reloadData];
                                            [weakM mShowBottomView];
                                        }failure:^(id error){
-                                           [weakM.mDatas removeAllObjects];
+//                                           [BMUtils showError:error];
+                                           if ([self.pid isEqualToNumber:@0]) {
+                                               [self.mDatas removeObjectsInRange:NSMakeRange(1, self.mDatas.count-1)];
+                                           }
                                            [weakM.chatTbv.legendHeader endRefreshing];
                                            [weakM.chatTbv reloadData];
                                            [weakM mShowBottomView];
