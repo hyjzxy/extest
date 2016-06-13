@@ -217,10 +217,8 @@ typedef NS_ENUM(NSInteger, DNDType){
         if(subindex == 0 ){
             self.selectView.sonArray = [NSArray new];
             [self.selectView setButtonTitle:@"全部" index:2];
-//            if (weakMy.selectView.sonArray.count > 0){
-//                [weakMy.selectView showDetailIndex:2];
-//            }
-            [self reloadShaiXuanData];
+            page = 1;
+            [self.tableView.legendHeader beginRefreshing];
         }else{
             NSDictionary* newDic = [self.typeArray objectAtIndex:subindex];
             [self requestTypeList:newDic[@"id"]];
@@ -256,8 +254,7 @@ typedef NS_ENUM(NSInteger, DNDType){
         [[NSUserDefaults standardUserDefaults] setObject:subArray forKey:uidS];
         self.topArray = [[NSMutableArray alloc]initWithArray: subArray];
         self.selectView.stateArray = self.topArray;
-        page = 1;
-        [self reloadShaiXuanData];
+
     }else if (index == 2){
         if (isSelect == NO){
             [BMUtils showError:@"您未选择子类"];
@@ -271,10 +268,11 @@ typedef NS_ENUM(NSInteger, DNDType){
         }
         [self.sonArray removeAllObjects];
         [self.sonArray addObjectsFromArray:subArray];
-        
-        page = 1;
-        [self reloadShaiXuanData];
+    
     }
+    page = 1;
+    self.isSearch = YES;
+    [self.tableView.legendHeader beginRefreshing];
 }
 
 
@@ -384,7 +382,6 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self.dataSource removeAllObjects];
     [self.tableView reloadData];
     [self reloadData];
-//    [self requestDataArticle];
     
 }
 -(void)rightBtnClick:(id)sender
