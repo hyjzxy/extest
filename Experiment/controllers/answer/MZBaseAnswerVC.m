@@ -730,7 +730,7 @@
                                                if (responseObject[@"id"] != nil){
                                                   [dic setObject:responseObject[@"id"] forKey:@"id"];
                                                }
-                                               
+                                               self.aid = [responseObject[@"parentid"] integerValue];
                                                [loadingView dissMiss];
                                                //添加记录
                                                [_contentTF clearText];

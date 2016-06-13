@@ -199,6 +199,7 @@
                                            [weakM.chatTbv reloadData];
                                            [weakM mShowBottomView];
                                        }failure:^(id error){
+                                           [weakM.mDatas removeAllObjects];
                                            [weakM.chatTbv.legendHeader endRefreshing];
                                            [weakM.chatTbv reloadData];
                                            [weakM mShowBottomView];

@@ -543,7 +543,8 @@ typedef NS_ENUM(NSInteger, DNDType){
                                                [self.tableView.legendFooter endRefreshing];
                                            }];
     }else{
-        [self.tableView.legendHeader beginRefreshing];
+        [self requestDataArticle];
+//        [self.tableView.legendHeader beginRefreshing];
     }
 }
 
