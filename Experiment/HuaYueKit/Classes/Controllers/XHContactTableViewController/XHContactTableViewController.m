@@ -65,7 +65,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     [self requestTypeList:@""];
     page = 1;
     
-    _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-32, 44)];
+    _topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREENWIDTH-16, 44)];
 //    _topView.backgroundColor = [UIColor redColor];
     self.dndType = kNetQuest;
     
@@ -73,7 +73,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 //    self.tabBarController.title = @"";
     NSArray* segTitle = [NSArray arrayWithObjects:@"网友提问",@"粉丝求助", nil];
     HKSegView* segView = [[HKSegView alloc]initWithFrame:CGRectMake(54, 7, 170, 23)];
-    segView.center = CGPointMake(_topView.width/2.0, segView.center.y);
+    segView.center = CGPointMake(_topView.width/2.0-8, segView.center.y);
     segView.tag = 10001;
     segView.titleArray = segTitle;
     segView.delegate = self;

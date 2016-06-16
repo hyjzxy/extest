@@ -10,7 +10,7 @@
 #define XinCaiFu_BMXinCaiFu_h
 #define WYISBLANK(value) [Utils isBlankString:value]
 //13818255349
-#define API_DEBUG 0
+#define API_DEBUG 1
 #if API_DEBUG
 #define IMAGE_ADDRESS @"http://ws.shiyanzhushou.com"
 #define IMG_URL(_ImgURL_) ([NSURL URLWithString:[NSString stringWithFormat:@"http://ws.shiyanzhushou.com%@",_ImgURL_]])
