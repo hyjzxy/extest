@@ -1531,7 +1531,7 @@
 		FC13E5731A4915BE00A6CF33 /* BMUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMUtils.m; sourceTree = "<group>"; };
 		FC13E5741A4915BE00A6CF33 /* BMGlobalValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMGlobalValue.h; sourceTree = "<group>"; };
 		FC13E5751A4915BE00A6CF33 /* BMGlobalValue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BMGlobalValue.m; sourceTree = "<group>"; };
-		FC13E5791A4917AA00A6CF33 /* BMXinCaiFu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BMXinCaiFu.h; sourceTree = "<group>"; };
+		FC13E5791A4917AA00A6CF33 /* BMXinCaiFu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BMXinCaiFu.h; path = HuaYueKit/Classes/ThirdLibrary/BMXinCaiFu.h; sourceTree = "<group>"; };
 		FC1B83B31A42B2E900BD94F3 /* down_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = down_dark.png; sourceTree = "<group>"; };
 		FC1B83B41A42B2E900BD94F3 /* DropDownChooseProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownChooseProtocol.h; sourceTree = "<group>"; };
 		FC1B83B51A42B2E900BD94F3 /* DropDownListView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DropDownListView.h; sourceTree = "<group>"; };
@@ -2153,6 +2153,7 @@
 				2FD46E841B84AD88009D8622 /* mz.bundle */,
 				2F9280611B836BED00108330 /* Help.plist */,
 				2F6A5F611B21CDA600A4575B /* Potocal.html */,
+				FC13E5791A4917AA00A6CF33 /* BMXinCaiFu.h */,
 				2F595AF41B3D9A8F0067366F /* noti */,
 				2F8664F91B19422700BF5791 /* HuaYueDisplayExample */,
 				A048A0C61AFB22C4007E0CCA /* custom */,
@@ -3157,7 +3158,6 @@
 				A05045E61ADA71C7000254CE /* IQKeyBoardManager */,
 				A0BD1BEB1AC97D750047B1CC /* SDWebImage */,
 				FC88C2791A59247C00ED3E55 /* WYCodeMsg.plist */,
-				FC13E5791A4917AA00A6CF33 /* BMXinCaiFu.h */,
 				FC13E5591A490EE200A6CF33 /* Utils */,
 				FC13E4F01A490E6500A6CF33 /* EGOImageView */,
 				FC13E4FB1A490E6500A6CF33 /* MBProgressHUD */,

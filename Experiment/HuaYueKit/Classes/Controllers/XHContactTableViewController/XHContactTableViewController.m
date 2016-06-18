@@ -40,6 +40,7 @@ typedef NS_ENUM(NSInteger, DNDType){
 @property (nonatomic,strong) HKSegView* segView;
 @property (nonatomic,strong) NSNumber* status;
 @property(nonatomic,strong) NSMutableArray* topArray;
+@property (nonatomic,strong) HKSegView* topSegView;
 @end
 
 @implementation XHContactTableViewController
@@ -72,13 +73,13 @@ typedef NS_ENUM(NSInteger, DNDType){
     self.tabBarController.navigationItem.leftBarButtonItem =  [[UIBarButtonItem alloc] initWithCustomView:_topView];
 //    self.tabBarController.title = @"";
     NSArray* segTitle = [NSArray arrayWithObjects:@"网友提问",@"粉丝求助", nil];
-    HKSegView* segView = [[HKSegView alloc]initWithFrame:CGRectMake(54, 7, 170, 23)];
-    segView.center = CGPointMake(_topView.width/2.0-8, segView.center.y);
-    segView.tag = 10001;
-    segView.titleArray = segTitle;
-    segView.delegate = self;
-    segView.lineView.hidden = YES;
-    [_topView addSubview:segView];
+    _topSegView = [[HKSegView alloc]initWithFrame:CGRectMake(54, 7, 170, 23)];
+    _topSegView.center = CGPointMake(_topView.width/2.0-8, _topSegView.center.y);
+    _topSegView.tag = 10001;
+    _topSegView.titleArray = segTitle;
+    _topSegView.delegate = self;
+    _topSegView.lineView.hidden = YES;
+    [_topView addSubview:_topSegView];
     
     NSArray* selectArray = [NSArray arrayWithObjects:@"问题状态",@"选择分类",@"选择子类", nil];
     _selectView = [[HKSelectView alloc]initWithFrame:CGRectMake(0, 0, self.view.width, 40)];
@@ -284,7 +285,7 @@ typedef NS_ENUM(NSInteger, DNDType){
     if(self.dndType == kNetQuest){
          NSString *uidS = [NSString stringWithFormat:@"%@ContactIsSearch",  [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
         self.isSearch = [[NSUserDefaults standardUserDefaults]boolForKey:uidS];
-        if (_isSearch && [[NSUserDefaults standardUserDefaults] objectForKey:UID] != nil) {
+        if (_isSearch) {
             //悬赏
             NSString *uidS1 = [NSString stringWithFormat:@"%@topArray", [[NSUserDefaults standardUserDefaults] objectForKey:UID]];
             if ([[NSUserDefaults standardUserDefaults] objectForKey:uidS] != nil){
@@ -395,6 +396,8 @@ typedef NS_ENUM(NSInteger, DNDType){
                           cancelButtonTitle:@"知道了"
                           otherButtonTitles:nil, nil] show];
         
+        _topSegView.selectIndex = 0;
+//        segView.tag = 10001;
         return;
     }
     self.segView.hidden = NO;
