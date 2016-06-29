@@ -193,7 +193,7 @@
     [profiles addObject:@[userInfoDictionary]];
     
     NSMutableArray *rows = [[NSMutableArray alloc] initWithCapacity:1];
-    for (int i = 0; i < 5; i ++) {
+    for (int i = 0; i < 6; i ++) {
         NSString *title;
         NSString *subTitle;
         NSString *imageName;
@@ -219,6 +219,11 @@
                 imageName = @"AskMy";
                 break;
             case 4:
+                title = @"我的收藏";
+                subTitle = @"";
+                imageName = @"CollectionMy";
+                break;
+            case 5:
                 title = @"系统消息";
                 subTitle = @"";
                 imageName = @"SystemMsg";

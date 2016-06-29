@@ -151,7 +151,19 @@
     }
 }
 
+- (void)setTitleColor:(UIColor *)titleColor{
+    _titleColor = titleColor;
+    for (UIView* view in self.subviews)
+    {
+        if (view.tag >= 100)
+        {
+            UIButton* button = (UIButton*)view;
+            [button setTitleColor:self.titleColor forState:UIControlStateSelected];
+            [button setTitleColor:self.titleColor forState:UIControlStateNormal];
+        }
+    }
 
+}
 
 - (void)setFont:(UIFont *)font
 {

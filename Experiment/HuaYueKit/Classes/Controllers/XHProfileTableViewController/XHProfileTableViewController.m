@@ -10,6 +10,7 @@
 #import "XHShiMingRZViewController.h"
 #import "XHStoreManager.h"
 
+#import "XHMyCollectionViewController.h"
 #import "XHMoreMyProfileDetailTableViewController.h"
 #import "XHSignViewController.h"
 #import "XHMoreMyFavoritesTableViewController.h"
@@ -461,7 +462,7 @@
                 if (sum > 0) {
                     cell.accessoryView = [self accessLabel:sum];
                 }
-            }else if (indexPath.row == 4)
+            }else if (indexPath.row == 5)
             {
                 //title = [NSString stringWithFormat:@"%@(%zd)",[sectionDictionary valueForKey:@"title"],[WYISBLANK(self.myinforMationDic[@"mnum"]) integerValue]];
                 if (delegate.tabbarView.mNum > 0) {
@@ -602,7 +603,18 @@
                     viewController = control;
                 }
                     break;
-                case 4:{//系统消息数
+                case 4:{//我的收藏
+                    XHMyCollectionViewController* control = [XHMyCollectionViewController new];
+                    viewController = control;
+//                    systemViewController *control = [[systemViewController alloc] init];
+//                    viewController = control;
+//                    if (delegate.tabbarView.mNum>0) {
+//                        delegate.tabbarView.mNum = 0;
+//                        [self resetNoti:@16];
+//                    }
+                }
+                    break;
+                case 5:{//系统消息数
                     systemViewController *control = [[systemViewController alloc] init];
                     viewController = control;
                     if (delegate.tabbarView.mNum>0) {

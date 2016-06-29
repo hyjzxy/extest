@@ -7,8 +7,11 @@
 //
 
 #import "XHMyCollectionViewController.h"
+#import "HKSegView.h"
 
 @interface XHMyCollectionViewController ()
+
+@property(nonatomic,strong)HKSegView* segView;
 
 @end
 
@@ -16,6 +19,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = @"我的收藏";
+    NSArray* titleArray = @[@"问答",@"文章"];
+    HKSegView* segView = [[HKSegView alloc]initWithFrame:CGRectMake(0, 0, SCREENWIDTH, 44)];
+    segView.titleArray = titleArray;
+    segView.normalBackgroundColor = [UIColor whiteColor];
+    segView.selectBackgroundColor = [UIColor whiteColor];
+    segView.titleColor = [UIColor blackColor];
+    [self.view addSubview:segView];
     // Do any additional setup after loading the view.
 }
 

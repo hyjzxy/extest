@@ -21,6 +21,7 @@
 @property(nonatomic,strong)NSArray* titleArray;
 @property(nonatomic,strong)UIColor* normalColor;
 @property(nonatomic,strong)UIColor* selectColor;
+@property(nonatomic,strong)UIColor* titleColor;
 @property(nonatomic,strong)UIColor* normalBackgroundColor;
 @property(nonatomic,strong)UIColor* selectBackgroundColor;
 @property(retain,nonatomic) UIView* lineView;
